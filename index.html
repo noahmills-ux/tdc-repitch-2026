@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noah Mills — Web Strategist Re-Pitch 2026</title>
+<style>
+  :root {
+    --ink: #0e132a;
+    --slate: #4f4f5b;
+    --white: #ffffff;
+    --teal: #45b6b7;
+    --yellow: #eed229;
+    --purple: #c46fe2;
+    --lime: #bddd75;
+    --red: #f65d61;
+    --orange: #ff9800;
+    --blue: #5f66d7;
+    --green: #00a56c;
+    --grid: rgba(14, 19, 42, 0.055);
+    --hairline: rgba(14, 19, 42, 0.12);
+    --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    color: var(--ink);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+
+  /* ---------- Scroll container ---------- */
+  .deck {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+
+  .slide {
+    position: relative;
+    min-height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 90px 7vw;
+    background:
+      linear-gradient(to right, var(--grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid) 1px, transparent 1px),
+      var(--white);
+    background-size: 52px 52px;
+    border-bottom: 1px solid rgba(14, 19, 42, 0.04);
+  }
+
+  .inner {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  /* ---------- Typography ---------- */
+  h1, h2, h3, .wordmark, .eyebrow, .stat-num, .nav-num {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  h1 { font-size: clamp(2.4rem, 5.6vw, 4.6rem); line-height: 1.05; color: var(--ink); }
+  h2 { font-size: clamp(1.9rem, 4vw, 3.2rem); line-height: 1.1; color: var(--ink); }
+  h3 { font-size: clamp(1.1rem, 1.6vw, 1.5rem); line-height: 1.25; color: var(--ink); }
+
+  p, li { font-weight: 400; font-size: clamp(1rem, 1.15vw, 1.18rem); color: var(--slate); }
+
+  .lead { font-size: clamp(1.15rem, 1.5vw, 1.45rem); color: var(--slate); max-width: 60ch; }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--teal);
+    margin-bottom: 26px;
+  }
+  .eyebrow .tick {
+    width: 26px; height: 26px; border-radius: 50%;
+    border: 1.5px solid var(--ink);
+    background: var(--teal);
+    flex: none;
+  }
+
+  .accent { color: var(--teal); font-style: italic; font-weight: 700; }
+  strong { color: var(--ink); font-weight: 700; }
+
+  /* ---------- Brand logo (rebuilt in CSS) ---------- */
+  .logo { display: inline-flex; align-items: center; gap: 16px; }
+  .logo .dots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    width: 46px; height: 46px;
+    flex: none;
+  }
+  .logo .dots span { border-radius: 50%; border: 1px solid var(--ink); }
+  .logo .wordmark {
+    font-size: 1.4rem; color: var(--slate); line-height: 0.95;
+    text-transform: lowercase; letter-spacing: -0.02em;
+  }
+  .logo .wordmark small { display: block; font-weight: 700; }
+
+  /* ---------- Decorative layer ---------- */
+  .decor { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+
+  .dot {
+    position: absolute;
+    border-radius: 50%;
+    border: 1.5px solid var(--ink);
+  }
+
+  /* Off-page long pills: full lozenge clipped by slide overflow */
+  .pill {
+    position: absolute;
+    height: 64px;
+    border-radius: 999px;
+    border: 1.5px solid var(--ink);
+  }
+  .pill.r { right: -240px; }
+  .pill.l { left: -240px; }
+
+  /* ---------- Layout helpers ---------- */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 64px); align-items: center; }
+  .stack > * + * { margin-top: 22px; }
+
+  ul.clean { list-style: none; }
+  ul.clean li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+  }
+  ul.clean li::before {
+    content: "";
+    position: absolute; left: 0; top: 8px;
+    width: 13px; height: 13px; border-radius: 50%;
+    background: var(--teal);
+    border: 1.5px solid var(--ink);
+  }
+  ul.clean li.alt::before { background: var(--purple); }
+  ul.clean li.alt2::before { background: var(--orange); }
+  ul.clean li.alt3::before { background: var(--lime); }
+
+  /* ---------- Stat cards ---------- */
+  .stat-row { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 8px; }
+  .stat {
+    background: var(--white);
+    border: 1.5px solid var(--hairline);
+    border-radius: 18px;
+    padding: 22px 26px;
+    min-width: 190px;
+  }
+  .stat-num { font-size: clamp(2rem, 3.4vw, 2.9rem); color: var(--ink); line-height: 1; }
+  .stat-num .pre { color: var(--teal); }
+  .stat-label { font-size: 0.92rem; color: var(--slate); margin-top: 8px; }
+
+  /* ---------- Revenue table ---------- */
+  .rev-table { width: 100%; border-collapse: collapse; margin-top: 6px; background: var(--white);
+    border: 1.5px solid var(--hairline); border-radius: 16px; overflow: hidden; }
+  .rev-table th, .rev-table td { padding: 14px 18px; text-align: left; font-size: 1rem; }
+  .rev-table thead th { background: rgba(69,182,183,0.12); color: var(--ink); font-weight: 700; font-size: 0.84rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  .rev-table tbody tr { border-top: 1px solid rgba(14,19,42,0.07); }
+  .rev-table td.num { text-align: right; font-variant-numeric: tabular-nums; color: var(--slate); }
+  .rev-table tr.total td { font-weight: 700; color: var(--ink); background: rgba(14,19,42,0.025); }
+  .rev-table tr.total td.num { color: var(--ink); }
+
+  .note {
+    margin-top: 18px; padding: 16px 20px;
+    border-left: 3px solid var(--teal);
+    background: rgba(69,182,183,0.07);
+    border-radius: 0 12px 12px 0;
+    font-size: 0.98rem; color: var(--slate); max-width: 62ch;
+  }
+
+  /* ---------- Project gallery ---------- */
+  .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 10px; }
+  .proj {
+    background: var(--ink);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1.5px solid var(--ink);
+    transition: transform 0.35s cubic-bezier(.2,.7,.2,1), box-shadow 0.35s;
+  }
+  .proj:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(14,19,42,0.16); }
+  .proj img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+  .proj .cap { padding: 14px 16px; background: var(--white); border-top: 1.5px solid var(--ink); }
+  .proj .cap .name { font-weight: 700; color: var(--ink); font-size: 1.02rem; }
+  .proj .cap .ctx { font-size: 0.86rem; color: var(--slate); margin-top: 3px; line-height: 1.4; }
+
+  /* ---------- Feature (strategy) cards ---------- */
+  .feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 10px; }
+  .feat {
+    background: var(--white); border: 1.5px solid var(--hairline);
+    border-radius: 18px; overflow: hidden; display: flex; flex-direction: column;
+  }
+  .feat .shot { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top center;
+    border-bottom: 1.5px solid var(--hairline); background: var(--ink); }
+  .feat .body { padding: 20px 24px; }
+  .feat .body h3 { margin-bottom: 8px; }
+  .feat .body p { font-size: 0.98rem; line-height: 1.5; }
+  .feat .tag { display: inline-block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em;
+    font-weight: 700; color: var(--teal); margin-bottom: 10px; }
+
+  /* ---------- Strengths ---------- */
+  .str-list { display: flex; flex-direction: column; gap: 14px; margin-top: 10px; }
+  .str {
+    display: grid; grid-template-columns: 54px 1fr; gap: 18px; align-items: center;
+    background: var(--white); border: 1.5px solid var(--hairline); border-radius: 16px; padding: 16px 20px;
+  }
+  .str .rank {
+    width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1.1rem; color: var(--ink); flex: none;
+  }
+  .str .meta .name { font-weight: 700; color: var(--ink); font-size: 1.1rem; }
+  .str .meta .domain { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); }
+  .str .meta .desc { font-size: 0.94rem; color: var(--slate); margin-top: 2px; }
+
+  .supporting { margin-top: 22px; font-size: 1rem; color: var(--slate); }
+  .supporting strong { color: var(--ink); }
+
+  .grow-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 30px; margin-top: 10px; }
+  .grow { padding-left: 26px; position: relative; }
+  .grow::before { content: ""; position: absolute; left: 0; top: 7px; width: 13px; height: 13px;
+    border-radius: 50%; border: 1.5px solid var(--ink); background: var(--purple); }
+  .grow .g-name { font-weight: 700; color: var(--ink); }
+  .grow .g-desc { font-size: 0.95rem; color: var(--slate); }
+
+  /* ---------- Asks ---------- */
+  .ask-hero { display: flex; flex-wrap: wrap; align-items: baseline; gap: 18px; margin: 6px 0 14px; }
+  .ask-hero .from { font-size: clamp(1.8rem,3vw,2.6rem); font-weight: 700; color: var(--slate); text-decoration: line-through; text-decoration-thickness: 2px; }
+  .ask-hero .arrow { font-size: clamp(1.6rem,2.6vw,2.2rem); color: var(--teal); }
+  .ask-hero .to { font-size: clamp(2.6rem,5vw,4.2rem); font-weight: 700; color: var(--ink); }
+
+  .ask-card {
+    background: var(--white); border: 1.5px solid var(--hairline); border-radius: 18px;
+    padding: 24px 28px; margin-bottom: 18px;
+  }
+  .ask-card h3 { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .ask-card h3 .bullet { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--ink); flex: none; }
+  .ask-card.c-teal h3 .bullet { background: var(--teal); }
+  .ask-card.c-purple h3 .bullet { background: var(--purple); }
+  .ask-card.c-orange h3 .bullet { background: var(--orange); }
+  .ask-card p, .ask-card li { font-size: 0.98rem; line-height: 1.5; }
+
+  /* ---------- Trust slide ---------- */
+  .trust-line { font-size: clamp(1.1rem, 1.4vw, 1.32rem); color: var(--slate); max-width: 64ch; }
+  .commit { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px 28px; margin-top: 26px; }
+  .commit .c { position: relative; padding-left: 28px; font-size: 1rem; color: var(--slate); line-height: 1.45; }
+  .commit .c::before { content:""; position:absolute; left:0; top:7px; width:13px; height:13px; border-radius:50%;
+    background: var(--teal); border: 1.5px solid var(--ink); }
+  .commit .c strong { color: var(--ink); }
+
+  /* ---------- Close ---------- */
+  .close-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 14px; }
+
+  /* ---------- Progress / nav ---------- */
+  .rail {
+    position: fixed; right: 26px; top: 50%; transform: translateY(-50%);
+    z-index: 50; display: flex; flex-direction: column; gap: 12px;
+  }
+  .rail a {
+    width: 12px; height: 12px; border-radius: 50%;
+    border: 1.5px solid var(--ink); background: var(--white);
+    transition: all 0.25s; cursor: pointer;
+  }
+  .rail a.active { background: var(--teal); transform: scale(1.35); }
+
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 7vw; pointer-events: none;
+  }
+  .topbar .logo { pointer-events: auto; }
+  .topbar .progress-label {
+    font-weight: 700; font-size: 0.85rem; color: var(--slate);
+    background: var(--white); border: 1.5px solid var(--hairline);
+    padding: 6px 14px; border-radius: 999px; font-variant-numeric: tabular-nums;
+  }
+
+  .hint {
+    position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
+    z-index: 50; font-size: 0.8rem; color: var(--slate);
+    background: var(--white); border: 1.5px solid var(--hairline);
+    padding: 7px 16px; border-radius: 999px; opacity: 0.9;
+    animation: fade 0.5s ease 6s forwards;
+  }
+  @keyframes fade { to { opacity: 0; visibility: hidden; } }
+
+  /* ---------- Reveal animation ---------- */
+  .slide .inner > * { opacity: 0; transform: translateY(24px); }
+  .slide.seen .inner > * { opacity: 1; transform: none; transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.2,.7,.2,1); }
+  .slide.seen .inner > *:nth-child(2) { transition-delay: 0.08s; }
+  .slide.seen .inner > *:nth-child(3) { transition-delay: 0.16s; }
+  .slide.seen .inner > *:nth-child(4) { transition-delay: 0.24s; }
+  .slide.seen .inner > *:nth-child(5) { transition-delay: 0.32s; }
+  .slide.seen .inner > *:nth-child(6) { transition-delay: 0.40s; }
+  @media (prefers-reduced-motion: reduce) {
+    .slide .inner > * { opacity: 1; transform: none; }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .grid-2, .feat-grid, .close-cols, .commit, .grow-grid { grid-template-columns: 1fr; }
+    .proj-grid { grid-template-columns: 1fr 1fr; }
+    .slide { padding: 84px 6vw; }
+    .rail { display: none; }
+  }
+  @media (max-width: 600px) {
+    .proj-grid { grid-template-columns: 1fr; }
+    .topbar .progress-label { display: none; }
+  }
+
+  /* ---------- Password gate ---------- */
+  body.locked { overflow: hidden; }
+  .gate {
+    position: fixed; inset: 0; z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+    background:
+      linear-gradient(to right, var(--grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid) 1px, transparent 1px),
+      var(--white);
+    background-size: 52px 52px;
+    transition: opacity 0.5s ease;
+  }
+  .gate.hide { opacity: 0; pointer-events: none; }
+  .gate-card {
+    width: 100%; max-width: 420px; text-align: center;
+    background: var(--white);
+    border: 1.5px solid var(--hairline);
+    border-radius: 20px;
+    padding: 44px 38px;
+    box-shadow: 0 30px 80px rgba(14, 19, 42, 0.10);
+  }
+  .gate .dots { display: flex; gap: 5px; justify-content: center; margin-bottom: 26px; }
+  .gate .dots span { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+  .gate h2 { font-size: 1.5rem; letter-spacing: -0.02em; margin-bottom: 6px; }
+  .gate p { color: var(--slate); font-size: 0.92rem; margin-bottom: 26px; }
+  .gate form { display: flex; flex-direction: column; gap: 12px; }
+  .gate input {
+    font-family: var(--font); font-size: 1rem;
+    padding: 14px 16px; border-radius: 12px;
+    border: 1.5px solid var(--hairline); color: var(--ink);
+    outline: none; transition: border-color 0.2s ease;
+  }
+  .gate input:focus { border-color: var(--teal); }
+  .gate button {
+    font-family: var(--font); font-size: 0.95rem; font-weight: 600;
+    padding: 14px 16px; border-radius: 12px; border: none; cursor: pointer;
+    background: var(--ink); color: var(--white);
+    transition: transform 0.15s ease, opacity 0.2s ease;
+  }
+  .gate button:hover { opacity: 0.9; }
+  .gate button:active { transform: scale(0.98); }
+  .gate .err {
+    color: var(--red); font-size: 0.85rem; min-height: 1.1em;
+    margin: 0; opacity: 0; transition: opacity 0.2s ease;
+  }
+  .gate .err.show { opacity: 1; }
+  .gate.shake .gate-card { animation: shake 0.4s; }
+  @keyframes shake {
+    0%,100% { transform: translateX(0); }
+    20%,60% { transform: translateX(-8px); }
+    40%,80% { transform: translateX(8px); }
+  }
+</style>
+</head>
+<body class="locked">
+
+<!-- Password gate -->
+<div class="gate" id="gate">
+  <div class="gate-card">
+    <div class="dots">
+      <span style="background:#f65d61"></span><span style="background:#ff9800"></span><span style="background:#eed229"></span>
+      <span style="background:#c46fe2"></span><span style="background:#bddd75"></span>
+      <span style="background:#5f66d7"></span><span style="background:#45b6b7"></span><span style="background:#00a56c"></span>
+    </div>
+    <h2>Re-Pitch 2026</h2>
+    <p>This presentation is private. Enter the password to continue.</p>
+    <form id="gateForm" autocomplete="off">
+      <input type="password" id="gatePass" placeholder="Password" aria-label="Password" autofocus>
+      <button type="submit">Unlock</button>
+      <p class="err" id="gateErr">Incorrect password — try again.</p>
+    </form>
+  </div>
+</div>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="logo">
+    <div class="dots">
+      <span style="background:#f65d61"></span><span style="background:#ff9800"></span><span style="background:#eed229"></span>
+      <span style="background:#c46fe2"></span><span style="background:#ffffff"></span><span style="background:#bddd75"></span>
+      <span style="background:#5f66d7"></span><span style="background:#45b6b7"></span><span style="background:#00a56c"></span>
+    </div>
+    <div class="wordmark">tdc<small>marketing</small></div>
+  </div>
+  <div class="progress-label" id="plabel">01 / 11</div>
+</div>
+
+<!-- Side rail -->
+<nav class="rail" id="rail"></nav>
+
+<div class="hint">Scroll or use ↑ ↓ arrow keys</div>
+
+<div class="deck" id="deck">
+
+  <!-- 0 · TRUST -->
+  <section class="slide" id="s0">
+    <div class="decor">
+      <span class="dot" style="width:88px;height:88px;background:#45b6b7;top:14%;right:9%"></span>
+      <span class="dot" style="width:34px;height:34px;background:#eed229;top:26%;right:18%"></span>
+      <span class="pill r" style="width:520px;background:#bddd75;top:72%"></span>
+      <span class="dot" style="width:54px;height:54px;background:#ffffff;bottom:16%;left:6%"></span>
+    </div>
+    <div class="inner stack">
+      <span class="eyebrow"><span class="tick"></span>Starting with honesty</span>
+      <h1>Addressing it<br>directly.</h1>
+      <p class="trust-line">I know I have real work to do on how I show up — specifically my <strong>attitude and mood under pressure</strong>, and how I respond to <strong>negative feedback and stressful situations</strong>. I'm not here to explain that away. I own it.</p>
+      <p class="trust-line">My fourth strength is <span class="accent">Restorative</span> — I'm wired to find what's broken and fix it, and to learn from failure rather than repeat it. I'm turning that same instinct inward. Rebuilding trust isn't something I'll talk my way into; it's something I'll earn through consistency.</p>
+      <div class="commit">
+        <div class="c"><strong>Pause before I react.</strong> Leaning on Deliberative — stop, assess, then respond instead of responding from stress.</div>
+        <div class="c"><strong>Treat feedback as information.</strong> Not a threat. It's how I get better, and I want more of it, not less.</div>
+        <div class="c"><strong>Communicate early when I'm stretched.</strong> Flag pressure before it shows up in my tone.</div>
+        <div class="c"><strong>Measure it over time.</strong> Consistency week over week is the only proof that counts.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1 · OPENING -->
+  <section class="slide" id="s1">
+    <div class="decor">
+      <span class="pill l" style="width:560px;background:#45b6b7;top:18%"></span>
+      <span class="dot" style="width:70px;height:70px;background:#ff9800;bottom:20%;right:11%"></span>
+      <span class="dot" style="width:30px;height:30px;background:#5f66d7;bottom:32%;right:20%"></span>
+    </div>
+    <div class="inner stack">
+      <span class="eyebrow"><span class="tick"></span>Web Strategist · Re-Pitch 2026</span>
+      <h1>From Specialist<br>to Strategist —<br><span class="accent">and then some.</span></h1>
+      <p class="lead">I was promoted to Web Strategist in September 2025. The honest truth is I'd been operating at that level well before the title caught up.</p>
+      <p class="lead">In the past year I've led web across every team, trained and supervised teammates, rebuilt our processes, and delivered builds that usually take two or three people. This pitch is about aligning the role, the compensation, and the environment with where I already am.</p>
+    </div>
+  </section>
+
+  <!-- 2 · REVENUE -->
+  <section class="slide" id="s2">
+    <div class="decor">
+      <span class="dot" style="width:92px;height:92px;background:#00a56c;top:13%;right:8%"></span>
+      <span class="pill r" style="width:480px;background:#c46fe2;bottom:14%"></span>
+    </div>
+    <div class="inner stack">
+      <span class="eyebrow"><span class="tick"></span>Revenue &amp; value</span>
+      <h2>$85,370 billed — and that's the <span class="accent">conservative</span> floor.</h2>
+      <div class="stat-row">
+        <div class="stat"><div class="stat-num"><span class="pre">$</span>85,370</div><div class="stat-label">Estimated billed, Jun 2025 – Jun 2026</div></div>
+        <div class="stat"><div class="stat-num">606.75</div><div class="stat-label">Hours of web publication &amp; design/dev</div></div>
+        <div class="stat"><div class="stat-num">1</div><div class="stat-label">Web strategist carrying it — no specialist support</div></div>
+      </div>
+      <table class="rev-table">
+        <thead><tr><th>Category</th><th>Hours</th><th>Rate</th><th>Total</th></tr></thead>
+        <tbody>
+          <tr><td>Full Stack (all teams)</td><td class="num">589.75</td><td class="num">$140/hr</td><td class="num">$82,565</td></tr>
+          <tr><td>Non-Full Stack</td><td class="num">17.0</td><td class="num">$165/hr</td><td class="num">$2,805</td></tr>
+          <tr class="total"><td>Total</td><td class="num">606.75</td><td class="num"></td><td class="num">$85,370</td></tr>
+        </tbody>
+      </table>
+      <div class="note">This is a <strong>conservative estimate</strong> based on billed hours only — and it reflects just web publication and design/development time. It does <strong>not</strong> capture the full price of the builds I've led, or the value of the strategy, training, team support, and infrastructure work I do every week. My real contribution to TDC's revenue is meaningfully higher than this number shows.</div>
+    </div>
+  </section>
+
+  <!-- 3 · PROJECTS -->
+  <section class="slide" id="s3">
+    <div class="decor">
+      <span class="pill l" style="width:420px;background:#eed229;top:10%"></span>
+    </div>
+    <div class="inner stack">
+      <span class="eyebrow"><span class="tick"></span>Project highlights</span>
+      <h2>Builds too big for one person.<br>Delivered anyway.</h2>
+      <div class="proj-grid">
+        <div class="proj"><img src="assets/first-airforce-one-slider-1.png" alt="First Air Force One website">
+          <div class="cap"><div class="name">First Air Force One</div><div class="ctx">New design-to-code process. Built a custom reCAPTCHA from scratch when Bloomerang's failed.</div></div></div>
+        <div class="proj"><img src="assets/kdb-slider-1.png" alt="Kent Design Build website">
+          <div class="cap"><div class="name">Kent Design Build</div><div class="ctx">Solo build scoped for 2–3 people. Client pivoted 3×, changed POC, delayed copy. Delivered.</div></div></div>
+        <div class="proj"><img src="assets/campus-movers-slider-1.png" alt="Campus Movers website">
+          <div class="cap"><div class="name">Campus Movers</div><div class="ctx">Found, hired &amp; integrated an offshore dev — a first for TDC. Custom advanced build.</div></div></div>
+        <div class="proj"><img src="assets/pwd-home-slider-1.png" alt="PWD Home website">
+          <div class="cap"><div class="name">PWD Home</div><div class="ctx">Build plus ongoing support. High-quality delivery.</div></div></div>
+        <div class="proj"><img src="assets/hanks-slider-1.png" alt="Hank's Grille website">
+          <div class="cap"><div class="name">Hank's Grille</div><div class="ctx">Redesign. Clean, on-brand execution.</div></div></div>
+        <div class="proj"><img src="assets/tdc-slider-1.png" alt="TDC Marketing website">
+          <div class="cap"><div class="name">TDC Marketing</div><div class="ctx">Our own agency site. High visibility, high stakes.</div></div></div>
+      </div>
+      <p class="supporting">Also completed or assisted: <strong>Weiler Orthodontics</strong> (server fix + WordPress → Squarespace migration), <strong>VA Golf Course Reviews</strong> (100% independent — brought in, managed, and delivered on my own), HDR (dev side), Montpelier Hunt Races, Red Wing Roots, LW&amp;G.</p>
+    </div>
+  </section>
+
+  <!-- 4 · STRATEGY -->
+  <section class="slide" id="s4">
+    <div class="decor">
+      <span class="dot" style="width:64px;height:64px;background:#5f66d7;top:16%;right:7%"></span>
+      <span class="pill r" style="width:380px;background:#45b6b7;bottom:12%"></span>
+    </div>
+    <div class="inner stack">
+      <span class="eyebrow"><span class="tick"></span>Web strategy contributions</span>
+      <h2>I built the systems so the<br>whole team can do it better.</h2>
+      <div class="feat-grid">
+        <div class="feat">
+          <img class="shot" src="assets/code-compendium.png" alt="The Code Compendium Notion resource">
+          <div class="body">
+            <span class="tag">Built on my own initiative</span>
+            <h3>The Code Compendium</h3>
+            <p>TDC's central resource for every plugin, CSS snippet, JS solution, and code block — a ready-to-use library, brandable templates with AI prompts, a plugin library, and a client code archive. It doubles as a training resource; I'm using it now to train Regan and Sara.</p>
+          </div>
+        </div>
+        <div class="feat">
+          <img class="shot" src="assets/portfolio-plugin.png" alt="TDC Portfolio Summary Block Configurator plugin">
+          <div class="body">
+            <span class="tag">Expanded my comfort zone</span>
+            <h3>TDC Portfolio Plugin</h3>
+            <p>TDC's first-ever custom Squarespace plugin. A visual configurator that lets teammates build portfolio layouts and generate embed code with no manual coding. I built it to push my own development skills and to scale our capability without scaling headcount.</p>
+          </div>
+        </div>
+      </div>
+      <p class="supporting"><strong>Web build lifecycle:</strong> I redesigned our entire process from 3 milestones to a sprint-based system — improving cross-functional collaboration and giving leadership real-time visibility into workload. In 2026 I merged sprint cards with monthly update cards so everything tracks in one place.</p>
+    </div>
+  </section>
+
+  <!-- 5 · LEADERSHIP -->
+  <section class="slide" id="s5">
+    <div class="decor">
+      <span class="pill l" style="width:500px;background:#f65d61;top:20%"></span>
+      <span class="dot" style="width:48px;height:48px;background:#bddd75;bottom:18%;right:10%"></span>
+      <span class="dot" style="width:80px;height:80px;background:#ffffff;top:14%;right:6%"></span>
+    </div>
+    <div class="inner stack">
+      <span class="eyebrow"><span class="tick"></span>Leadership &amp; supervision</span>
+      <h2>I'm developing the people<br>who do the work, too.</h2>
+      <div class="grid-2">
+        <ul class="clean">
+          <li>Directly supervise <strong>Regan and Sara</strong></li>
+          <li class="alt">Bi-weekly check-ins and professional development goals</li>
+          <li class="alt2">Work-life balance check-ins and upward feedback to leadership</li>
+          <li class="alt3">De facto web training lead for the entire company</li>
+        </ul>
+        <div class="stack">
+          <p class="lead">Any team, any client, any code issue — it comes to me. And I'm the only person at TDC who can independently build a full site efficiently and to a high standard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · STRENGTHS TOP 5 -->
+  <section class="slide" id="s6">
+    <div class="decor">
+      <span class="dot" style="width:60px;height:60px;background:#ff9800;top:12%;right:8%"></span>
+      <span class="pill r" style="width:340px;background:#eed229;bottom:10%"></span>
+    </div>
+    <div class="inner stack">
+      <span class="eyebrow"><span class="tick"></span>CliftonStrengths · completed June 2026</span>
+      <h2>This is how I'm <span class="accent">wired</span>.</h2>
+      <div class="str-list">
+        <div class="str"><div class="rank">1</div><div class="meta"><span class="domain">Strategic Thinking</span><div class="name">Futuristic</div><div class="desc">I see where things can go before others do, and build toward it.</div></div></div>
+        <div class="str"><div class="rank">2</div><div class="meta"><span class="domain">Relationship Building</span><div class="name">Relator</div><div class="desc">Deep, real trust with clients and teammates — not surface level.</div></div></div>
+        <div class="str"><div class="rank">3</div><div class="meta"><span class="domain">Influencing</span><div class="name">Competition</div><div class="desc">I set a high bar and don't let up. I want to win for TDC.</div></div></div>
+        <div class="str"><div class="rank">4</div><div class="meta"><span class="domain">Executing</span><div class="name">Restorative</div><div class="desc">Drawn to broken things — messy handoffs, failing servers, broken forms. I fix them.</div></div></div>
+        <div class="str"><div class="rank">5</div><div class="meta"><span class="domain">Strategic Thinking</span><div class="name">Strategic</div><div class="desc">I spot patterns, find the best path, and execute.</div></div></div>
+      </div>
+      <p class="supporting">I lead with the <strong>Executing</strong> domain — I make things happen. <strong>6–10:</strong> Achiever · Activator · Individualization · Discipline · Deliberative.</p>
+    </div>
+  </section>
+
+  <!-- 7 · GROW -->
+  <section class="slide" id="s7">
+    <div class="decor">
+      <span class="pill l" style="width:440px;background:#c46fe2;top:14%"></span>
+      <span class="dot" style="width:54px;height:54px;background:#45b6b7;bottom:16%;right:9%"></span>
+    </div>
+    <div class="inner stack">
+      <span class="eyebrow"><span class="tick"></span>Growing into the full profile</span>
+      <h2>I know where I'm strong.<br>I know where I'm growing.</h2>
+      <p class="lead">The themes I'm intentionally developing map directly to the trust and leadership work ahead of me.</p>
+      <div class="grow-grid">
+        <div class="grow"><div class="g-name">Developer</div><div class="g-desc">Through supervising Regan &amp; Sara and investing in their growth.</div></div>
+        <div class="grow"><div class="g-name">Focus</div><div class="g-desc">Protecting deep-work time and staying outcome-oriented under pressure.</div></div>
+        <div class="grow"><div class="g-name">Communication</div><div class="g-desc">Presenting clearly to leadership, clients, and team — including how I handle hard conversations.</div></div>
+        <div class="grow"><div class="g-name">Maximizer</div><div class="g-desc">Pushing quality and standards higher without burning out the people around me.</div></div>
+        <div class="grow"><div class="g-name">Learner</div><div class="g-desc">The plugin, the reCAPTCHA fix, the offshore coordination — I seek out what I don't know yet.</div></div>
+        <div class="grow"><div class="g-name">Command &amp; Adaptability</div><div class="g-desc">Owning the room calmly, and staying steady when situations shift.</div></div>
+      </div>
+      <p class="supporting">I'm managing my lower themes — Harmony, Includer, Woo, Connectedness — consciously, especially when team dynamics call for them.</p>
+    </div>
+  </section>
+
+  <!-- 8 · ASK: RAISE -->
+  <section class="slide" id="s8">
+    <div class="decor">
+      <span class="dot" style="width:96px;height:96px;background:#00a56c;top:12%;right:7%"></span>
+      <span class="pill r" style="width:420px;background:#5f66d7;bottom:14%"></span>
+    </div>
+    <div class="inner stack">
+      <span class="eyebrow"><span class="tick"></span>The ask · compensation</span>
+      <div class="ask-hero">
+        <span class="from">$54,000</span><span class="arrow">→</span><span class="to">$64,000</span>
+      </div>
+      <p class="lead">This is a request for fair compensation, grounded in contribution and scope — not tenure.</p>
+      <ul class="clean">
+        <li>$85K+ billed on a $54K salary, and that figure is a <strong>conservative floor</strong>, not a ceiling.</li>
+        <li class="alt">I'm the <strong>only</strong> web strategist, and there's <strong>no web specialist</strong> to directly support me.</li>
+        <li class="alt2">I carry the full weight of web: builds, strategy, training, supervision, client relationships, and company-wide support.</li>
+        <li class="alt3">No salary adjustment since my promotion in September 2025.</li>
+      </ul>
+      <div class="note">The handbook baseline is 2.5% per year of experience. This ask reflects a genuine expansion in scope and value — and what fair compensation looks like for a role this central, held by one person.</div>
+    </div>
+  </section>
+
+  <!-- 9 · ASK: OFFICE + ROLE -->
+  <section class="slide" id="s9">
+    <div class="decor">
+      <span class="pill l" style="width:480px;background:#45b6b7;top:16%"></span>
+      <span class="dot" style="width:40px;height:40px;background:#eed229;bottom:20%;right:12%"></span>
+    </div>
+    <div class="inner stack">
+      <span class="eyebrow"><span class="tick"></span>The ask · structure &amp; role</span>
+      <h2>Space to lead — and a plan<br>to lead <span class="accent">bigger</span>.</h2>
+      <div class="ask-card c-teal">
+        <h3><span class="bullet"></span>Shared office space</h3>
+        <p>Proximity to other strategists makes collaboration easier and supports the leadership and client work I'm doing. A functional ask, not a perk.</p>
+      </div>
+      <div class="ask-card c-purple">
+        <h3><span class="bullet"></span>Transition off low-level work</h3>
+        <p>Train Regan, Sara, and others to own publication, updates, and routine maintenance — so my time goes where it creates the most value.</p>
+      </div>
+      <div class="ask-card c-orange">
+        <h3><span class="bullet"></span>Rotate across all teams</h3>
+        <p>Support builds, planning, and strategy across Green, Orange, Blue, and Red. Get involved earlier in BD to set new clients up for web success — and grow TDC's web revenue.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · CLOSE -->
+  <section class="slide" id="s10">
+    <div class="decor">
+      <span class="dot" style="width:84px;height:84px;background:#45b6b7;top:14%;right:9%"></span>
+      <span class="dot" style="width:30px;height:30px;background:#f65d61;top:28%;right:19%"></span>
+      <span class="pill r" style="width:560px;background:#bddd75;bottom:16%"></span>
+      <span class="dot" style="width:50px;height:50px;background:#ffffff;bottom:20%;left:7%"></span>
+    </div>
+    <div class="inner stack">
+      <span class="eyebrow"><span class="tick"></span>What the next year looks like</span>
+      <h2>What I'm committing to —<br>and what I'm asking for.</h2>
+      <div class="close-cols">
+        <div>
+          <h3 style="margin-bottom:14px">My commitments</h3>
+          <ul class="clean">
+            <li>Deliver high-quality builds and bring in new clients independently</li>
+            <li class="alt">Fully train the team on the Compendium &amp; publication workflows</li>
+            <li class="alt2">Build a formal TDC web strategy for the next 12 months</li>
+            <li class="alt3">Show up steady — rebuilding trust through consistency</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="margin-bottom:14px">What I'm asking for</h3>
+          <ul class="clean">
+            <li>$64K salary</li>
+            <li class="alt">Shared office space</li>
+            <li class="alt2">A clear path to Strategist-level scope</li>
+          </ul>
+          <p class="supporting" style="margin-top:22px">Open the floor: what do you need to see from me over the next quarter?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  /* ---------- Password gate ---------- */
+  (function () {
+    const GATE_HASH = '1a08987ccc6cc2ab24fd372a8ef7fd039938734a9f452e1147c403fc0f3ed203';
+    const KEY = 'tdc_repitch_unlocked';
+    const gate = document.getElementById('gate');
+    const form = document.getElementById('gateForm');
+    const pass = document.getElementById('gatePass');
+    const err = document.getElementById('gateErr');
+
+    // Minimal SHA-256 (works in any context, incl. file://). Returns hex string.
+    function sha256(ascii) {
+      function rotr(n, x) { return (x >>> n) | (x << (32 - n)); }
+      const K = [
+        0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+        0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+        0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+        0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+        0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+        0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+        0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+        0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+      const bytes = unescape(encodeURIComponent(ascii));
+      const words = [];
+      for (let i = 0; i < bytes.length; i++) words[i >> 2] |= bytes.charCodeAt(i) << ((3 - (i % 4)) * 8);
+      const bitLen = bytes.length * 8;
+      words[bitLen >> 5] |= 0x80 << (24 - (bitLen % 32));
+      words[(((bitLen + 64) >> 9) << 4) + 15] = bitLen;
+      let H = [0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+      const w = new Array(64);
+      for (let j = 0; j < words.length; j += 16) {
+        for (let i = 0; i < 16; i++) w[i] = words[j + i] | 0;
+        for (let i = 16; i < 64; i++) {
+          const s0 = rotr(7, w[i-15]) ^ rotr(18, w[i-15]) ^ (w[i-15] >>> 3);
+          const s1 = rotr(17, w[i-2]) ^ rotr(19, w[i-2]) ^ (w[i-2] >>> 10);
+          w[i] = (w[i-16] + s0 + w[i-7] + s1) | 0;
+        }
+        let [a,b,c,d,e,f,g,h] = H;
+        for (let i = 0; i < 64; i++) {
+          const S1 = rotr(6, e) ^ rotr(11, e) ^ rotr(25, e);
+          const ch = (e & f) ^ (~e & g);
+          const t1 = (h + S1 + ch + K[i] + w[i]) | 0;
+          const S0 = rotr(2, a) ^ rotr(13, a) ^ rotr(22, a);
+          const maj = (a & b) ^ (a & c) ^ (b & c);
+          const t2 = (S0 + maj) | 0;
+          h = g; g = f; f = e; e = (d + t1) | 0; d = c; c = b; b = a; a = (t1 + t2) | 0;
+        }
+        H = [ (H[0]+a)|0,(H[1]+b)|0,(H[2]+c)|0,(H[3]+d)|0,(H[4]+e)|0,(H[5]+f)|0,(H[6]+g)|0,(H[7]+h)|0 ];
+      }
+      return H.map(x => ('00000000' + (x >>> 0).toString(16)).slice(-8)).join('');
+    }
+
+    function unlock() {
+      gate.classList.add('hide');
+      document.body.classList.remove('locked');
+      setTimeout(() => gate.remove(), 600);
+    }
+
+    if (sessionStorage.getItem(KEY) === '1') { unlock(); return; }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (sha256(pass.value) === GATE_HASH) {
+        sessionStorage.setItem(KEY, '1');
+        unlock();
+      } else {
+        err.classList.add('show');
+        gate.classList.add('shake');
+        setTimeout(() => gate.classList.remove('shake'), 450);
+        pass.select();
+      }
+    });
+  })();
+
+  /* ---------- Deck ---------- */
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const rail = document.getElementById('rail');
+  const plabel = document.getElementById('plabel');
+  const deck = document.getElementById('deck');
+  const total = slides.length;
+
+  slides.forEach((s, i) => {
+    const a = document.createElement('a');
+    a.title = 'Slide ' + (i + 1);
+    a.addEventListener('click', () => s.scrollIntoView({ behavior: 'smooth' }));
+    rail.appendChild(a);
+  });
+  const dots = Array.from(rail.children);
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('seen');
+        const i = slides.indexOf(e.target);
+        dots.forEach((d, j) => d.classList.toggle('active', j === i));
+        plabel.textContent = String(i + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+      }
+    });
+  }, { threshold: 0.55 });
+  slides.forEach(s => io.observe(s));
+
+  function current() {
+    const top = deck.scrollTop;
+    let idx = 0, best = Infinity;
+    slides.forEach((s, i) => {
+      const d = Math.abs(s.offsetTop - top);
+      if (d < best) { best = d; idx = i; }
+    });
+    return idx;
+  }
+  document.addEventListener('keydown', (e) => {
+    if (['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)) {
+      e.preventDefault();
+      const n = Math.min(current() + 1, total - 1);
+      slides[n].scrollIntoView({ behavior: 'smooth' });
+    } else if (['ArrowUp','ArrowLeft','PageUp'].includes(e.key)) {
+      e.preventDefault();
+      const n = Math.max(current() - 1, 0);
+      slides[n].scrollIntoView({ behavior: 'smooth' });
+    } else if (e.key === 'Home') { slides[0].scrollIntoView({ behavior:'smooth' }); }
+    else if (e.key === 'End') { slides[total-1].scrollIntoView({ behavior:'smooth' }); }
+  });
+</script>
+</body>
+</html>
