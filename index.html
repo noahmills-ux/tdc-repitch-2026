@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noah Mills — Web Strategist Re-Pitch 2026</title>
+<title>Noah Mills — Web Strategist · 2026 Pitch</title>
 <style>
   :root {
     --ink: #0e132a;
@@ -17,9 +17,10 @@
     --orange: #ff9800;
     --blue: #5f66d7;
     --green: #00a56c;
-    --grid: rgba(14, 19, 42, 0.055);
     --hairline: rgba(14, 19, 42, 0.12);
     --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* Faint dashed grid — between dotted and dashed, seamless tile (56 / 8 = 7) */
+    --grid-bg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cg fill='none' stroke='%230e132a' stroke-opacity='0.07' stroke-width='1.3' stroke-dasharray='3 5'%3E%3Cpath d='M0 0H56'/%3E%3Cpath d='M0 0V56'/%3E%3C/g%3E%3C/svg%3E");
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -49,12 +50,10 @@
     display: flex;
     align-items: center;
     overflow: hidden;
-    padding: 90px 7vw;
-    background:
-      linear-gradient(to right, var(--grid) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--grid) 1px, transparent 1px),
-      var(--white);
-    background-size: 52px 52px;
+    padding: 100px 7vw;
+    background-color: var(--white);
+    background-image: var(--grid-bg);
+    background-size: 56px 56px;
     border-bottom: 1px solid rgba(14, 19, 42, 0.04);
   }
 
@@ -67,18 +66,18 @@
   }
 
   /* ---------- Typography ---------- */
-  h1, h2, h3, .wordmark, .eyebrow, .stat-num, .nav-num {
+  h1, h2, h3, .eyebrow, .stat-num {
     font-weight: 700;
     letter-spacing: -0.02em;
   }
 
-  h1 { font-size: clamp(2.4rem, 5.6vw, 4.6rem); line-height: 1.05; color: var(--ink); }
-  h2 { font-size: clamp(1.9rem, 4vw, 3.2rem); line-height: 1.1; color: var(--ink); }
+  h1 { font-size: clamp(2.4rem, 5.6vw, 4.6rem); line-height: 1.06; color: var(--ink); }
+  h2 { font-size: clamp(1.9rem, 4vw, 3.2rem); line-height: 1.12; color: var(--ink); max-width: 20ch; }
   h3 { font-size: clamp(1.1rem, 1.6vw, 1.5rem); line-height: 1.25; color: var(--ink); }
 
   p, li { font-weight: 400; font-size: clamp(1rem, 1.15vw, 1.18rem); color: var(--slate); }
 
-  .lead { font-size: clamp(1.15rem, 1.5vw, 1.45rem); color: var(--slate); max-width: 60ch; }
+  .lead { font-size: clamp(1.15rem, 1.5vw, 1.45rem); color: var(--slate); max-width: 62ch; }
 
   .eyebrow {
     display: inline-flex;
@@ -88,11 +87,11 @@
     text-transform: uppercase;
     letter-spacing: 0.16em;
     color: var(--teal);
-    margin-bottom: 26px;
+    margin-bottom: 4px;
   }
   .eyebrow .tick {
-    width: 26px; height: 26px; border-radius: 50%;
-    border: 1.5px solid var(--ink);
+    width: 24px; height: 24px; border-radius: 50%;
+    border: 1px solid var(--ink);
     background: var(--teal);
     flex: none;
   }
@@ -100,79 +99,66 @@
   .accent { color: var(--teal); font-style: italic; font-weight: 700; }
   strong { color: var(--ink); font-weight: 700; }
 
-  /* ---------- Brand logo (rebuilt in CSS) ---------- */
-  .logo { display: inline-flex; align-items: center; gap: 16px; }
-  .logo .dots {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3px;
-    width: 46px; height: 46px;
-    flex: none;
-  }
-  .logo .dots span { border-radius: 50%; border: 1px solid var(--ink); }
-  .logo .wordmark {
-    font-size: 1.4rem; color: var(--slate); line-height: 0.95;
-    text-transform: lowercase; letter-spacing: -0.02em;
-  }
-  .logo .wordmark small { display: block; font-weight: 700; }
+  /* ---------- Brand logo (real asset) ---------- */
+  .logo { display: inline-flex; align-items: center; }
+  .logo img { height: 38px; width: auto; display: block; }
 
   /* ---------- Decorative layer ---------- */
   .decor { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
-
   .dot {
     position: absolute;
     border-radius: 50%;
-    border: 1.5px solid var(--ink);
+    border: 1px solid var(--ink);
   }
-
-  /* Off-page long pills: full lozenge clipped by slide overflow */
   .pill {
     position: absolute;
     height: 64px;
     border-radius: 999px;
-    border: 1.5px solid var(--ink);
+    border: 1px solid var(--ink);
   }
   .pill.r { right: -240px; }
   .pill.l { left: -240px; }
 
   /* ---------- Layout helpers ---------- */
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 64px); align-items: center; }
-  .stack > * + * { margin-top: 22px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 64px); align-items: start; }
+  .stack > * + * { margin-top: 24px; }
+  .tag {
+    display: inline-block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em;
+    font-weight: 700; color: var(--teal); margin-bottom: 12px;
+  }
 
+  /* ---------- Clean bullet lists (all teal) ---------- */
   ul.clean { list-style: none; }
   ul.clean li {
     position: relative;
     padding-left: 30px;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
     line-height: 1.5;
   }
+  ul.clean li:last-child { margin-bottom: 0; }
   ul.clean li::before {
     content: "";
     position: absolute; left: 0; top: 8px;
     width: 13px; height: 13px; border-radius: 50%;
     background: var(--teal);
-    border: 1.5px solid var(--ink);
+    border: 1px solid var(--ink);
   }
-  ul.clean li.alt::before { background: var(--purple); }
-  ul.clean li.alt2::before { background: var(--orange); }
-  ul.clean li.alt3::before { background: var(--lime); }
 
   /* ---------- Stat cards ---------- */
-  .stat-row { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 8px; }
+  .stat-row { display: flex; flex-wrap: wrap; gap: 18px; }
   .stat {
     background: var(--white);
-    border: 1.5px solid var(--hairline);
+    border: 1px solid var(--hairline);
     border-radius: 18px;
     padding: 22px 26px;
     min-width: 190px;
   }
   .stat-num { font-size: clamp(2rem, 3.4vw, 2.9rem); color: var(--ink); line-height: 1; }
-  .stat-num .pre { color: var(--teal); }
   .stat-label { font-size: 0.92rem; color: var(--slate); margin-top: 8px; }
 
   /* ---------- Revenue table ---------- */
-  .rev-table { width: 100%; border-collapse: collapse; margin-top: 6px; background: var(--white);
-    border: 1.5px solid var(--hairline); border-radius: 16px; overflow: hidden; }
+  .rev-table { width: 100%; border-collapse: collapse; background: var(--white);
+    border: 1px solid var(--hairline); border-radius: 16px; overflow: hidden; }
   .rev-table th, .rev-table td { padding: 14px 18px; text-align: left; font-size: 1rem; }
   .rev-table thead th { background: rgba(69,182,183,0.12); color: var(--ink); font-weight: 700; font-size: 0.84rem; text-transform: uppercase; letter-spacing: 0.08em; }
   .rev-table tbody tr { border-top: 1px solid rgba(14,19,42,0.07); }
@@ -181,94 +167,137 @@
   .rev-table tr.total td.num { color: var(--ink); }
 
   .note {
-    margin-top: 18px; padding: 16px 20px;
+    padding: 16px 20px;
     border-left: 3px solid var(--teal);
     background: rgba(69,182,183,0.07);
     border-radius: 0 12px 12px 0;
-    font-size: 0.98rem; color: var(--slate); max-width: 62ch;
+    font-size: 0.98rem; color: var(--slate); max-width: 70ch;
   }
 
-  /* ---------- Project gallery ---------- */
-  .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 10px; }
-  .proj {
-    background: var(--ink);
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1.5px solid var(--ink);
+  /* ---------- Project gallery (frameless mockups) ---------- */
+  .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(22px, 3vw, 40px) clamp(22px, 3vw, 36px); }
+  .proj { background: transparent; border: none; }
+  .proj img {
+    width: 100%; display: block; border-radius: 12px;
+    box-shadow: 0 16px 38px rgba(14,19,42,0.14);
     transition: transform 0.35s cubic-bezier(.2,.7,.2,1), box-shadow 0.35s;
   }
-  .proj:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(14,19,42,0.16); }
-  .proj img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
-  .proj .cap { padding: 14px 16px; background: var(--white); border-top: 1.5px solid var(--ink); }
-  .proj .cap .name { font-weight: 700; color: var(--ink); font-size: 1.02rem; }
-  .proj .cap .ctx { font-size: 0.86rem; color: var(--slate); margin-top: 3px; line-height: 1.4; }
+  .proj:hover img { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(14,19,42,0.20); }
+  .proj .name { font-weight: 700; color: var(--ink); font-size: 1.02rem; margin-top: 14px; }
+  .proj .ctx { font-size: 0.86rem; color: var(--slate); margin-top: 4px; line-height: 1.4; }
 
-  /* ---------- Feature (strategy) cards ---------- */
-  .feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 10px; }
-  .feat {
-    background: var(--white); border: 1.5px solid var(--hairline);
-    border-radius: 18px; overflow: hidden; display: flex; flex-direction: column;
+  /* ---------- Feature (strategy) split ---------- */
+  .feat-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
+  .feat-split .copy p { font-size: clamp(1rem, 1.25vw, 1.2rem); line-height: 1.55; }
+
+  /* Screenshot window — clickable scroll preview */
+  .shot-window {
+    position: relative; cursor: zoom-in;
+    border-radius: 14px; overflow: hidden;
+    border: 1px solid var(--hairline);
+    box-shadow: 0 16px 40px rgba(14,19,42,0.16);
+    height: clamp(300px, 56vh, 600px);
+    background: var(--ink);
   }
-  .feat .shot { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top center;
-    border-bottom: 1.5px solid var(--hairline); background: var(--ink); }
-  .feat .body { padding: 20px 24px; }
-  .feat .body h3 { margin-bottom: 8px; }
-  .feat .body p { font-size: 0.98rem; line-height: 1.5; }
-  .feat .tag { display: inline-block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em;
-    font-weight: 700; color: var(--teal); margin-bottom: 10px; }
+  .shot-window img { width: 100%; display: block; object-position: top center; }
+  .shot-window::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 130px;
+    background: linear-gradient(transparent, rgba(14,19,42,0.88)); pointer-events: none;
+  }
+  .shot-window .peek-hint {
+    position: absolute; bottom: 16px; left: 0; right: 0; z-index: 2;
+    text-align: center; color: #fff; font-weight: 600; font-size: 0.9rem;
+    letter-spacing: 0.02em; pointer-events: none;
+  }
+  .shot-window:hover { box-shadow: 0 22px 52px rgba(14,19,42,0.24); }
+
+  /* Placeholder window (image to be added later) */
+  .shot-window.placeholder {
+    cursor: default; background: rgba(69,182,183,0.05);
+    border: 1.5px dashed var(--hairline);
+    display: flex; align-items: center; justify-content: center; text-align: center;
+  }
+  .shot-window.placeholder::after { display: none; }
+  .shot-window.placeholder .ph {
+    color: var(--slate); font-weight: 600; font-size: 1rem; padding: 24px;
+  }
+  .shot-window.placeholder .ph small { display: block; font-weight: 400; font-size: 0.85rem; margin-top: 6px; opacity: 0.8; }
 
   /* ---------- Strengths ---------- */
-  .str-list { display: flex; flex-direction: column; gap: 14px; margin-top: 10px; }
+  .str-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .str {
-    display: grid; grid-template-columns: 54px 1fr; gap: 18px; align-items: center;
-    background: var(--white); border: 1.5px solid var(--hairline); border-radius: 16px; padding: 16px 20px;
+    display: grid; grid-template-columns: 50px 1fr; gap: 16px; align-items: center;
+    background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; padding: 14px 18px;
   }
   .str .rank {
-    width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--ink);
+    width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--ink);
     display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 1.1rem; color: var(--ink); flex: none;
+    font-weight: 700; font-size: 1.05rem; color: var(--ink); flex: none;
   }
-  .str .meta .name { font-weight: 700; color: var(--ink); font-size: 1.1rem; }
-  .str .meta .domain { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); }
-  .str .meta .desc { font-size: 0.94rem; color: var(--slate); margin-top: 2px; }
+  .str .meta .name { font-weight: 700; color: var(--ink); font-size: 1.08rem; }
+  .str .meta .domain { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); }
+  .str .meta .desc { font-size: 0.9rem; color: var(--slate); margin-top: 2px; line-height: 1.4; }
 
-  .supporting { margin-top: 22px; font-size: 1rem; color: var(--slate); }
+  .supporting { font-size: 1rem; color: var(--slate); max-width: 72ch; }
   .supporting strong { color: var(--ink); }
 
-  .grow-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 30px; margin-top: 10px; }
+  .grow-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 30px; }
   .grow { padding-left: 26px; position: relative; }
   .grow::before { content: ""; position: absolute; left: 0; top: 7px; width: 13px; height: 13px;
-    border-radius: 50%; border: 1.5px solid var(--ink); background: var(--purple); }
+    border-radius: 50%; border: 1px solid var(--ink); background: var(--teal); }
   .grow .g-name { font-weight: 700; color: var(--ink); }
   .grow .g-desc { font-size: 0.95rem; color: var(--slate); }
 
+  /* ---------- Trust / commitments ---------- */
+  .trust-line { font-size: clamp(1.1rem, 1.4vw, 1.32rem); color: var(--slate); max-width: 70ch; }
+  .commit { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+  .commit .c {
+    position: relative; padding: 16px 18px 16px 40px;
+    background: var(--white); border: 1px solid var(--hairline); border-radius: 12px;
+    font-size: 1rem; color: var(--slate); line-height: 1.45;
+  }
+  .commit .c::before { content:""; position:absolute; left:16px; top:20px; width:13px; height:13px; border-radius:50%;
+    background: var(--teal); border: 1px solid var(--ink); }
+  .commit .c strong { color: var(--ink); }
+
+  /* ---------- Toolkit callout ---------- */
+  .toolkit {
+    display: flex; gap: 18px; align-items: flex-start;
+    background: var(--white); border: 1px solid var(--hairline); border-left: 3px solid var(--teal);
+    border-radius: 14px; padding: 20px 24px; max-width: 80ch;
+  }
+  .toolkit .tk-dot { width: 32px; height: 32px; border-radius: 50%; background: var(--teal); border: 1px solid var(--ink); flex: none; margin-top: 3px; }
+  .toolkit p { font-size: 0.98rem; line-height: 1.55; }
+  .toolkit .tk-name { font-weight: 700; color: var(--ink); }
+  .btn-link {
+    display: inline-flex; align-items: center; gap: 7px; margin-top: 12px;
+    font-size: 0.9rem; font-weight: 700; color: var(--white); background: var(--ink);
+    text-decoration: none; padding: 9px 16px; border-radius: 999px; transition: opacity 0.2s;
+  }
+  .btn-link:hover { opacity: 0.88; }
+
   /* ---------- Asks ---------- */
-  .ask-hero { display: flex; flex-wrap: wrap; align-items: baseline; gap: 18px; margin: 6px 0 14px; }
+  .ask-hero { display: flex; flex-wrap: wrap; align-items: baseline; gap: 18px; }
   .ask-hero .from { font-size: clamp(1.8rem,3vw,2.6rem); font-weight: 700; color: var(--slate); text-decoration: line-through; text-decoration-thickness: 2px; }
   .ask-hero .arrow { font-size: clamp(1.6rem,2.6vw,2.2rem); color: var(--teal); }
   .ask-hero .to { font-size: clamp(2.6rem,5vw,4.2rem); font-weight: 700; color: var(--ink); }
 
   .ask-card {
-    background: var(--white); border: 1.5px solid var(--hairline); border-radius: 18px;
-    padding: 24px 28px; margin-bottom: 18px;
+    background: var(--white); border: 1px solid var(--hairline); border-radius: 18px;
+    padding: 22px 26px;
   }
   .ask-card h3 { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
-  .ask-card h3 .bullet { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--ink); flex: none; }
-  .ask-card.c-teal h3 .bullet { background: var(--teal); }
-  .ask-card.c-purple h3 .bullet { background: var(--purple); }
-  .ask-card.c-orange h3 .bullet { background: var(--orange); }
+  .ask-card h3 .bullet { width: 16px; height: 16px; border-radius: 50%; border: 1px solid var(--ink); flex: none; background: var(--teal); }
   .ask-card p, .ask-card li { font-size: 0.98rem; line-height: 1.5; }
 
-  /* ---------- Trust slide ---------- */
-  .trust-line { font-size: clamp(1.1rem, 1.4vw, 1.32rem); color: var(--slate); max-width: 64ch; }
-  .commit { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px 28px; margin-top: 26px; }
-  .commit .c { position: relative; padding-left: 28px; font-size: 1rem; color: var(--slate); line-height: 1.45; }
-  .commit .c::before { content:""; position:absolute; left:0; top:7px; width:13px; height:13px; border-radius:50%;
-    background: var(--teal); border: 1.5px solid var(--ink); }
-  .commit .c strong { color: var(--ink); }
-
-  /* ---------- Close ---------- */
-  .close-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 14px; }
+  /* ---------- Conclusion recap chips ---------- */
+  .recap { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .recap .chip {
+    background: var(--white); border: 1px solid var(--hairline); border-radius: 16px;
+    padding: 20px 22px; text-align: center;
+  }
+  .recap .chip .big { font-weight: 700; color: var(--ink); font-size: 1.2rem; }
+  .recap .chip .sub { font-size: 0.85rem; color: var(--slate); margin-top: 4px; }
 
   /* ---------- Progress / nav ---------- */
   .rail {
@@ -276,8 +305,8 @@
     z-index: 50; display: flex; flex-direction: column; gap: 12px;
   }
   .rail a {
-    width: 12px; height: 12px; border-radius: 50%;
-    border: 1.5px solid var(--ink); background: var(--white);
+    width: 11px; height: 11px; border-radius: 50%;
+    border: 1px solid var(--ink); background: var(--white);
     transition: all 0.25s; cursor: pointer;
   }
   .rail a.active { background: var(--teal); transform: scale(1.35); }
@@ -285,19 +314,43 @@
   .topbar {
     position: fixed; top: 0; left: 0; right: 0; z-index: 50;
     display: flex; justify-content: space-between; align-items: center;
-    padding: 18px 7vw; pointer-events: none;
+    padding: 16px 7vw; pointer-events: none;
   }
   .topbar .logo { pointer-events: auto; }
-  .topbar .progress-label {
-    font-weight: 700; font-size: 0.85rem; color: var(--slate);
-    background: var(--white); border: 1.5px solid var(--hairline);
-    padding: 6px 14px; border-radius: 999px; font-variant-numeric: tabular-nums;
+  .progress-label {
+    pointer-events: auto;
+    display: inline-flex; align-items: center; gap: 3px;
+    font-weight: 700; font-size: 0.9rem; color: var(--slate);
+    background: var(--white); border: 1px solid var(--hairline);
+    padding: 6px 12px; border-radius: 999px; font-variant-numeric: tabular-nums;
+    user-select: none;
   }
+  .progress-label .pnav { cursor: pointer; padding: 2px 6px; border-radius: 7px; transition: color 0.2s, background 0.2s; }
+  .progress-label .pnav:hover { color: var(--teal); background: rgba(69,182,183,0.12); }
+  .progress-label #pPrev { color: var(--ink); }
+  .progress-label .sep { opacity: 0.5; }
+
+  /* Bottom-right arrow controls */
+  .navarrows {
+    position: fixed; right: 26px; bottom: 26px; z-index: 60;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .navarrows button {
+    width: 46px; height: 46px; border-radius: 50%;
+    border: 1px solid var(--ink); background: var(--white); color: var(--ink);
+    font-size: 1.05rem; line-height: 1; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, color 0.2s, transform 0.15s, opacity 0.2s;
+    box-shadow: 0 6px 18px rgba(14,19,42,0.10);
+  }
+  .navarrows button:hover { background: var(--teal); color: #fff; }
+  .navarrows button:active { transform: scale(0.94); }
+  .navarrows button:disabled { opacity: 0.3; cursor: default; background: var(--white); color: var(--ink); }
 
   .hint {
-    position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
+    position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
     z-index: 50; font-size: 0.8rem; color: var(--slate);
-    background: var(--white); border: 1.5px solid var(--hairline);
+    background: var(--white); border: 1px solid var(--hairline);
     padding: 7px 16px; border-radius: 999px; opacity: 0.9;
     animation: fade 0.5s ease 6s forwards;
   }
@@ -315,16 +368,55 @@
     .slide .inner > * { opacity: 1; transform: none; }
   }
 
+  /* ---------- Lightbox (scroll-through preview) ---------- */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 9998;
+    background: rgba(14,19,42,0.88);
+    display: flex; align-items: center; justify-content: center;
+    padding: 40px 20px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+  }
+  .lightbox.open { opacity: 1; pointer-events: auto; }
+  .lightbox .frame {
+    position: relative; width: min(920px, 92vw); height: min(86vh, 940px);
+    background: var(--ink); border-radius: 14px; overflow: hidden;
+    box-shadow: 0 30px 90px rgba(0,0,0,0.55);
+  }
+  .lightbox .scroller { width: 100%; height: 100%; overflow-y: auto; scrollbar-width: thin; }
+  .lightbox .scroller img { width: 100%; display: block; }
+  .lightbox .lb-close {
+    position: absolute; top: 14px; right: 14px; z-index: 3;
+    width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer;
+    background: rgba(255,255,255,0.92); color: var(--ink); font-size: 1rem; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lightbox .lb-hint {
+    position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.85); font-size: 0.82rem; letter-spacing: 0.04em;
+  }
+
   /* ---------- Responsive ---------- */
-  @media (max-width: 900px) {
-    .grid-2, .feat-grid, .close-cols, .commit, .grow-grid { grid-template-columns: 1fr; }
+  @media (max-width: 1600px) { .decor { display: none; } }
+
+  @media (max-width: 1100px) {
+    .grid-2, .feat-split, .commit, .grow-grid, .str-list, .recap { grid-template-columns: 1fr; }
     .proj-grid { grid-template-columns: 1fr 1fr; }
-    .slide { padding: 84px 6vw; }
+    h2 { max-width: none; }
+  }
+  @media (max-width: 1000px), (max-height: 760px) {
+    .deck { scroll-snap-type: y proximity; }
+  }
+  @media (max-width: 760px) {
+    .deck { scroll-snap-type: none; }
+    .slide { min-height: auto; scroll-snap-align: none; padding: 104px 6vw 84px; }
+    .proj-grid { grid-template-columns: 1fr; }
     .rail { display: none; }
+    .navarrows { right: 16px; bottom: 16px; }
+    .navarrows button { width: 42px; height: 42px; }
+    .shot-window { height: clamp(260px, 50vh, 460px); }
   }
   @media (max-width: 600px) {
-    .proj-grid { grid-template-columns: 1fr; }
-    .topbar .progress-label { display: none; }
+    .topbar .progress-label { font-size: 0.82rem; }
+    .topbar { padding: 12px 6vw; }
   }
 
   /* ---------- Password gate ---------- */
@@ -333,31 +425,28 @@
     position: fixed; inset: 0; z-index: 9999;
     display: flex; align-items: center; justify-content: center;
     padding: 24px;
-    background:
-      linear-gradient(to right, var(--grid) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--grid) 1px, transparent 1px),
-      var(--white);
-    background-size: 52px 52px;
+    background-color: var(--white);
+    background-image: var(--grid-bg);
+    background-size: 56px 56px;
     transition: opacity 0.5s ease;
   }
   .gate.hide { opacity: 0; pointer-events: none; }
   .gate-card {
-    width: 100%; max-width: 420px; text-align: center;
+    width: 100%; max-width: 430px; text-align: center;
     background: var(--white);
-    border: 1.5px solid var(--hairline);
+    border: 1px solid var(--hairline);
     border-radius: 20px;
     padding: 44px 38px;
     box-shadow: 0 30px 80px rgba(14, 19, 42, 0.10);
   }
-  .gate .dots { display: flex; gap: 5px; justify-content: center; margin-bottom: 26px; }
-  .gate .dots span { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+  .gate-logo { width: 168px; height: auto; display: block; margin: 0 auto 26px; }
   .gate h2 { font-size: 1.5rem; letter-spacing: -0.02em; margin-bottom: 6px; }
   .gate p { color: var(--slate); font-size: 0.92rem; margin-bottom: 26px; }
   .gate form { display: flex; flex-direction: column; gap: 12px; }
   .gate input {
     font-family: var(--font); font-size: 1rem;
     padding: 14px 16px; border-radius: 12px;
-    border: 1.5px solid var(--hairline); color: var(--ink);
+    border: 1px solid var(--hairline); color: var(--ink);
     outline: none; transition: border-color 0.2s ease;
   }
   .gate input:focus { border-color: var(--teal); }
@@ -387,12 +476,8 @@
 <!-- Password gate -->
 <div class="gate" id="gate">
   <div class="gate-card">
-    <div class="dots">
-      <span style="background:#f65d61"></span><span style="background:#ff9800"></span><span style="background:#eed229"></span>
-      <span style="background:#c46fe2"></span><span style="background:#bddd75"></span>
-      <span style="background:#5f66d7"></span><span style="background:#45b6b7"></span><span style="background:#00a56c"></span>
-    </div>
-    <h2>Re-Pitch 2026</h2>
+    <img class="gate-logo" src="assets/tdc-logo.webp" alt="TDC Marketing">
+    <h2>2026 Pitch</h2>
     <p>This presentation is private. Enter the password to continue.</p>
     <form id="gateForm" autocomplete="off">
       <input type="password" id="gatePass" placeholder="Password" aria-label="Password" autofocus>
@@ -404,74 +489,125 @@
 
 <!-- Top bar -->
 <div class="topbar">
-  <div class="logo">
-    <div class="dots">
-      <span style="background:#f65d61"></span><span style="background:#ff9800"></span><span style="background:#eed229"></span>
-      <span style="background:#c46fe2"></span><span style="background:#ffffff"></span><span style="background:#bddd75"></span>
-      <span style="background:#5f66d7"></span><span style="background:#45b6b7"></span><span style="background:#00a56c"></span>
-    </div>
-    <div class="wordmark">tdc<small>marketing</small></div>
+  <a class="logo" id="homeLogo" href="#s0" aria-label="TDC Marketing — go to start">
+    <img src="assets/tdc-logo.webp" alt="TDC Marketing">
+  </a>
+  <div class="progress-label" id="plabel" aria-label="Slide navigation — click the left number to go back, the right number to go forward">
+    <span class="pnav" id="pPrev" title="Previous slide">01</span>
+    <span class="sep">/</span>
+    <span class="pnav" id="pNext" title="Next slide">14</span>
   </div>
-  <div class="progress-label" id="plabel">01 / 11</div>
 </div>
 
 <!-- Side rail -->
 <nav class="rail" id="rail"></nav>
 
-<div class="hint">Scroll or use ↑ ↓ arrow keys</div>
+<!-- Bottom-right arrow controls -->
+<div class="navarrows">
+  <button id="navPrev" aria-label="Previous slide" title="Previous slide">&#8593;</button>
+  <button id="navNext" aria-label="Next slide" title="Next slide">&#8595;</button>
+</div>
+
+<div class="hint">Scroll &middot; &uarr; &darr; arrows &middot; or use the controls</div>
 
 <div class="deck" id="deck">
 
-  <!-- 0 · TRUST -->
+  <!-- 0 · COVER -->
   <section class="slide" id="s0">
     <div class="decor">
       <span class="dot" style="width:88px;height:88px;background:#45b6b7;top:14%;right:9%"></span>
       <span class="dot" style="width:34px;height:34px;background:#eed229;top:26%;right:18%"></span>
-      <span class="pill r" style="width:520px;background:#bddd75;top:72%"></span>
-      <span class="dot" style="width:54px;height:54px;background:#ffffff;bottom:16%;left:6%"></span>
+      <span class="pill r" style="width:520px;background:#bddd75;top:70%"></span>
+      <span class="dot" style="width:54px;height:54px;background:#5f66d7;bottom:18%;left:6%"></span>
+    </div>
+    <div class="inner stack">
+      <span class="eyebrow"><span class="tick"></span>TDC Marketing &middot; 2026 Pitch</span>
+      <h1>Noah Mills</h1>
+      <p class="lead" style="color:var(--ink);font-weight:700;font-size:clamp(1.4rem,2.4vw,2rem);max-width:none">Web Strategist</p>
+      <p class="lead">A clear look at the work I've delivered, who I am, and where I'm taking TDC's web strategy next.</p>
+    </div>
+  </section>
+
+  <!-- 1 · ADDRESSING IT DIRECTLY -->
+  <section class="slide" id="s1">
+    <div class="decor">
+      <span class="pill l" style="width:520px;background:#f65d61;top:16%"></span>
+      <span class="dot" style="width:70px;height:70px;background:#ff9800;bottom:18%;right:11%"></span>
     </div>
     <div class="inner stack">
       <span class="eyebrow"><span class="tick"></span>Starting with honesty</span>
-      <h1>Addressing it<br>directly.</h1>
+      <h1>Addressing it directly.</h1>
       <p class="trust-line">I know I have real work to do on how I show up — specifically my <strong>attitude and mood under pressure</strong>, and how I respond to <strong>negative feedback and stressful situations</strong>. I'm not here to explain that away. I own it.</p>
-      <p class="trust-line">My fourth strength is <span class="accent">Restorative</span> — I'm wired to find what's broken and fix it, and to learn from failure rather than repeat it. I'm turning that same instinct inward. Rebuilding trust isn't something I'll talk my way into; it's something I'll earn through consistency.</p>
       <div class="commit">
-        <div class="c"><strong>Pause before I react.</strong> Leaning on Deliberative — stop, assess, then respond instead of responding from stress.</div>
-        <div class="c"><strong>Treat feedback as information.</strong> Not a threat. It's how I get better, and I want more of it, not less.</div>
+        <div class="c"><strong>Pause before I react.</strong> Stop, assess, then respond — instead of responding from stress.</div>
+        <div class="c"><strong>Treat feedback as information.</strong> Not a threat. It's how I get better, and I want more of it.</div>
         <div class="c"><strong>Communicate early when I'm stretched.</strong> Flag pressure before it shows up in my tone.</div>
         <div class="c"><strong>Measure it over time.</strong> Consistency week over week is the only proof that counts.</div>
+      </div>
+      <div class="toolkit">
+        <span class="tk-dot"></span>
+        <div>
+          <p><span class="tk-name">My Journal &amp; Response Toolkit.</span> Nick helped me set up a dedicated space in Notion to journal my thoughts and reactions, work through feedback deliberately, and build better responses to pressure over time. It's how I'm holding myself to the commitments above — and I'm using it moving forward.</p>
+          <a class="btn-link" href="https://app.notion.com/p/tdcmarketing/Noah-Mills-Journal-Response-Toolkit-376b6a85930780218154f190c2aaec23?source=copy_link" target="_blank" rel="noopener">Open the Toolkit &#8599;</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 1 · OPENING -->
-  <section class="slide" id="s1">
+  <!-- 2 · STRENGTHS TOP 5 -->
+  <section class="slide" id="s2">
     <div class="decor">
-      <span class="pill l" style="width:560px;background:#45b6b7;top:18%"></span>
-      <span class="dot" style="width:70px;height:70px;background:#ff9800;bottom:20%;right:11%"></span>
-      <span class="dot" style="width:30px;height:30px;background:#5f66d7;bottom:32%;right:20%"></span>
+      <span class="dot" style="width:60px;height:60px;background:#ff9800;top:12%;right:8%"></span>
+      <span class="pill r" style="width:340px;background:#eed229;bottom:10%"></span>
     </div>
     <div class="inner stack">
-      <span class="eyebrow"><span class="tick"></span>Web Strategist · Re-Pitch 2026</span>
-      <h1>From Specialist<br>to Strategist —<br><span class="accent">and then some.</span></h1>
-      <p class="lead">I was promoted to Web Strategist in September 2025. The honest truth is I'd been operating at that level well before the title caught up.</p>
-      <p class="lead">In the past year I've led web across every team, trained and supervised teammates, rebuilt our processes, and delivered builds that usually take two or three people. This pitch is about aligning the role, the compensation, and the environment with where I already am.</p>
+      <span class="eyebrow"><span class="tick"></span>CliftonStrengths &middot; completed June 2026</span>
+      <h2>This is how I'm <span class="accent">wired</span>.</h2>
+      <div class="str-list">
+        <div class="str"><div class="rank">1</div><div class="meta"><span class="domain">Strategic Thinking</span><div class="name">Futuristic</div><div class="desc">I see where things can go before others do, and build toward it.</div></div></div>
+        <div class="str"><div class="rank">2</div><div class="meta"><span class="domain">Relationship Building</span><div class="name">Relator</div><div class="desc">Deep, real trust with clients and teammates — not surface level.</div></div></div>
+        <div class="str"><div class="rank">3</div><div class="meta"><span class="domain">Influencing</span><div class="name">Competition</div><div class="desc">I set a high bar and don't let up. I want to win for TDC.</div></div></div>
+        <div class="str"><div class="rank">4</div><div class="meta"><span class="domain">Executing</span><div class="name">Restorative</div><div class="desc">Drawn to broken things — messy handoffs, failing servers, broken forms. I fix them.</div></div></div>
+        <div class="str"><div class="rank">5</div><div class="meta"><span class="domain">Strategic Thinking</span><div class="name">Strategic</div><div class="desc">I spot patterns, find the best path, and execute.</div></div></div>
+      </div>
+      <p class="supporting">I lead with the <strong>Executing</strong> domain — I make things happen. <strong>6&ndash;10:</strong> Achiever &middot; Activator &middot; Individualization &middot; Discipline &middot; Deliberative.</p>
     </div>
   </section>
 
-  <!-- 2 · REVENUE -->
-  <section class="slide" id="s2">
+  <!-- 3 · GROWING INTO THE FULL PROFILE -->
+  <section class="slide" id="s3">
+    <div class="decor">
+      <span class="pill l" style="width:440px;background:#c46fe2;top:14%"></span>
+      <span class="dot" style="width:54px;height:54px;background:#45b6b7;bottom:16%;right:9%"></span>
+    </div>
+    <div class="inner stack">
+      <span class="eyebrow"><span class="tick"></span>Growing into the full profile</span>
+      <h2>I know where I'm strong. I know where I'm growing.</h2>
+      <div class="grow-grid">
+        <div class="grow"><div class="g-name">Developer</div><div class="g-desc">Investing in teammates' growth and helping them build real skill.</div></div>
+        <div class="grow"><div class="g-name">Focus</div><div class="g-desc">Protecting deep-work time and staying outcome-oriented under pressure.</div></div>
+        <div class="grow"><div class="g-name">Communication</div><div class="g-desc">Presenting clearly to leadership, clients, and team — including the hard conversations.</div></div>
+        <div class="grow"><div class="g-name">Maximizer</div><div class="g-desc">Pushing quality and standards higher without burning out the people around me.</div></div>
+        <div class="grow"><div class="g-name">Learner</div><div class="g-desc">The plugin, the reCAPTCHA fix, the offshore coordination — I seek out what I don't know yet.</div></div>
+        <div class="grow"><div class="g-name">Command &amp; Adaptability</div><div class="g-desc">Owning the room calmly, and staying steady when situations shift.</div></div>
+      </div>
+      <p class="supporting">I'm managing my lower themes — Harmony, Includer, Woo, Connectedness — consciously, especially when team dynamics call for them.</p>
+    </div>
+  </section>
+
+  <!-- 4 · REVENUE -->
+  <section class="slide" id="s4">
     <div class="decor">
       <span class="dot" style="width:92px;height:92px;background:#00a56c;top:13%;right:8%"></span>
       <span class="pill r" style="width:480px;background:#c46fe2;bottom:14%"></span>
     </div>
     <div class="inner stack">
       <span class="eyebrow"><span class="tick"></span>Revenue &amp; value</span>
-      <h2>$85,370 billed — and that's the <span class="accent">conservative</span> floor.</h2>
+      <h2>$85,370 in billed web work this year.</h2>
       <div class="stat-row">
-        <div class="stat"><div class="stat-num"><span class="pre">$</span>85,370</div><div class="stat-label">Estimated billed, Jun 2025 – Jun 2026</div></div>
+        <div class="stat"><div class="stat-num">$85,370</div><div class="stat-label">Estimated billed, Jun 2025 &ndash; Jun 2026</div></div>
         <div class="stat"><div class="stat-num">606.75</div><div class="stat-label">Hours of web publication &amp; design/dev</div></div>
-        <div class="stat"><div class="stat-num">1</div><div class="stat-label">Web strategist carrying it — no specialist support</div></div>
+        <div class="stat"><div class="stat-num">1.58&times;</div><div class="stat-label">Return on a $54K salary</div></div>
       </div>
       <table class="rev-table">
         <thead><tr><th>Category</th><th>Hours</th><th>Rate</th><th>Total</th></tr></thead>
@@ -481,213 +617,223 @@
           <tr class="total"><td>Total</td><td class="num">606.75</td><td class="num"></td><td class="num">$85,370</td></tr>
         </tbody>
       </table>
-      <div class="note">This is a <strong>conservative estimate</strong> based on billed hours only — and it reflects just web publication and design/development time. It does <strong>not</strong> capture the full price of the builds I've led, or the value of the strategy, training, team support, and infrastructure work I do every week. My real contribution to TDC's revenue is meaningfully higher than this number shows.</div>
+      <div class="note">This is just an estimate, built from my logged hours of web publication and design/development work. It does <strong>not</strong> include the full price of the web builds and larger contracts I led — it's simply a breakdown of those billable hours. The real value I add to TDC sits well above this number.</div>
     </div>
   </section>
 
-  <!-- 3 · PROJECTS -->
-  <section class="slide" id="s3">
+  <!-- 5 · PROJECTS -->
+  <section class="slide" id="s5">
     <div class="decor">
       <span class="pill l" style="width:420px;background:#eed229;top:10%"></span>
     </div>
     <div class="inner stack">
       <span class="eyebrow"><span class="tick"></span>Project highlights</span>
-      <h2>Builds too big for one person.<br>Delivered anyway.</h2>
+      <h2>Builds too big for one person. Delivered anyway.</h2>
       <div class="proj-grid">
         <div class="proj"><img src="assets/first-airforce-one-slider-1.png" alt="First Air Force One website">
-          <div class="cap"><div class="name">First Air Force One</div><div class="ctx">New design-to-code process. Built a custom reCAPTCHA from scratch when Bloomerang's failed.</div></div></div>
+          <div class="name">First Air Force One</div><div class="ctx">New design-to-code process. Custom reCAPTCHA built from scratch when Bloomerang's failed.</div></div>
         <div class="proj"><img src="assets/kdb-slider-1.png" alt="Kent Design Build website">
-          <div class="cap"><div class="name">Kent Design Build</div><div class="ctx">Solo build scoped for 2–3 people. Client pivoted 3×, changed POC, delayed copy. Delivered.</div></div></div>
+          <div class="name">Kent Design Build</div><div class="ctx">Solo build scoped for 2&ndash;3 people. Client pivoted 3&times;, changed POC, delayed copy. Delivered.</div></div>
         <div class="proj"><img src="assets/campus-movers-slider-1.png" alt="Campus Movers website">
-          <div class="cap"><div class="name">Campus Movers</div><div class="ctx">Found, hired &amp; integrated an offshore dev — a first for TDC. Custom advanced build.</div></div></div>
+          <div class="name">Campus Movers</div><div class="ctx">Found, hired &amp; integrated an offshore dev — a first for TDC. Custom advanced build.</div></div>
         <div class="proj"><img src="assets/pwd-home-slider-1.png" alt="PWD Home website">
-          <div class="cap"><div class="name">PWD Home</div><div class="ctx">Build plus ongoing support. High-quality delivery.</div></div></div>
+          <div class="name">PWD Home</div><div class="ctx">Build plus ongoing support. High-quality delivery.</div></div>
         <div class="proj"><img src="assets/hanks-slider-1.png" alt="Hank's Grille website">
-          <div class="cap"><div class="name">Hank's Grille</div><div class="ctx">Redesign. Clean, on-brand execution.</div></div></div>
+          <div class="name">Hank's Grille</div><div class="ctx">Redesign. Clean, on-brand execution.</div></div>
         <div class="proj"><img src="assets/tdc-slider-1.png" alt="TDC Marketing website">
-          <div class="cap"><div class="name">TDC Marketing</div><div class="ctx">Our own agency site. High visibility, high stakes.</div></div></div>
+          <div class="name">TDC Marketing</div><div class="ctx">Our own agency site. High visibility, high stakes.</div></div>
       </div>
-      <p class="supporting">Also completed or assisted: <strong>Weiler Orthodontics</strong> (server fix + WordPress → Squarespace migration), <strong>VA Golf Course Reviews</strong> (100% independent — brought in, managed, and delivered on my own), HDR (dev side), Montpelier Hunt Races, Red Wing Roots, LW&amp;G.</p>
+      <p class="supporting">Also completed or assisted: <strong>Weiler Orthodontics</strong> (server fix + WordPress &rarr; Squarespace migration), <strong>VA Golf Course Reviews</strong> (100% independent — brought in, managed, and delivered on my own), HDR (dev side), Montpelier Hunt Races, Red Wing Roots, LW&amp;G.</p>
     </div>
   </section>
 
-  <!-- 4 · STRATEGY -->
-  <section class="slide" id="s4">
+  <!-- 6 · WEB STRATEGY · CODE COMPENDIUM -->
+  <section class="slide" id="s6">
     <div class="decor">
       <span class="dot" style="width:64px;height:64px;background:#5f66d7;top:16%;right:7%"></span>
       <span class="pill r" style="width:380px;background:#45b6b7;bottom:12%"></span>
     </div>
     <div class="inner stack">
-      <span class="eyebrow"><span class="tick"></span>Web strategy contributions</span>
-      <h2>I built the systems so the<br>whole team can do it better.</h2>
-      <div class="feat-grid">
-        <div class="feat">
-          <img class="shot" src="assets/code-compendium.png" alt="The Code Compendium Notion resource">
-          <div class="body">
-            <span class="tag">Built on my own initiative</span>
-            <h3>The Code Compendium</h3>
-            <p>TDC's central resource for every plugin, CSS snippet, JS solution, and code block — a ready-to-use library, brandable templates with AI prompts, a plugin library, and a client code archive. It doubles as a training resource; I'm using it now to train Regan and Sara.</p>
-          </div>
+      <span class="eyebrow"><span class="tick"></span>Web strategy contributions &middot; 1 of 3</span>
+      <div class="feat-split">
+        <div class="copy">
+          <span class="tag">Built on my own initiative</span>
+          <h2>The Code Compendium</h2>
+          <p>TDC's central resource for every plugin, CSS snippet, JS solution, and code block — a browsable, ready-to-use code library, brandable templates with built-in AI prompts, a plugin library with credentials and licensing, and a client code archive organized by team.</p>
+          <p style="margin-top:14px">It doubles as a training resource: teammates can learn how code works and how to adapt it for client sites. I'm using it right now to train Regan and Sara.</p>
         </div>
-        <div class="feat">
-          <img class="shot" src="assets/portfolio-plugin.png" alt="TDC Portfolio Summary Block Configurator plugin">
-          <div class="body">
-            <span class="tag">Expanded my comfort zone</span>
-            <h3>TDC Portfolio Plugin</h3>
-            <p>TDC's first-ever custom Squarespace plugin. A visual configurator that lets teammates build portfolio layouts and generate embed code with no manual coding. I built it to push my own development skills and to scale our capability without scaling headcount.</p>
-          </div>
+        <div class="shot-window" id="ccShot" role="button" tabindex="0" aria-label="Open the Code Compendium preview">
+          <img src="assets/code-compendium.png" alt="The Code Compendium resource">
+          <div class="peek-hint">&#8597; Click to scroll through the full page</div>
         </div>
       </div>
-      <p class="supporting"><strong>Web build lifecycle:</strong> I redesigned our entire process from 3 milestones to a sprint-based system — improving cross-functional collaboration and giving leadership real-time visibility into workload. In 2026 I merged sprint cards with monthly update cards so everything tracks in one place.</p>
     </div>
   </section>
 
-  <!-- 5 · LEADERSHIP -->
-  <section class="slide" id="s5">
+  <!-- 7 · WEB STRATEGY · PORTFOLIO PLUGIN -->
+  <section class="slide" id="s7">
+    <div class="decor">
+      <span class="pill l" style="width:460px;background:#c46fe2;top:18%"></span>
+      <span class="dot" style="width:48px;height:48px;background:#bddd75;bottom:16%;right:10%"></span>
+    </div>
+    <div class="inner stack">
+      <span class="eyebrow"><span class="tick"></span>Web strategy contributions &middot; 2 of 3</span>
+      <div class="feat-split">
+        <div class="copy">
+          <span class="tag">Expanded my comfort zone</span>
+          <h2>TDC's First Custom Plugin</h2>
+          <p>The Portfolio Summary Block Configurator — TDC's first-ever custom Squarespace plugin. A visual tool that lets teammates configure portfolio layouts (Hero Carousel, Hero Columns, List, Grid, Masonry) and generates the embed code automatically — no manual coding required.</p>
+          <p style="margin-top:14px">I built it to push my own development skills and to scale our capability as a team without scaling headcount.</p>
+        </div>
+        <div class="shot-window" id="pdShot" role="button" tabindex="0" aria-label="Open the portfolio plugin preview">
+          <img src="assets/portfolio-plugin.png" alt="TDC Portfolio Summary Block Configurator plugin">
+          <div class="peek-hint">&#8597; Click to view full</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · WEB STRATEGY · BUILD LIFECYCLE -->
+  <section class="slide" id="s8">
+    <div class="decor">
+      <span class="dot" style="width:80px;height:80px;background:#00a56c;top:14%;right:8%"></span>
+      <span class="pill r" style="width:400px;background:#eed229;bottom:14%"></span>
+    </div>
+    <div class="inner stack">
+      <span class="eyebrow"><span class="tick"></span>Web strategy contributions &middot; 3 of 3</span>
+      <div class="feat-split">
+        <div class="copy">
+          <span class="tag">A process redesign</span>
+          <h2>The Web Build Lifecycle</h2>
+          <p>I replaced our old 3-milestone process with a multi-milestone, sprint-based system — adding cross-functional collaboration between Strategy, WDT, and Content, and giving leadership real-time visibility into web workload.</p>
+          <p style="margin-top:14px">In 2026 I merged sprint cards with monthly web update cards, so everything tracks in one place. It's one of the most significant contributions I've made to the team.</p>
+        </div>
+        <!-- TODO: add lifecycle screenshot at assets/web-build-lifecycle.png and replace this placeholder with:
+             <div class="shot-window"><img src="assets/web-build-lifecycle.png" alt="Web build lifecycle board"></div> -->
+        <div class="shot-window placeholder">
+          <div class="ph">Image coming soon<small>web build lifecycle board</small></div>
+        </div>
+      </div>
+      <p class="supporting">These three initiatives — the Compendium, the plugin, and this lifecycle — are the core of my case: I'm not just billing hours, I'm building the systems the whole company runs on.</p>
+    </div>
+  </section>
+
+  <!-- 9 · LEADERSHIP -->
+  <section class="slide" id="s9">
     <div class="decor">
       <span class="pill l" style="width:500px;background:#f65d61;top:20%"></span>
       <span class="dot" style="width:48px;height:48px;background:#bddd75;bottom:18%;right:10%"></span>
-      <span class="dot" style="width:80px;height:80px;background:#ffffff;top:14%;right:6%"></span>
     </div>
     <div class="inner stack">
       <span class="eyebrow"><span class="tick"></span>Leadership &amp; supervision</span>
-      <h2>I'm developing the people<br>who do the work, too.</h2>
+      <h2>I'm developing the people who do the work, too.</h2>
       <div class="grid-2">
         <ul class="clean">
           <li>Directly supervise <strong>Regan and Sara</strong></li>
-          <li class="alt">Bi-weekly check-ins and professional development goals</li>
-          <li class="alt2">Work-life balance check-ins and upward feedback to leadership</li>
-          <li class="alt3">De facto web training lead for the entire company</li>
+          <li>Bi-weekly check-ins and professional-development goals</li>
         </ul>
-        <div class="stack">
-          <p class="lead">Any team, any client, any code issue — it comes to me. And I'm the only person at TDC who can independently build a full site efficiently and to a high standard.</p>
-        </div>
+        <ul class="clean">
+          <li>Work-life-balance check-ins, with feedback carried up to leadership</li>
+          <li>De facto web training lead across the company</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- 6 · STRENGTHS TOP 5 -->
-  <section class="slide" id="s6">
-    <div class="decor">
-      <span class="dot" style="width:60px;height:60px;background:#ff9800;top:12%;right:8%"></span>
-      <span class="pill r" style="width:340px;background:#eed229;bottom:10%"></span>
-    </div>
-    <div class="inner stack">
-      <span class="eyebrow"><span class="tick"></span>CliftonStrengths · completed June 2026</span>
-      <h2>This is how I'm <span class="accent">wired</span>.</h2>
-      <div class="str-list">
-        <div class="str"><div class="rank">1</div><div class="meta"><span class="domain">Strategic Thinking</span><div class="name">Futuristic</div><div class="desc">I see where things can go before others do, and build toward it.</div></div></div>
-        <div class="str"><div class="rank">2</div><div class="meta"><span class="domain">Relationship Building</span><div class="name">Relator</div><div class="desc">Deep, real trust with clients and teammates — not surface level.</div></div></div>
-        <div class="str"><div class="rank">3</div><div class="meta"><span class="domain">Influencing</span><div class="name">Competition</div><div class="desc">I set a high bar and don't let up. I want to win for TDC.</div></div></div>
-        <div class="str"><div class="rank">4</div><div class="meta"><span class="domain">Executing</span><div class="name">Restorative</div><div class="desc">Drawn to broken things — messy handoffs, failing servers, broken forms. I fix them.</div></div></div>
-        <div class="str"><div class="rank">5</div><div class="meta"><span class="domain">Strategic Thinking</span><div class="name">Strategic</div><div class="desc">I spot patterns, find the best path, and execute.</div></div></div>
-      </div>
-      <p class="supporting">I lead with the <strong>Executing</strong> domain — I make things happen. <strong>6–10:</strong> Achiever · Activator · Individualization · Discipline · Deliberative.</p>
-    </div>
-  </section>
-
-  <!-- 7 · GROW -->
-  <section class="slide" id="s7">
-    <div class="decor">
-      <span class="pill l" style="width:440px;background:#c46fe2;top:14%"></span>
-      <span class="dot" style="width:54px;height:54px;background:#45b6b7;bottom:16%;right:9%"></span>
-    </div>
-    <div class="inner stack">
-      <span class="eyebrow"><span class="tick"></span>Growing into the full profile</span>
-      <h2>I know where I'm strong.<br>I know where I'm growing.</h2>
-      <p class="lead">The themes I'm intentionally developing map directly to the trust and leadership work ahead of me.</p>
-      <div class="grow-grid">
-        <div class="grow"><div class="g-name">Developer</div><div class="g-desc">Through supervising Regan &amp; Sara and investing in their growth.</div></div>
-        <div class="grow"><div class="g-name">Focus</div><div class="g-desc">Protecting deep-work time and staying outcome-oriented under pressure.</div></div>
-        <div class="grow"><div class="g-name">Communication</div><div class="g-desc">Presenting clearly to leadership, clients, and team — including how I handle hard conversations.</div></div>
-        <div class="grow"><div class="g-name">Maximizer</div><div class="g-desc">Pushing quality and standards higher without burning out the people around me.</div></div>
-        <div class="grow"><div class="g-name">Learner</div><div class="g-desc">The plugin, the reCAPTCHA fix, the offshore coordination — I seek out what I don't know yet.</div></div>
-        <div class="grow"><div class="g-name">Command &amp; Adaptability</div><div class="g-desc">Owning the room calmly, and staying steady when situations shift.</div></div>
-      </div>
-      <p class="supporting">I'm managing my lower themes — Harmony, Includer, Woo, Connectedness — consciously, especially when team dynamics call for them.</p>
-    </div>
-  </section>
-
-  <!-- 8 · ASK: RAISE -->
-  <section class="slide" id="s8">
+  <!-- 10 · ASK: COMPENSATION -->
+  <section class="slide" id="s10">
     <div class="decor">
       <span class="dot" style="width:96px;height:96px;background:#00a56c;top:12%;right:7%"></span>
       <span class="pill r" style="width:420px;background:#5f66d7;bottom:14%"></span>
     </div>
     <div class="inner stack">
-      <span class="eyebrow"><span class="tick"></span>The ask · compensation</span>
+      <span class="eyebrow"><span class="tick"></span>The ask &middot; compensation</span>
       <div class="ask-hero">
-        <span class="from">$54,000</span><span class="arrow">→</span><span class="to">$64,000</span>
+        <span class="from">$54,000</span><span class="arrow">&rarr;</span><span class="to">$64,000</span>
       </div>
-      <p class="lead">This is a request for fair compensation, grounded in contribution and scope — not tenure.</p>
+      <p class="lead">Grounded in contribution and scope — not tenure.</p>
       <ul class="clean">
-        <li>$85K+ billed on a $54K salary, and that figure is a <strong>conservative floor</strong>, not a ceiling.</li>
-        <li class="alt">I'm the <strong>only</strong> web strategist, and there's <strong>no web specialist</strong> to directly support me.</li>
-        <li class="alt2">I carry the full weight of web: builds, strategy, training, supervision, client relationships, and company-wide support.</li>
-        <li class="alt3">No salary adjustment since my promotion in September 2025.</li>
+        <li>$85K+ billed on a $54K salary — and that's billed hours only, not the full value of the builds.</li>
+        <li>I'm the only person at TDC who can take an advanced, custom web build from start to finish <strong>fully independently</strong> — and deliver success. Others work on sites; I'm the one who can carry the hard builds alone. Proven this year on <strong>Campus Movers</strong>, <strong>Kent Design Build</strong>, <strong>VA Golf Course Reviews</strong>, and <strong>Weiler Orthodontics</strong>.</li>
+        <li>Beyond billable work, I built the systems the whole team now runs on — the <strong>Code Compendium</strong>, TDC's <strong>first custom plugin</strong>, and a redesigned <strong>web build lifecycle</strong>.</li>
       </ul>
-      <div class="note">The handbook baseline is 2.5% per year of experience. This ask reflects a genuine expansion in scope and value — and what fair compensation looks like for a role this central, held by one person.</div>
+      <div class="note">The handbook baseline is 2.5% per year of experience. This ask reflects a genuine expansion in scope and value — what fair compensation looks like for a role this central, held by one person.</div>
     </div>
   </section>
 
-  <!-- 9 · ASK: OFFICE + ROLE -->
-  <section class="slide" id="s9">
+  <!-- 11 · ASK: STRUCTURE & ROLE -->
+  <section class="slide" id="s11">
     <div class="decor">
       <span class="pill l" style="width:480px;background:#45b6b7;top:16%"></span>
       <span class="dot" style="width:40px;height:40px;background:#eed229;bottom:20%;right:12%"></span>
     </div>
     <div class="inner stack">
-      <span class="eyebrow"><span class="tick"></span>The ask · structure &amp; role</span>
-      <h2>Space to lead — and a plan<br>to lead <span class="accent">bigger</span>.</h2>
-      <div class="ask-card c-teal">
+      <span class="eyebrow"><span class="tick"></span>The ask &middot; structure &amp; role</span>
+      <h2>Space to lead — and a plan to lead bigger.</h2>
+      <div class="ask-card">
         <h3><span class="bullet"></span>Shared office space</h3>
         <p>Proximity to other strategists makes collaboration easier and supports the leadership and client work I'm doing. A functional ask, not a perk.</p>
       </div>
-      <div class="ask-card c-purple">
+      <div class="ask-card">
         <h3><span class="bullet"></span>Transition off low-level work</h3>
         <p>Train Regan, Sara, and others to own publication, updates, and routine maintenance — so my time goes where it creates the most value.</p>
       </div>
-      <div class="ask-card c-orange">
-        <h3><span class="bullet"></span>Rotate across all teams</h3>
-        <p>Support builds, planning, and strategy across Green, Orange, Blue, and Red. Get involved earlier in BD to set new clients up for web success — and grow TDC's web revenue.</p>
+      <div class="ask-card">
+        <h3><span class="bullet"></span>Support all teams in their web strategy</h3>
+        <p>Not rotating onto every team at will — that would be a structural nightmare. Instead, I want to support teams more than I have: helping plan builds, jumping in on code, and training members so they feel confident in their projects. Specifically, I want to find more time to support <strong>Blue</strong> and <strong>Red</strong> on their web initiatives.</p>
       </div>
     </div>
   </section>
 
-  <!-- 10 · CLOSE -->
-  <section class="slide" id="s10">
+  <!-- 12 · COMMITMENTS -->
+  <section class="slide" id="s12">
+    <div class="decor">
+      <span class="dot" style="width:84px;height:84px;background:#45b6b7;top:14%;right:9%"></span>
+      <span class="pill r" style="width:520px;background:#bddd75;bottom:16%"></span>
+    </div>
+    <div class="inner stack">
+      <span class="eyebrow"><span class="tick"></span>What I'm committing to</span>
+      <h2>Where I'm taking this over the next 12 months.</h2>
+      <ul class="clean">
+        <li>Keep building TDC's web strategy — with the goal to <strong>10&times; our web performance</strong>.</li>
+        <li>Lean into one-off web projects that build new client relationships — and can bring new <strong>full-stack clients</strong> into the company.</li>
+        <li>Keep delivering high-quality builds and bringing in new clients independently.</li>
+        <li>Fully train the team on the Compendium and publication workflows.</li>
+        <li>Show up steady — rebuilding trust through consistency.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 13 · CONCLUSION -->
+  <section class="slide" id="s13">
     <div class="decor">
       <span class="dot" style="width:84px;height:84px;background:#45b6b7;top:14%;right:9%"></span>
       <span class="dot" style="width:30px;height:30px;background:#f65d61;top:28%;right:19%"></span>
-      <span class="pill r" style="width:560px;background:#bddd75;bottom:16%"></span>
-      <span class="dot" style="width:50px;height:50px;background:#ffffff;bottom:20%;left:7%"></span>
+      <span class="pill r" style="width:560px;background:#eed229;bottom:16%"></span>
+      <span class="dot" style="width:50px;height:50px;background:#5f66d7;bottom:20%;left:7%"></span>
     </div>
     <div class="inner stack">
-      <span class="eyebrow"><span class="tick"></span>What the next year looks like</span>
-      <h2>What I'm committing to —<br>and what I'm asking for.</h2>
-      <div class="close-cols">
-        <div>
-          <h3 style="margin-bottom:14px">My commitments</h3>
-          <ul class="clean">
-            <li>Deliver high-quality builds and bring in new clients independently</li>
-            <li class="alt">Fully train the team on the Compendium &amp; publication workflows</li>
-            <li class="alt2">Build a formal TDC web strategy for the next 12 months</li>
-            <li class="alt3">Show up steady — rebuilding trust through consistency</li>
-          </ul>
-        </div>
-        <div>
-          <h3 style="margin-bottom:14px">What I'm asking for</h3>
-          <ul class="clean">
-            <li>$64K salary</li>
-            <li class="alt">Shared office space</li>
-            <li class="alt2">A clear path to Strategist-level scope</li>
-          </ul>
-          <p class="supporting" style="margin-top:22px">Open the floor: what do you need to see from me over the next quarter?</p>
-        </div>
+      <span class="eyebrow"><span class="tick"></span>Thank you</span>
+      <h1>Thank you.</h1>
+      <p class="lead">I appreciate you taking the time — and the chance to keep growing here. Here's what I'm asking for:</p>
+      <div class="recap">
+        <div class="chip"><div class="big">$64,000</div><div class="sub">Salary</div></div>
+        <div class="chip"><div class="big">Shared office</div><div class="sub">Space to lead &amp; collaborate</div></div>
+        <div class="chip"><div class="big">Strategist scope</div><div class="sub">Room to lead at a true level</div></div>
       </div>
+      <p class="lead">Now I'd love to open it up — questions, reflections, and where we go from here.</p>
     </div>
   </section>
 
+</div>
+
+<!-- Lightbox (scroll-through preview) -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="frame">
+    <button class="lb-close" id="lbClose" aria-label="Close preview">&#10005;</button>
+    <div class="scroller" id="lbScroller"><img id="lbImg" src="" alt=""></div>
+  </div>
+  <div class="lb-hint">Scroll to explore &middot; Esc to close</div>
 </div>
 
 <script>
@@ -764,32 +910,26 @@
     });
   })();
 
-  /* ---------- Deck ---------- */
+  /* ---------- Deck navigation ---------- */
   const slides = Array.from(document.querySelectorAll('.slide'));
   const rail = document.getElementById('rail');
-  const plabel = document.getElementById('plabel');
   const deck = document.getElementById('deck');
   const total = slides.length;
+  const pPrev = document.getElementById('pPrev');
+  const pNext = document.getElementById('pNext');
+  const navPrev = document.getElementById('navPrev');
+  const navNext = document.getElementById('navNext');
+  const lightbox = document.getElementById('lightbox');
+
+  pNext.textContent = String(total).padStart(2, '0');
 
   slides.forEach((s, i) => {
     const a = document.createElement('a');
     a.title = 'Slide ' + (i + 1);
-    a.addEventListener('click', () => s.scrollIntoView({ behavior: 'smooth' }));
+    a.addEventListener('click', () => goTo(i));
     rail.appendChild(a);
   });
   const dots = Array.from(rail.children);
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('seen');
-        const i = slides.indexOf(e.target);
-        dots.forEach((d, j) => d.classList.toggle('active', j === i));
-        plabel.textContent = String(i + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
-      }
-    });
-  }, { threshold: 0.55 });
-  slides.forEach(s => io.observe(s));
 
   function current() {
     const top = deck.scrollTop;
@@ -800,18 +940,107 @@
     });
     return idx;
   }
+  function goTo(n) {
+    n = Math.max(0, Math.min(total - 1, n));
+    slides[n].scrollIntoView({ behavior: 'smooth' });
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('seen');
+        const i = slides.indexOf(e.target);
+        dots.forEach((d, j) => d.classList.toggle('active', j === i));
+        pPrev.textContent = String(i + 1).padStart(2, '0');
+        navPrev.disabled = (i === 0);
+        navNext.disabled = (i === total - 1);
+      }
+    });
+  }, { threshold: 0.55 });
+  slides.forEach(s => io.observe(s));
+
+  // Click controls
+  navPrev.addEventListener('click', () => goTo(current() - 1));
+  navNext.addEventListener('click', () => goTo(current() + 1));
+  pPrev.addEventListener('click', () => goTo(current() - 1));   // left number = back
+  pNext.addEventListener('click', () => goTo(current() + 1));   // right number = forward
+  document.getElementById('homeLogo').addEventListener('click', (e) => { e.preventDefault(); goTo(0); });
+
+  // Keyboard
   document.addEventListener('keydown', (e) => {
+    if (document.body.classList.contains('locked')) return;
+    if (lightbox.classList.contains('open')) {
+      if (e.key === 'Escape') closeLightbox();
+      return;
+    }
     if (['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)) {
-      e.preventDefault();
-      const n = Math.min(current() + 1, total - 1);
-      slides[n].scrollIntoView({ behavior: 'smooth' });
+      e.preventDefault(); goTo(current() + 1);
     } else if (['ArrowUp','ArrowLeft','PageUp'].includes(e.key)) {
-      e.preventDefault();
-      const n = Math.max(current() - 1, 0);
-      slides[n].scrollIntoView({ behavior: 'smooth' });
-    } else if (e.key === 'Home') { slides[0].scrollIntoView({ behavior:'smooth' }); }
-    else if (e.key === 'End') { slides[total-1].scrollIntoView({ behavior:'smooth' }); }
+      e.preventDefault(); goTo(current() - 1);
+    } else if (e.key === 'Home') { goTo(0); }
+    else if (e.key === 'End') { goTo(total - 1); }
   });
+
+  /* ---------- Lightbox: scroll-through preview ---------- */
+  const lbScroller = document.getElementById('lbScroller');
+  const lbImg = document.getElementById('lbImg');
+  const lbClose = document.getElementById('lbClose');
+  let lbRAF = null, lbUserTook = false;
+
+  function startAutoScroll() {
+    cancelAnimationFrame(lbRAF);
+    const run = () => {
+      const max = lbScroller.scrollHeight - lbScroller.clientHeight;
+      if (max <= 4) return;
+      const duration = Math.min(28000, Math.max(9000, max * 7));
+      const from = lbScroller.scrollTop;
+      const start = performance.now();
+      const step = (now) => {
+        if (lbUserTook) return;
+        const t = Math.min(1, (now - start) / duration);
+        const eased = t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2, 2)/2;
+        lbScroller.scrollTop = from + (max - from) * eased;
+        if (t < 1) lbRAF = requestAnimationFrame(step);
+      };
+      lbRAF = requestAnimationFrame(step);
+    };
+    // wait a beat so the open transition + layout settle
+    setTimeout(run, 550);
+  }
+  function openLightbox(src, alt) {
+    lbUserTook = false;
+    lbImg.src = src;
+    lbImg.alt = alt || '';
+    lbScroller.scrollTop = 0;
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    if (lbImg.complete) startAutoScroll();
+    else lbImg.onload = startAutoScroll;
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    cancelAnimationFrame(lbRAF);
+    lbUserTook = true;
+  }
+  ['wheel','touchstart','pointerdown','keydown'].forEach(evt =>
+    lbScroller.addEventListener(evt, () => { lbUserTook = true; cancelAnimationFrame(lbRAF); }, { passive: true })
+  );
+  lbClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+  const ccShot = document.getElementById('ccShot');
+  if (ccShot) {
+    const open = () => openLightbox('assets/code-compendium.png', 'The Code Compendium');
+    ccShot.addEventListener('click', open);
+    ccShot.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+  }
+  const pdShot = document.getElementById('pdShot');
+  if (pdShot) {
+    const open = () => openLightbox('assets/portfolio-plugin.png', 'TDC Portfolio Plugin');
+    pdShot.addEventListener('click', open);
+    pdShot.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+  }
 </script>
 </body>
 </html>
