@@ -24,41 +24,17 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: var(--font);
-    color: var(--ink);
-    background: var(--white);
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.6;
-  }
+  body { font-family: var(--font); color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; line-height: 1.6; }
 
   /* ---------- Scroll container ---------- */
-  .deck {
-    height: 100vh; height: 100dvh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-  }
+  .deck { height: 100vh; height: 100dvh; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-behavior: smooth; }
   .slide {
-    position: relative;
-    min-height: 100vh; min-height: 100dvh;
-    scroll-snap-align: start;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    padding: 100px 7vw;
-    background-color: var(--white);
-    background-image: var(--grid-bg);
-    background-size: 56px 56px;
+    position: relative; min-height: 100vh; min-height: 100dvh; scroll-snap-align: start;
+    display: flex; align-items: center; overflow: hidden; padding: 100px 7vw;
+    background-color: var(--white); background-image: var(--grid-bg); background-size: 56px 56px;
     border-bottom: 1px solid rgba(14, 19, 42, 0.04);
   }
-  .inner {
-    position: relative;
-    z-index: 5;
-    width: 100%;
-    max-width: 1180px;
-    margin: 0 auto;
-  }
+  .inner { position: relative; z-index: 5; width: 100%; max-width: 1180px; margin: 0 auto; }
 
   /* ---------- Typography ---------- */
   h1, h2, h3, .eyebrow, .stat-num { font-weight: 700; letter-spacing: -0.02em; }
@@ -68,21 +44,21 @@
   p, li { font-weight: 400; font-size: clamp(1rem, 1.15vw, 1.16rem); color: var(--slate); }
   .lead { font-size: clamp(1.12rem, 1.45vw, 1.4rem); color: var(--slate); max-width: 64ch; }
 
-  .eyebrow {
-    display: inline-flex; align-items: center; gap: 11px;
-    font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.16em;
-    color: var(--teal); margin-bottom: 4px;
-  }
-  .eyebrow .tick {
-    width: 24px; height: 24px; border-radius: 50%;
-    border: 1px solid var(--ink); background: var(--teal); flex: none;
-  }
+  .eyebrow { display: inline-flex; align-items: center; gap: 11px; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--teal); margin-bottom: 4px; }
+  .eyebrow .tick { width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--ink); background: var(--teal); flex: none; }
   .accent { color: var(--teal); font-style: italic; font-weight: 700; }
   strong { color: var(--ink); font-weight: 700; }
 
   /* ---------- Brand logo ---------- */
   .logo { display: inline-flex; align-items: center; }
   .logo img { height: 48px; width: auto; display: block; }
+
+  /* ---------- Cover: equal-width, auto-fit lines ---------- */
+  .cover-fit { width: min(740px, 86vw); margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .cover-fit .cf { display: inline-block; white-space: nowrap; line-height: 1.04; font-weight: 700; }
+  .cover-fit .cf-eyebrow { color: var(--teal); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5em; }
+  .cover-fit .cf-name { color: var(--ink); letter-spacing: -0.02em; }
+  .cover-fit .cf-role { color: var(--ink); letter-spacing: -0.01em; margin-top: 0.14em; }
 
   /* ---------- Decorative layer ---------- */
   .decor { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
@@ -94,19 +70,13 @@
   /* ---------- Layout helpers ---------- */
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 3vw, 40px); align-items: stretch; }
   .stack > * + * { margin-top: 24px; }
-  .tag {
-    display: inline-block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em;
-    font-weight: 700; color: var(--teal); margin-bottom: 12px;
-  }
+  .tag { display: inline-block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--teal); margin-bottom: 12px; }
 
   /* ---------- Clean bullet lists (all teal) ---------- */
   ul.clean { list-style: none; }
   ul.clean li { position: relative; padding-left: 30px; margin-bottom: 16px; line-height: 1.5; }
   ul.clean li:last-child { margin-bottom: 0; }
-  ul.clean li::before {
-    content: ""; position: absolute; left: 0; top: 8px;
-    width: 13px; height: 13px; border-radius: 50%; background: var(--teal); border: 1px solid var(--ink);
-  }
+  ul.clean li::before { content: ""; position: absolute; left: 0; top: 8px; width: 13px; height: 13px; border-radius: 50%; background: var(--teal); border: 1px solid var(--ink); }
 
   /* ---------- Stat cards ---------- */
   .stat-row { display: flex; flex-wrap: wrap; gap: 18px; }
@@ -123,84 +93,56 @@
   .rev-table tr.total td { font-weight: 700; color: var(--ink); background: rgba(14,19,42,0.025); }
   .rev-table tr.total td.num { color: var(--ink); }
 
-  .note {
-    padding: 16px 20px; border-left: 3px solid var(--teal);
-    background: rgba(69,182,183,0.07); border-radius: 0 12px 12px 0;
-    font-size: 0.98rem; color: var(--slate); max-width: 74ch;
-  }
+  .note { padding: 16px 20px; border-left: 3px solid var(--teal); background: rgba(69,182,183,0.07); border-radius: 0 12px 12px 0; font-size: 0.98rem; color: var(--slate); max-width: 74ch; }
 
   /* ---------- Project carousel ---------- */
   .carousel { position: relative; }
+  .car-stage { position: relative; max-width: 980px; margin: 0 auto; }
   .car-viewport { overflow: hidden; }
   .car-track { display: flex; transition: transform 0.5s cubic-bezier(.2,.7,.2,1); }
-  .car-item { flex: 0 0 100%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 4%; }
-  .car-item img {
-    width: auto; max-width: 100%; max-height: clamp(280px, 50vh, 540px);
-    display: block; object-fit: contain;
-    filter: drop-shadow(0 18px 30px rgba(14,19,42,0.16));
-  }
+  .car-item { flex: 0 0 100%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 2%; }
+  .car-item img { width: auto; max-width: 100%; max-height: clamp(280px, 50vh, 540px); display: block; object-fit: contain; filter: drop-shadow(0 18px 30px rgba(14,19,42,0.16)); }
   .car-item .name { font-weight: 700; color: var(--ink); font-size: clamp(1.2rem, 2vw, 1.6rem); margin-top: 22px; }
   .car-item .ctx { font-size: 1rem; color: var(--slate); margin-top: 8px; max-width: 60ch; line-height: 1.5; }
-  .car-arrow {
-    position: absolute; top: 42%; transform: translateY(-50%); z-index: 6;
-    width: 50px; height: 50px; border-radius: 50%; border: 1px solid var(--ink);
-    background: var(--white); color: var(--ink); font-size: 1.4rem; line-height: 1; cursor: pointer;
-    display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(14,19,42,0.10);
-    transition: background 0.2s, color 0.2s, opacity 0.2s, transform 0.15s;
-  }
-  .car-arrow.prev { left: -6px; }
-  .car-arrow.next { right: -6px; }
+  .car-arrow { position: absolute; top: 38%; transform: translateY(-50%); z-index: 6; width: 50px; height: 50px; border-radius: 50%; border: 1px solid var(--ink); background: var(--white); color: var(--ink); font-size: 1.4rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(14,19,42,0.10); transition: background 0.2s, color 0.2s, opacity 0.2s, transform 0.15s; }
+  .car-arrow.prev { left: -20px; }
+  .car-arrow.next { right: -20px; }
   .car-arrow:active { transform: translateY(-50%) scale(0.93); }
   .car-arrow:disabled { opacity: 0.3; cursor: default; }
   .car-dots { display: flex; gap: 9px; justify-content: center; margin-top: 24px; }
-  .car-dots button {
-    width: 9px; height: 9px; border-radius: 50%; border: 0.75px solid var(--ink);
-    background: var(--white); cursor: pointer; padding: 0; transition: all 0.25s;
-  }
+  .car-dots button { width: 9px; height: 9px; border-radius: 50%; border: 0.75px solid var(--ink); background: var(--white); cursor: pointer; padding: 0; transition: all 0.25s; }
   .car-dots button.active { background: var(--teal); transform: scale(1.35); }
+
+  /* ---------- One-off project cards ---------- */
+  .ocard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .ocard { background: var(--white); border: 1px solid var(--hairline); border-radius: 14px; padding: 18px 20px; }
+  .ocard .on { font-weight: 700; color: var(--ink); font-size: 1.04rem; }
+  .ocard .od { font-size: 0.92rem; color: var(--slate); margin-top: 4px; line-height: 1.45; }
 
   /* ---------- Feature split (strategy) ---------- */
   .feat-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
+  .feat-split.media-lg { grid-template-columns: 0.82fr 1.5fr; }
   .feat-split .copy p { font-size: clamp(1rem, 1.2vw, 1.16rem); line-height: 1.55; }
+  .feat-split .copy h2 { margin-bottom: 18px; }
 
   /* Screenshot / media window */
-  .shot-window {
-    position: relative; cursor: zoom-in; border-radius: 14px; overflow: hidden;
-    border: 1px solid var(--hairline); box-shadow: 0 16px 40px rgba(14,19,42,0.16);
-    height: clamp(300px, 56vh, 600px); background: var(--ink);
-  }
+  .shot-window { position: relative; cursor: zoom-in; border-radius: 14px; overflow: hidden; border: 1px solid var(--hairline); box-shadow: 0 16px 40px rgba(14,19,42,0.16); height: clamp(300px, 56vh, 600px); background: var(--ink); display: block; }
   .shot-window img { width: 100%; display: block; object-position: top center; }
-  .shot-window.scroll::after {
-    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 130px;
-    background: linear-gradient(transparent, rgba(14,19,42,0.88)); pointer-events: none;
-  }
-  .shot-window .peek-hint {
-    position: absolute; bottom: 16px; left: 0; right: 0; z-index: 2; text-align: center;
-    color: #fff; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.02em; pointer-events: none;
-  }
-  .shot-window .play-btn {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 2;
-    width: 74px; height: 74px; border-radius: 50%; background: rgba(255,255,255,0.94); color: var(--ink);
-    display: flex; align-items: center; justify-content: center; font-size: 1.6rem; padding-left: 6px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3); pointer-events: none; transition: transform 0.2s;
-  }
+  .shot-window.scroll::after, .shot-window.linkout::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 130px; background: linear-gradient(transparent, rgba(14,19,42,0.88)); pointer-events: none; }
+  .shot-window .peek-hint { position: absolute; bottom: 16px; left: 0; right: 0; z-index: 2; text-align: center; color: #fff; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.02em; pointer-events: none; }
+  .shot-window.linkout { text-decoration: none; cursor: pointer; }
   /* Static window (no interaction) */
   .shot-window.static { cursor: default; height: auto; background: var(--white); }
   .shot-window.static img { height: auto; }
   /* Placeholder window */
-  .shot-window.placeholder {
-    cursor: default; background: rgba(69,182,183,0.05); border: 1.5px dashed var(--hairline);
-    display: flex; align-items: center; justify-content: center; text-align: center; height: clamp(260px, 42vh, 420px);
-  }
+  .shot-window.placeholder { cursor: default; background: rgba(69,182,183,0.05); border: 1.5px dashed var(--hairline); display: flex; align-items: center; justify-content: center; text-align: center; height: clamp(260px, 42vh, 420px); }
   .shot-window.placeholder .ph { color: var(--slate); font-weight: 600; font-size: 1rem; padding: 24px; }
   .shot-window.placeholder .ph small { display: block; font-weight: 400; font-size: 0.85rem; margin-top: 6px; opacity: 0.8; }
 
   /* ---------- Strengths ---------- */
   .str-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .str { display: grid; grid-template-columns: 50px 1fr; gap: 16px; align-items: center;
-    background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; padding: 14px 18px; }
-  .str .rank { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--ink);
-    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.05rem; color: var(--ink); flex: none; }
+  .str { display: grid; grid-template-columns: 50px 1fr; gap: 16px; align-items: center; background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; padding: 14px 18px; }
+  .str .rank { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--ink); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.05rem; color: var(--ink); flex: none; }
   .str .meta .name { font-weight: 700; color: var(--ink); font-size: 1.08rem; }
   .str .meta .domain { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); }
   .str .meta .desc { font-size: 0.9rem; color: var(--slate); margin-top: 2px; line-height: 1.4; }
@@ -210,33 +152,29 @@
   /* ---------- Growth themes ---------- */
   .grow-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 30px; }
   .grow { padding-left: 26px; position: relative; }
-  .grow::before { content: ""; position: absolute; left: 0; top: 7px; width: 13px; height: 13px;
-    border-radius: 50%; border: 1px solid var(--ink); background: var(--teal); }
+  .grow::before { content: ""; position: absolute; left: 0; top: 7px; width: 13px; height: 13px; border-radius: 50%; border: 1px solid var(--ink); background: var(--teal); }
   .grow .g-name { font-weight: 700; color: var(--ink); font-size: 1.08rem; }
   .grow .g-desc { font-size: 0.96rem; color: var(--slate); line-height: 1.5; }
 
   /* ---------- Trust / commitments ---------- */
   .commit { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
-  .commit .c { position: relative; padding: 16px 18px 16px 40px; background: var(--white);
-    border: 1px solid var(--hairline); border-radius: 12px; font-size: 1rem; color: var(--slate); line-height: 1.45; }
-  .commit .c::before { content:""; position:absolute; left:16px; top:20px; width:13px; height:13px;
-    border-radius:50%; background: var(--teal); border: 1px solid var(--ink); }
+  .commit .c { position: relative; padding: 16px 18px 16px 40px; background: var(--white); border: 1px solid var(--hairline); border-radius: 12px; font-size: 1rem; color: var(--slate); line-height: 1.45; }
+  .commit .c::before { content:""; position:absolute; left:16px; top:20px; width:13px; height:13px; border-radius:50%; background: var(--teal); border: 1px solid var(--ink); }
   .commit .c strong { color: var(--ink); }
 
   /* ---------- Toolkit callout ---------- */
-  .toolkit { display: flex; gap: 18px; align-items: flex-start; background: var(--white);
-    border: 1px solid var(--hairline); border-left: 3px solid var(--teal); border-radius: 14px; padding: 20px 24px; max-width: 84ch; }
+  .toolkit { display: flex; gap: 18px; align-items: flex-start; background: var(--white); border: 1px solid var(--hairline); border-left: 3px solid var(--teal); border-radius: 14px; padding: 20px 24px; max-width: 84ch; }
   .toolkit .tk-dot { width: 30px; height: 30px; border-radius: 50%; background: var(--teal); border: 1px solid var(--ink); flex: none; margin-top: 3px; }
   .toolkit p { font-size: 0.98rem; line-height: 1.55; }
   .toolkit .tk-name { font-weight: 700; color: var(--ink); }
-  .btn-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 12px; font-size: 0.9rem; font-weight: 700;
-    color: var(--white); background: var(--ink); text-decoration: none; padding: 9px 16px; border-radius: 999px; transition: opacity 0.2s; }
+  .btn-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 12px; font-size: 0.9rem; font-weight: 700; color: var(--white); background: var(--ink); text-decoration: none; padding: 9px 16px; border-radius: 999px; transition: opacity 0.2s; }
 
   /* ---------- People cards (leadership) ---------- */
-  .lcard { background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; padding: 20px 24px; }
-  .lcard .lname { font-weight: 700; color: var(--ink); font-size: 1.1rem; margin-bottom: 8px; }
-  .lcard .lrole { color: var(--teal); font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; }
-  .lcard p { font-size: 0.96rem; line-height: 1.5; }
+  .lcard { background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; padding: 20px 22px; display: grid; grid-template-columns: 88px 1fr; gap: 18px; align-items: start; }
+  .lcard .headshot { width: 88px; height: 88px; border-radius: 12px; background: rgba(69,182,183,0.08); border: 1.5px dashed var(--hairline); display: flex; align-items: center; justify-content: center; font-size: 0.66rem; color: var(--slate); text-align: center; flex: none; }
+  .lcard .lrole { color: var(--teal); font-weight: 700; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
+  .lcard .lname { font-weight: 700; color: var(--ink); font-size: 1.1rem; }
+  .lcard p { font-size: 0.94rem; line-height: 1.5; margin-top: 8px; }
 
   /* ---------- Asks ---------- */
   .ask-hero { display: flex; flex-wrap: wrap; align-items: baseline; gap: 18px; }
@@ -256,28 +194,21 @@
   .recap .chip .sub { font-size: 0.85rem; color: var(--slate); margin-top: 4px; }
 
   /* ---------- Top bar ---------- */
-  .topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-    display: flex; justify-content: space-between; align-items: center; padding: 16px 7vw; pointer-events: none; }
+  .topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 16px 7vw; pointer-events: none; }
   .topbar .logo { pointer-events: auto; }
-  .progress-label { pointer-events: auto; display: inline-flex; align-items: center; gap: 3px;
-    font-weight: 700; font-size: 0.9rem; color: var(--slate); background: var(--white); border: 1px solid var(--hairline);
-    padding: 6px 12px; border-radius: 999px; font-variant-numeric: tabular-nums; user-select: none; }
+  .progress-label { pointer-events: auto; display: inline-flex; align-items: center; gap: 3px; font-weight: 700; font-size: 0.9rem; color: var(--slate); background: var(--white); border: 1px solid var(--hairline); padding: 6px 12px; border-radius: 999px; font-variant-numeric: tabular-nums; user-select: none; }
   .progress-label .pnav { cursor: pointer; padding: 2px 6px; border-radius: 7px; transition: color 0.2s, background 0.2s; }
   .progress-label #pPrev { color: var(--ink); }
   .progress-label .sep { opacity: 0.5; }
 
-  /* ---------- Bottom pagination dots (desktop) ---------- */
-  .dotbar { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 50;
-    display: flex; gap: 12px; align-items: center; }
-  .dotbar a { width: 11px; height: 11px; border-radius: 50%; border: 0.75px solid var(--ink);
-    background: var(--white); transition: all 0.25s; cursor: pointer; }
+  /* ---------- Pagination dots (desktop, right rail) ---------- */
+  .dotbar { position: fixed; right: 26px; top: 50%; transform: translateY(-50%); z-index: 50; display: flex; flex-direction: column; gap: 12px; align-items: center; }
+  .dotbar a { width: 11px; height: 11px; border-radius: 50%; border: 0.75px solid var(--ink); background: var(--white); transition: all 0.25s; cursor: pointer; }
   .dotbar a.active { background: var(--teal); transform: scale(1.35); }
 
   /* ---------- Mobile arrow controls ---------- */
   .navarrows { position: fixed; right: 20px; bottom: 20px; z-index: 60; display: none; flex-direction: column; gap: 10px; }
-  .navarrows button { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--ink); background: var(--white); color: var(--ink);
-    font-size: 1.1rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 6px 18px rgba(14,19,42,0.12); transition: opacity 0.2s; }
+  .navarrows button { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--ink); background: var(--white); color: var(--ink); font-size: 1.1rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(14,19,42,0.12); transition: opacity 0.2s; }
   .navarrows button:disabled { opacity: 0.3; }
 
   /* ---------- Reveal animation ---------- */
@@ -290,44 +221,31 @@
   .slide.seen .inner > *:nth-child(6) { transition-delay: 0.40s; }
   @media (prefers-reduced-motion: reduce) { .slide .inner > * { opacity: 1; transform: none; } }
 
-  /* ---------- Hover only on real pointers (no sticky mobile hover) ---------- */
+  /* ---------- Hover only on real pointers ---------- */
   @media (hover: hover) {
-    .proj:hover img { transform: translateY(-6px); }
     .car-arrow:hover { background: var(--teal); color: #fff; }
     .navarrows button:hover { background: var(--teal); color: #fff; }
     .progress-label .pnav:hover { color: var(--teal); background: rgba(69,182,183,0.12); }
     .btn-link:hover { opacity: 0.88; }
     .shot-window:hover { box-shadow: 0 22px 52px rgba(14,19,42,0.24); }
-    .shot-window:hover .play-btn { transform: translate(-50%,-50%) scale(1.06); }
     .gate button:hover { opacity: 0.9; }
   }
 
-  /* ---------- Lightbox ---------- */
-  .lightbox { position: fixed; inset: 0; z-index: 9998; background: rgba(14,19,42,0.9);
-    display: flex; align-items: center; justify-content: center; padding: 40px 20px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+  /* ---------- Lightbox (image scroll preview) ---------- */
+  .lightbox { position: fixed; inset: 0; z-index: 9998; background: rgba(14,19,42,0.9); display: flex; align-items: center; justify-content: center; padding: 40px 20px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
   .lightbox.open { opacity: 1; pointer-events: auto; }
-  .lightbox .frame { position: relative; border-radius: 14px; overflow: hidden; box-shadow: 0 30px 90px rgba(0,0,0,0.55); background: var(--ink); }
-  .lightbox.mode-image .frame { width: min(920px, 92vw); height: min(86vh, 940px); }
-  .lightbox.mode-video .frame { width: min(1040px, 94vw); height: auto; background: #000; }
-  .lightbox .scroller { width: 100%; height: 100%; overflow-y: auto; scrollbar-width: thin; display: none; }
-  .lightbox.mode-image .scroller { display: block; }
+  .lightbox .frame { position: relative; width: min(920px, 92vw); height: min(86vh, 940px); border-radius: 14px; overflow: hidden; box-shadow: 0 30px 90px rgba(0,0,0,0.55); background: var(--ink); }
+  .lightbox .scroller { width: 100%; height: 100%; overflow-y: auto; scrollbar-width: thin; }
   .lightbox .scroller img { width: 100%; display: block; }
-  .lightbox video { display: none; width: 100%; max-height: 86vh; background: #000; }
-  .lightbox.mode-video video { display: block; }
-  .lightbox .lb-close { position: absolute; top: 14px; right: 14px; z-index: 3; width: 38px; height: 38px; border-radius: 50%;
-    border: none; cursor: pointer; background: rgba(255,255,255,0.92); color: var(--ink); font-size: 1rem; display: flex; align-items: center; justify-content: center; }
+  .lightbox .lb-close { position: absolute; top: 14px; right: 14px; z-index: 3; width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer; background: rgba(255,255,255,0.92); color: var(--ink); font-size: 1rem; display: flex; align-items: center; justify-content: center; }
   .lightbox .lb-hint { position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.85); font-size: 0.82rem; letter-spacing: 0.04em; }
-  .lightbox.mode-video .lb-hint { display: none; }
 
   /* ---------- Responsive ---------- */
-  /* Decorative shapes only on big monitors/TV, except cover/conclusion which keep them */
-  @media (max-width: 1600px) { .decor:not(.keep) { display: none; } }
-
+  @media (max-width: 1600px) { .decor { display: none; } }
   @media (max-width: 1100px) {
-    .grid-2, .feat-split, .commit, .grow-grid, .str-list, .recap { grid-template-columns: 1fr; }
+    .grid-2, .feat-split, .feat-split.media-lg, .commit, .grow-grid, .str-list, .recap, .ocard-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 1000px), (max-height: 760px) { .deck { scroll-snap-type: y proximity; } }
-
   @media (max-width: 760px) {
     .dotbar { display: none; }
     .navarrows { display: flex; }
@@ -338,30 +256,25 @@
     h2 { font-size: clamp(1.55rem, 6.2vw, 2rem); }
     .lead { font-size: 1.08rem; }
     .commit { grid-template-columns: 1fr; }
-    .car-arrow { width: 42px; height: 42px; font-size: 1.2rem; }
-    .car-arrow.prev { left: -4px; } .car-arrow.next { right: -4px; }
-    .car-item { padding: 0 8%; }
+    .car-arrow { width: 40px; height: 40px; font-size: 1.2rem; }
+    .car-arrow.prev { left: -6px; } .car-arrow.next { right: -6px; }
     .car-item img { max-height: 38vh; }
     .shot-window { height: clamp(220px, 40vh, 380px); }
+    .lcard { grid-template-columns: 72px 1fr; gap: 14px; }
+    .lcard .headshot { width: 72px; height: 72px; }
     .stat { min-width: 100%; }
     .rev-table th, .rev-table td { padding: 11px 12px; font-size: 0.9rem; }
-    .decor.keep .dot { transform: scale(0.6); }
   }
-  @media (max-width: 600px) {
-    .topbar { padding: 12px 6vw; }
-    .progress-label { font-size: 0.82rem; }
-  }
+  @media (max-width: 600px) { .topbar { padding: 12px 6vw; } .progress-label { font-size: 0.82rem; } }
 
   /* ---------- Password gate ---------- */
   body.locked { overflow: hidden; }
-  .gate { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 24px;
-    background-color: var(--white); background-image: var(--grid-bg); background-size: 56px 56px; transition: opacity 0.5s ease; }
+  .gate { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 24px; background-color: var(--white); background-image: var(--grid-bg); background-size: 56px 56px; transition: opacity 0.5s ease; }
   .gate.hide { opacity: 0; pointer-events: none; }
-  .gate-card { width: 100%; max-width: 430px; text-align: center; background: var(--white); border: 1px solid var(--hairline);
-    border-radius: 20px; padding: 44px 38px; box-shadow: 0 30px 80px rgba(14, 19, 42, 0.10); }
+  .gate-card { width: 100%; max-width: 430px; text-align: center; background: var(--white); border: 1px solid var(--hairline); border-radius: 20px; padding: 44px 38px; box-shadow: 0 30px 80px rgba(14, 19, 42, 0.10); }
   .gate-logo { width: 180px; height: auto; display: block; margin: 0 auto 26px; }
   .gate h2 { font-size: 1.5rem; letter-spacing: -0.02em; margin-bottom: 6px; }
-  .gate p { color: var(--slate); font-size: 0.92rem; margin-bottom: 26px; }
+  .gate p { color: var(--slate); font-size: 0.92rem; margin-bottom: 26px; line-height: 1.5; }
   .gate form { display: flex; flex-direction: column; gap: 12px; }
   .gate input { font-family: var(--font); font-size: 1rem; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--hairline); color: var(--ink); outline: none; transition: border-color 0.2s ease; }
   .gate input:focus { border-color: var(--teal); }
@@ -379,8 +292,8 @@
 <div class="gate" id="gate">
   <div class="gate-card">
     <img class="gate-logo" src="assets/tdc-logo.webp" alt="TDC Marketing">
-    <h2>2026 Pitch</h2>
-    <p>This presentation is private. Enter the password to continue.</p>
+    <h2>Noah Mills 2026 Pitch</h2>
+    <p>This presentation is private.<br>Enter the password to continue.</p>
     <form id="gateForm" autocomplete="off">
       <input type="password" id="gatePass" placeholder="Password" aria-label="Password" autofocus>
       <button type="submit">Unlock</button>
@@ -397,11 +310,11 @@
   <div class="progress-label" id="plabel" aria-label="Slide navigation: left number goes back, right number goes forward">
     <span class="pnav" id="pPrev" title="Previous slide">01</span>
     <span class="sep">/</span>
-    <span class="pnav" id="pNext" title="Next slide">14</span>
+    <span class="pnav" id="pNext" title="Next slide">15</span>
   </div>
 </div>
 
-<!-- Bottom pagination dots (desktop) -->
+<!-- Pagination dots (desktop, right rail) -->
 <nav class="dotbar" id="dotbar" aria-label="Slide dots"></nav>
 
 <!-- Mobile arrow controls -->
@@ -413,23 +326,13 @@
 <div class="deck" id="deck">
 
   <!-- 0 · COVER -->
-  <section class="slide" id="s0" style="text-align:center">
-    <div class="decor keep">
-      <span class="dot" style="width:70px;height:70px;background:#f65d61;top:9%;left:10%"></span>
-      <span class="dot" style="width:30px;height:30px;background:#eed229;top:7%;left:45%"></span>
-      <span class="dot" style="width:46px;height:46px;background:#ff9800;top:14%;right:12%"></span>
-      <span class="dot" style="width:22px;height:22px;background:#45b6b7;top:24%;right:30%"></span>
-      <span class="dot" style="width:40px;height:40px;background:#ffffff;top:44%;left:6%"></span>
-      <span class="dot" style="width:26px;height:26px;background:#5f66d7;top:46%;right:7%"></span>
-      <span class="dot" style="width:54px;height:54px;background:#c46fe2;bottom:12%;left:13%"></span>
-      <span class="dot" style="width:28px;height:28px;background:#bddd75;bottom:18%;left:45%"></span>
-      <span class="dot" style="width:64px;height:64px;background:#00a56c;bottom:10%;right:15%"></span>
-    </div>
-    <div class="inner stack" style="max-width:820px;margin:0 auto">
-      <span class="eyebrow" style="margin:0 auto"><span class="tick"></span>TDC Marketing &middot; 2026 Pitch</span>
-      <h1>Noah Mills</h1>
-      <p style="color:var(--ink);font-weight:700;font-size:clamp(1.4rem,2.6vw,2.1rem)">Web Strategist</p>
-      <p class="lead" style="margin-left:auto;margin-right:auto">A focused look at what I've built this year, who I am as a strategist, and the case for what comes next.</p>
+  <section class="slide" id="s0">
+    <div class="inner">
+      <div class="cover-fit">
+        <span class="cf cf-eyebrow">TDC Marketing &middot; 2026 Pitch</span>
+        <span class="cf cf-name">Noah Mills</span>
+        <span class="cf cf-role">Web Strategist</span>
+      </div>
     </div>
   </section>
 
@@ -530,29 +433,50 @@
     </div>
     <div class="inner stack">
       <span class="eyebrow"><span class="tick"></span>Project highlights</span>
-      <h2>Builds too big for one person. Delivered anyway.</h2>
+      <h2>A few of my favorite builds this year.</h2>
       <div class="carousel" id="projCarousel">
-        <div class="car-viewport">
-          <div class="car-track" id="carTrack">
-            <figure class="car-item"><img src="assets/first-airforce-one-slider-1.png" alt="First Air Force One website">
-              <figcaption><div class="name">First Air Force One</div><div class="ctx">New design-to-code process. Custom reCAPTCHA built from scratch when Bloomerang's failed.</div></figcaption></figure>
-            <figure class="car-item"><img src="assets/kdb-slider-1.png" alt="Kent Design Build website">
-              <figcaption><div class="name">Kent Design Build</div><div class="ctx">Solo build scoped for two to three people. Client pivoted three times, changed POC, delayed copy. Delivered.</div></figcaption></figure>
-            <figure class="car-item"><img src="assets/campus-movers-slider-1.png" alt="Campus Movers website">
-              <figcaption><div class="name">Campus Movers</div><div class="ctx">Found, hired, and integrated an offshore dev, a first for TDC. Custom advanced build.</div></figcaption></figure>
-            <figure class="car-item"><img src="assets/pwd-home-slider-1.png" alt="PWD Home website">
-              <figcaption><div class="name">PWD Home</div><div class="ctx">Build plus ongoing support. High-quality delivery.</div></figcaption></figure>
-            <figure class="car-item"><img src="assets/hanks-slider-1.png" alt="Hank's Grille website">
-              <figcaption><div class="name">Hank's Grille</div><div class="ctx">Redesign. Clean, on-brand execution.</div></figcaption></figure>
-            <figure class="car-item"><img src="assets/tdc-slider-1.png" alt="TDC Marketing website">
-              <figcaption><div class="name">TDC Marketing</div><div class="ctx">Our own agency site. High visibility, high stakes.</div></figcaption></figure>
+        <div class="car-stage">
+          <div class="car-viewport">
+            <div class="car-track" id="carTrack">
+              <figure class="car-item"><img src="assets/first-airforce-one-slider-1.png" alt="First Air Force One website">
+                <figcaption><div class="name">First Air Force One</div><div class="ctx">New design-to-code process. Custom reCAPTCHA built from scratch when Bloomerang's failed.</div></figcaption></figure>
+              <figure class="car-item"><img src="assets/kdb-slider-1.png" alt="Kent Design Build website">
+                <figcaption><div class="name">Kent Design Build</div><div class="ctx">Solo build scoped for two to three people. Client pivoted three times, changed POC, delayed copy. Delivered.</div></figcaption></figure>
+              <figure class="car-item"><img src="assets/campus-movers-slider-1.png" alt="Campus Movers website">
+                <figcaption><div class="name">Campus Movers</div><div class="ctx">Found, hired, and integrated an offshore dev, a first for TDC. Custom advanced build.</div></figcaption></figure>
+              <figure class="car-item"><img src="assets/pwd-home-slider-1.png" alt="PWD Home website">
+                <figcaption><div class="name">PWD Home</div><div class="ctx">Build plus ongoing support. High-quality delivery.</div></figcaption></figure>
+              <figure class="car-item"><img src="assets/hanks-slider-1.png" alt="Hank's Grille website">
+                <figcaption><div class="name">Hank's Grille</div><div class="ctx">Redesign. Clean, on-brand execution.</div></figcaption></figure>
+              <figure class="car-item"><img src="assets/tdc-slider-1.png" alt="TDC Marketing website">
+                <figcaption><div class="name">TDC Marketing</div><div class="ctx">Our own agency site. High visibility, high stakes.</div></figcaption></figure>
+            </div>
           </div>
+          <button class="car-arrow prev" id="carPrev" aria-label="Previous project">&#8249;</button>
+          <button class="car-arrow next" id="carNext" aria-label="Next project">&#8250;</button>
         </div>
-        <button class="car-arrow prev" id="carPrev" aria-label="Previous project">&#8249;</button>
-        <button class="car-arrow next" id="carNext" aria-label="Next project">&#8250;</button>
         <div class="car-dots" id="carDots"></div>
       </div>
-      <p class="supporting" style="margin-top:18px">Also completed or assisted: <strong>Weiler Orthodontics</strong> (server fix plus WordPress to Squarespace migration), <strong>VA Golf Course Reviews</strong> (100% independent, brought in, managed, and delivered on my own), HDR (dev side), Montpelier Hunt Races, Red Wing Roots, LW&amp;G.</p>
+    </div>
+  </section>
+
+  <!-- 5b · ONE-OFF WEB PROJECTS -->
+  <section class="slide" id="s5b">
+    <div class="decor">
+      <span class="dot" style="width:74px;height:74px;background:#5f66d7;top:14%;right:8%"></span>
+      <span class="pill l" style="width:420px;background:#00a56c;bottom:14%"></span>
+    </div>
+    <div class="inner stack">
+      <span class="eyebrow"><span class="tick"></span>One-off web projects</span>
+      <h2>Independent builds that bring in new business.</h2>
+      <p class="lead">Some of my favorite wins have been standalone web projects I took on start to finish, on my own. They make the company money and open the door to brand new client relationships, and I want to lean into more of them.</p>
+      <div class="ocard-grid">
+        <div class="ocard"><div class="on">VA Golf Course Reviews</div><div class="od">Brought in, managed, and delivered 100% on my own.</div></div>
+        <div class="ocard"><div class="on">Weiler Orthodontics</div><div class="od">Server fix plus a full WordPress to Squarespace migration.</div></div>
+        <div class="ocard"><div class="on">Harrisonburg Economic Development</div><div class="od">A major new client I'm building independently right now.</div></div>
+        <div class="ocard"><div class="on">And more</div><div class="od">HDR, Montpelier Hunt Races, Red Wing Roots, and LW&amp;G.</div></div>
+      </div>
+      <p class="supporting">This is where I can create real new revenue for TDC, and it's exactly the kind of work I want more of.</p>
     </div>
   </section>
 
@@ -579,7 +503,7 @@
     </div>
   </section>
 
-  <!-- 7 · WEB STRATEGY · PORTFOLIO PLUGIN (VIDEO) -->
+  <!-- 7 · WEB STRATEGY · PORTFOLIO PLUGIN -->
   <section class="slide" id="s7">
     <div class="decor">
       <span class="pill l" style="width:460px;background:#c46fe2;top:18%"></span>
@@ -594,11 +518,10 @@
           <p>The Portfolio Summary Block Configurator, TDC's first ever custom Squarespace plugin. A visual tool that lets teammates configure portfolio layouts (Hero Carousel, Hero Columns, List, Grid, Masonry) and generates the embed code automatically, with no manual coding required.</p>
           <p style="margin-top:14px">I built it to push my own development skills and to scale our capability as a team without scaling headcount.</p>
         </div>
-        <div class="shot-window video" id="pdShot" role="button" tabindex="0" aria-label="Play the plugin demo video">
-          <img src="assets/tdc-plugin-poster.png" alt="TDC portfolio plugin demo">
-          <span class="play-btn">&#9658;</span>
-          <div class="peek-hint">Click to play the demo</div>
-        </div>
+        <a class="shot-window linkout" href="https://www.tdcmarketing.com/plugin-visual-code-block-editor" target="_blank" rel="noopener" aria-label="Open the plugin page in a new tab">
+          <img src="assets/portfolio-plugin.png" alt="TDC Portfolio Summary Block Configurator plugin">
+          <div class="peek-hint">View the plugin &#8599;</div>
+        </a>
       </div>
     </div>
   </section>
@@ -611,7 +534,7 @@
     </div>
     <div class="inner stack">
       <span class="eyebrow"><span class="tick"></span>Web strategy contributions &middot; 3 of 3</span>
-      <div class="feat-split">
+      <div class="feat-split media-lg">
         <div class="copy">
           <span class="tag">A process redesign</span>
           <h2>The Web Build Lifecycle</h2>
@@ -622,7 +545,7 @@
           <img src="assets/web-build-lifecycle.png" alt="Proposed web build structure for 2026">
         </div>
       </div>
-      <p class="supporting">These three initiatives, the Compendium, the plugin, and this lifecycle, are the core of my case. I'm not just billing hours, I'm building the systems the whole company runs on.</p>
+      <p class="supporting" style="margin-top:clamp(28px,5vh,60px)">These three initiatives, the Compendium, the plugin, and this lifecycle, are the core of my case. I'm not just billing hours, I'm building the systems the whole company can rely on to grow.</p>
     </div>
   </section>
 
@@ -638,17 +561,25 @@
       <p class="lead">I directly supervise Regan and Sara. I check in daily on workload and how they're really doing, with formal one-on-ones every two weeks.</p>
       <div class="grid-2">
         <div class="lcard">
-          <div class="lrole">Marketing Specialist</div>
-          <div class="lname">Regan</div>
-          <p>Web isn't even in her title, but she's all in. I've trained her through complex builds for her color team, including dynamic summary blocks for PWD Home and a custom vertical timeline for the Waynesboro Redevelopment and Housing Authority.</p>
+          <!-- TODO: replace with <img class="headshot" src="assets/regan.jpg" alt="Regan"> -->
+          <div class="headshot">Photo</div>
+          <div>
+            <div class="lrole">Marketing Specialist</div>
+            <div class="lname">Regan</div>
+            <p>Web isn't even in her title, but she's all in. I've trained her through complex builds for her color team, including dynamic summary blocks for PWD Home and a custom vertical timeline for the Waynesboro Redevelopment and Housing Authority.</p>
+          </div>
         </div>
         <div class="lcard">
-          <div class="lrole">Marketing Specialist</div>
-          <div class="lname">Sara</div>
-          <p>I'm bringing her into the North River website build to understudy how I plan a site from the ground up, and to collaborate with me directly on the design.</p>
+          <!-- TODO: replace with <img class="headshot" src="assets/sara.jpg" alt="Sara"> -->
+          <div class="headshot">Photo</div>
+          <div>
+            <div class="lrole">Marketing Design Specialist</div>
+            <div class="lname">Sara</div>
+            <p>I'm bringing her into the North River website build to understudy how I plan a site from the ground up, and to collaborate with me directly on the design.</p>
+          </div>
         </div>
       </div>
-      <p class="supporting">Beyond the two of them, I help train Cat and other specialists whenever a web opportunity comes up. Mike and Megan have me leading web training across the company, and it's the part of this role I most want to grow. Teaching re-energizes me, and watching the team get excited about web makes it worth it.</p>
+      <p class="supporting">Beyond the two of them, I help train Kat and other specialists whenever a web opportunity comes up. Mike and Megan have me leading web training across the company, and it's the part of this role I most want to grow. Teaching re-energizes me, and watching the team get excited about web makes it worth it.</p>
     </div>
   </section>
 
@@ -725,17 +656,6 @@
 
   <!-- 13 · CONCLUSION -->
   <section class="slide" id="s13" style="text-align:center">
-    <div class="decor keep">
-      <span class="dot" style="width:66px;height:66px;background:#f65d61;top:10%;left:11%"></span>
-      <span class="dot" style="width:28px;height:28px;background:#ff9800;top:8%;left:44%"></span>
-      <span class="dot" style="width:44px;height:44px;background:#eed229;top:15%;right:13%"></span>
-      <span class="dot" style="width:22px;height:22px;background:#c46fe2;top:26%;right:32%"></span>
-      <span class="dot" style="width:40px;height:40px;background:#ffffff;top:45%;right:7%"></span>
-      <span class="dot" style="width:26px;height:26px;background:#5f66d7;top:43%;left:7%"></span>
-      <span class="dot" style="width:56px;height:56px;background:#45b6b7;bottom:11%;left:14%"></span>
-      <span class="dot" style="width:28px;height:28px;background:#bddd75;bottom:18%;left:46%"></span>
-      <span class="dot" style="width:62px;height:62px;background:#00a56c;bottom:10%;right:16%"></span>
-    </div>
     <div class="inner stack" style="max-width:860px;margin:0 auto">
       <span class="eyebrow" style="margin:0 auto"><span class="tick"></span>Thank you</span>
       <h1>Thank you.</h1>
@@ -756,7 +676,6 @@
   <div class="frame">
     <button class="lb-close" id="lbClose" aria-label="Close preview">&#10005;</button>
     <div class="scroller" id="lbScroller"><img id="lbImg" src="" alt=""></div>
-    <video id="lbVideo" playsinline controls preload="auto"></video>
   </div>
   <div class="lb-hint">Scroll to explore &middot; Esc to close</div>
 </div>
@@ -810,7 +729,7 @@
       }
       return H.map(x => ('00000000' + (x >>> 0).toString(16)).slice(-8)).join('');
     }
-    function unlock() { gate.classList.add('hide'); document.body.classList.remove('locked'); setTimeout(() => gate.remove(), 600); }
+    function unlock() { gate.classList.add('hide'); document.body.classList.remove('locked'); setTimeout(() => gate.remove(), 600); fitCover(); }
     if (sessionStorage.getItem(KEY) === '1') { unlock(); return; }
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -818,6 +737,22 @@
       else { err.classList.add('show'); gate.classList.add('shake'); setTimeout(() => gate.classList.remove('shake'), 450); pass.select(); }
     });
   })();
+
+  /* ---------- Cover: fit each line to the same width ---------- */
+  function fitCover() {
+    const box = document.querySelector('.cover-fit');
+    if (!box) return;
+    const targetW = box.clientWidth;
+    if (!targetW) return;
+    box.querySelectorAll('.cf').forEach(el => {
+      el.style.fontSize = '100px';
+      const w = el.offsetWidth; // inline-block shrinks to text width
+      if (w > 0) el.style.fontSize = (100 * targetW / w).toFixed(2) + 'px';
+    });
+  }
+  window.addEventListener('load', fitCover);
+  window.addEventListener('resize', fitCover);
+  fitCover();
 
   /* ---------- Deck navigation ---------- */
   const slides = Array.from(document.querySelectorAll('.slide'));
@@ -898,7 +833,6 @@
     carPrevBtn.addEventListener('click', () => carGo(carIndex - 1));
     carNextBtn.addEventListener('click', () => carGo(carIndex + 1));
     carUpdate();
-    // swipe on touch
     let sx = null;
     const vp = carTrack.parentElement;
     vp.addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; }, { passive: true });
@@ -917,23 +851,17 @@
     const onProjects = slides[current()] === projSlide;
     if (['ArrowDown','PageDown',' '].includes(e.key)) { e.preventDefault(); goTo(current() + 1); }
     else if (['ArrowUp','PageUp'].includes(e.key)) { e.preventDefault(); goTo(current() - 1); }
-    else if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      if (onProjects && carIndex < carItems - 1) carGo(carIndex + 1); else goTo(current() + 1);
-    } else if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      if (onProjects && carIndex > 0) carGo(carIndex - 1); else goTo(current() - 1);
-    } else if (e.key === 'Home') { goTo(0); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); if (onProjects && carIndex < carItems - 1) carGo(carIndex + 1); else goTo(current() + 1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); if (onProjects && carIndex > 0) carGo(carIndex - 1); else goTo(current() - 1); }
+    else if (e.key === 'Home') { goTo(0); }
     else if (e.key === 'End') { goTo(total - 1); }
   });
 
-  /* ---------- Lightbox (image scroll + video) ---------- */
+  /* ---------- Lightbox (image scroll preview) ---------- */
   const lbScroller = document.getElementById('lbScroller');
   const lbImg = document.getElementById('lbImg');
-  const lbVideo = document.getElementById('lbVideo');
   const lbClose = document.getElementById('lbClose');
   let lbRAF = null, lbUserTook = false;
-
   function startAutoScroll() {
     cancelAnimationFrame(lbRAF);
     const run = () => {
@@ -955,24 +883,15 @@
   }
   function openImage(src, alt) {
     lbUserTook = false;
-    lightbox.classList.remove('mode-video');
-    lightbox.classList.add('mode-image', 'open');
+    lightbox.classList.add('open');
     lightbox.setAttribute('aria-hidden', 'false');
     lbImg.src = src; lbImg.alt = alt || ''; lbScroller.scrollTop = 0;
     if (lbImg.complete) startAutoScroll(); else lbImg.onload = startAutoScroll;
-  }
-  function openVideo(src) {
-    lightbox.classList.remove('mode-image');
-    lightbox.classList.add('mode-video', 'open');
-    lightbox.setAttribute('aria-hidden', 'false');
-    lbVideo.src = src; lbVideo.currentTime = 0;
-    const p = lbVideo.play(); if (p && p.catch) p.catch(() => {});
   }
   function closeLightbox() {
     lightbox.classList.remove('open');
     lightbox.setAttribute('aria-hidden', 'true');
     cancelAnimationFrame(lbRAF); lbUserTook = true;
-    try { lbVideo.pause(); } catch (e) {}
   }
   ['wheel','touchstart','pointerdown','keydown'].forEach(evt =>
     lbScroller.addEventListener(evt, () => { lbUserTook = true; cancelAnimationFrame(lbRAF); }, { passive: true })
@@ -980,13 +899,12 @@
   lbClose.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
 
-  function bindShot(el, fn) {
-    if (!el) return;
-    el.addEventListener('click', fn);
-    el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fn(); } });
+  const ccShot = document.getElementById('ccShot');
+  if (ccShot) {
+    const open = () => openImage('assets/code-compendium.png', 'The Code Compendium');
+    ccShot.addEventListener('click', open);
+    ccShot.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
   }
-  bindShot(document.getElementById('ccShot'), () => openImage('assets/code-compendium.png', 'The Code Compendium'));
-  bindShot(document.getElementById('pdShot'), () => openVideo('assets/tdc-plugin-demo.mp4'));
 </script>
 </body>
 </html>
