@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noah Mills — Web Strategist · 2026 Pitch</title>
+<title>Noah Mills · Web Strategist · 2026 Pitch</title>
 <style>
   :root {
     --ink: #0e132a;
@@ -19,14 +19,11 @@
     --green: #00a56c;
     --hairline: rgba(14, 19, 42, 0.12);
     --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    /* Faint dashed grid — between dotted and dashed, seamless tile (56 / 8 = 7) */
     --grid-bg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cg fill='none' stroke='%230e132a' stroke-opacity='0.07' stroke-width='1.3' stroke-dasharray='3 5'%3E%3Cpath d='M0 0H56'/%3E%3Cpath d='M0 0V56'/%3E%3C/g%3E%3C/svg%3E");
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
-
   body {
     font-family: var(--font);
     color: var(--ink);
@@ -37,15 +34,14 @@
 
   /* ---------- Scroll container ---------- */
   .deck {
-    height: 100vh;
+    height: 100vh; height: 100dvh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
   }
-
   .slide {
     position: relative;
-    min-height: 100vh;
+    min-height: 100vh; min-height: 100dvh;
     scroll-snap-align: start;
     display: flex;
     align-items: center;
@@ -56,7 +52,6 @@
     background-size: 56px 56px;
     border-bottom: 1px solid rgba(14, 19, 42, 0.04);
   }
-
   .inner {
     position: relative;
     z-index: 5;
@@ -66,61 +61,38 @@
   }
 
   /* ---------- Typography ---------- */
-  h1, h2, h3, .eyebrow, .stat-num {
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-
+  h1, h2, h3, .eyebrow, .stat-num { font-weight: 700; letter-spacing: -0.02em; }
   h1 { font-size: clamp(2.4rem, 5.6vw, 4.6rem); line-height: 1.06; color: var(--ink); }
-  h2 { font-size: clamp(1.9rem, 4vw, 3.2rem); line-height: 1.12; color: var(--ink); max-width: 20ch; }
-  h3 { font-size: clamp(1.1rem, 1.6vw, 1.5rem); line-height: 1.25; color: var(--ink); }
-
-  p, li { font-weight: 400; font-size: clamp(1rem, 1.15vw, 1.18rem); color: var(--slate); }
-
-  .lead { font-size: clamp(1.15rem, 1.5vw, 1.45rem); color: var(--slate); max-width: 62ch; }
+  h2 { font-size: clamp(1.8rem, 3.4vw, 2.9rem); line-height: 1.14; color: var(--ink); }
+  h3 { font-size: clamp(1.1rem, 1.6vw, 1.45rem); line-height: 1.25; color: var(--ink); }
+  p, li { font-weight: 400; font-size: clamp(1rem, 1.15vw, 1.16rem); color: var(--slate); }
+  .lead { font-size: clamp(1.12rem, 1.45vw, 1.4rem); color: var(--slate); max-width: 64ch; }
 
   .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 11px;
-    font-size: 0.82rem;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    color: var(--teal);
-    margin-bottom: 4px;
+    display: inline-flex; align-items: center; gap: 11px;
+    font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.16em;
+    color: var(--teal); margin-bottom: 4px;
   }
   .eyebrow .tick {
     width: 24px; height: 24px; border-radius: 50%;
-    border: 1px solid var(--ink);
-    background: var(--teal);
-    flex: none;
+    border: 1px solid var(--ink); background: var(--teal); flex: none;
   }
-
   .accent { color: var(--teal); font-style: italic; font-weight: 700; }
   strong { color: var(--ink); font-weight: 700; }
 
-  /* ---------- Brand logo (real asset) ---------- */
+  /* ---------- Brand logo ---------- */
   .logo { display: inline-flex; align-items: center; }
-  .logo img { height: 38px; width: auto; display: block; }
+  .logo img { height: 48px; width: auto; display: block; }
 
   /* ---------- Decorative layer ---------- */
   .decor { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
-  .dot {
-    position: absolute;
-    border-radius: 50%;
-    border: 1px solid var(--ink);
-  }
-  .pill {
-    position: absolute;
-    height: 64px;
-    border-radius: 999px;
-    border: 1px solid var(--ink);
-  }
+  .dot { position: absolute; border-radius: 50%; border: 1px solid var(--ink); }
+  .pill { position: absolute; height: 64px; border-radius: 999px; border: 1px solid var(--ink); }
   .pill.r { right: -240px; }
   .pill.l { left: -240px; }
 
   /* ---------- Layout helpers ---------- */
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 64px); align-items: start; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 3vw, 40px); align-items: stretch; }
   .stack > * + * { margin-top: 24px; }
   .tag {
     display: inline-block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em;
@@ -129,36 +101,21 @@
 
   /* ---------- Clean bullet lists (all teal) ---------- */
   ul.clean { list-style: none; }
-  ul.clean li {
-    position: relative;
-    padding-left: 30px;
-    margin-bottom: 16px;
-    line-height: 1.5;
-  }
+  ul.clean li { position: relative; padding-left: 30px; margin-bottom: 16px; line-height: 1.5; }
   ul.clean li:last-child { margin-bottom: 0; }
   ul.clean li::before {
-    content: "";
-    position: absolute; left: 0; top: 8px;
-    width: 13px; height: 13px; border-radius: 50%;
-    background: var(--teal);
-    border: 1px solid var(--ink);
+    content: ""; position: absolute; left: 0; top: 8px;
+    width: 13px; height: 13px; border-radius: 50%; background: var(--teal); border: 1px solid var(--ink);
   }
 
   /* ---------- Stat cards ---------- */
   .stat-row { display: flex; flex-wrap: wrap; gap: 18px; }
-  .stat {
-    background: var(--white);
-    border: 1px solid var(--hairline);
-    border-radius: 18px;
-    padding: 22px 26px;
-    min-width: 190px;
-  }
+  .stat { background: var(--white); border: 1px solid var(--hairline); border-radius: 18px; padding: 22px 26px; min-width: 200px; }
   .stat-num { font-size: clamp(2rem, 3.4vw, 2.9rem); color: var(--ink); line-height: 1; }
   .stat-label { font-size: 0.92rem; color: var(--slate); margin-top: 8px; }
 
   /* ---------- Revenue table ---------- */
-  .rev-table { width: 100%; border-collapse: collapse; background: var(--white);
-    border: 1px solid var(--hairline); border-radius: 16px; overflow: hidden; }
+  .rev-table { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; overflow: hidden; }
   .rev-table th, .rev-table td { padding: 14px 18px; text-align: left; font-size: 1rem; }
   .rev-table thead th { background: rgba(69,182,183,0.12); color: var(--ink); font-weight: 700; font-size: 0.84rem; text-transform: uppercase; letter-spacing: 0.08em; }
   .rev-table tbody tr { border-top: 1px solid rgba(14,19,42,0.07); }
@@ -167,194 +124,161 @@
   .rev-table tr.total td.num { color: var(--ink); }
 
   .note {
-    padding: 16px 20px;
-    border-left: 3px solid var(--teal);
-    background: rgba(69,182,183,0.07);
-    border-radius: 0 12px 12px 0;
-    font-size: 0.98rem; color: var(--slate); max-width: 70ch;
+    padding: 16px 20px; border-left: 3px solid var(--teal);
+    background: rgba(69,182,183,0.07); border-radius: 0 12px 12px 0;
+    font-size: 0.98rem; color: var(--slate); max-width: 74ch;
   }
 
-  /* ---------- Project gallery (frameless mockups) ---------- */
-  .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(22px, 3vw, 40px) clamp(22px, 3vw, 36px); }
-  .proj { background: transparent; border: none; }
-  .proj img {
-    width: 100%; display: block; border-radius: 12px;
-    box-shadow: 0 16px 38px rgba(14,19,42,0.14);
-    transition: transform 0.35s cubic-bezier(.2,.7,.2,1), box-shadow 0.35s;
+  /* ---------- Project carousel ---------- */
+  .carousel { position: relative; }
+  .car-viewport { overflow: hidden; }
+  .car-track { display: flex; transition: transform 0.5s cubic-bezier(.2,.7,.2,1); }
+  .car-item { flex: 0 0 100%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 4%; }
+  .car-item img {
+    width: auto; max-width: 100%; max-height: clamp(280px, 50vh, 540px);
+    display: block; object-fit: contain;
+    filter: drop-shadow(0 18px 30px rgba(14,19,42,0.16));
   }
-  .proj:hover img { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(14,19,42,0.20); }
-  .proj .name { font-weight: 700; color: var(--ink); font-size: 1.02rem; margin-top: 14px; }
-  .proj .ctx { font-size: 0.86rem; color: var(--slate); margin-top: 4px; line-height: 1.4; }
+  .car-item .name { font-weight: 700; color: var(--ink); font-size: clamp(1.2rem, 2vw, 1.6rem); margin-top: 22px; }
+  .car-item .ctx { font-size: 1rem; color: var(--slate); margin-top: 8px; max-width: 60ch; line-height: 1.5; }
+  .car-arrow {
+    position: absolute; top: 42%; transform: translateY(-50%); z-index: 6;
+    width: 50px; height: 50px; border-radius: 50%; border: 1px solid var(--ink);
+    background: var(--white); color: var(--ink); font-size: 1.4rem; line-height: 1; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(14,19,42,0.10);
+    transition: background 0.2s, color 0.2s, opacity 0.2s, transform 0.15s;
+  }
+  .car-arrow.prev { left: -6px; }
+  .car-arrow.next { right: -6px; }
+  .car-arrow:active { transform: translateY(-50%) scale(0.93); }
+  .car-arrow:disabled { opacity: 0.3; cursor: default; }
+  .car-dots { display: flex; gap: 9px; justify-content: center; margin-top: 24px; }
+  .car-dots button {
+    width: 9px; height: 9px; border-radius: 50%; border: 0.75px solid var(--ink);
+    background: var(--white); cursor: pointer; padding: 0; transition: all 0.25s;
+  }
+  .car-dots button.active { background: var(--teal); transform: scale(1.35); }
 
-  /* ---------- Feature (strategy) split ---------- */
+  /* ---------- Feature split (strategy) ---------- */
   .feat-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
-  .feat-split .copy p { font-size: clamp(1rem, 1.25vw, 1.2rem); line-height: 1.55; }
+  .feat-split .copy p { font-size: clamp(1rem, 1.2vw, 1.16rem); line-height: 1.55; }
 
-  /* Screenshot window — clickable scroll preview */
+  /* Screenshot / media window */
   .shot-window {
-    position: relative; cursor: zoom-in;
-    border-radius: 14px; overflow: hidden;
-    border: 1px solid var(--hairline);
-    box-shadow: 0 16px 40px rgba(14,19,42,0.16);
-    height: clamp(300px, 56vh, 600px);
-    background: var(--ink);
+    position: relative; cursor: zoom-in; border-radius: 14px; overflow: hidden;
+    border: 1px solid var(--hairline); box-shadow: 0 16px 40px rgba(14,19,42,0.16);
+    height: clamp(300px, 56vh, 600px); background: var(--ink);
   }
   .shot-window img { width: 100%; display: block; object-position: top center; }
-  .shot-window::after {
+  .shot-window.scroll::after {
     content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 130px;
     background: linear-gradient(transparent, rgba(14,19,42,0.88)); pointer-events: none;
   }
   .shot-window .peek-hint {
-    position: absolute; bottom: 16px; left: 0; right: 0; z-index: 2;
-    text-align: center; color: #fff; font-weight: 600; font-size: 0.9rem;
-    letter-spacing: 0.02em; pointer-events: none;
+    position: absolute; bottom: 16px; left: 0; right: 0; z-index: 2; text-align: center;
+    color: #fff; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.02em; pointer-events: none;
   }
-  .shot-window:hover { box-shadow: 0 22px 52px rgba(14,19,42,0.24); }
-
-  /* Placeholder window (image to be added later) */
+  .shot-window .play-btn {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 2;
+    width: 74px; height: 74px; border-radius: 50%; background: rgba(255,255,255,0.94); color: var(--ink);
+    display: flex; align-items: center; justify-content: center; font-size: 1.6rem; padding-left: 6px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3); pointer-events: none; transition: transform 0.2s;
+  }
+  /* Static window (no interaction) */
+  .shot-window.static { cursor: default; height: auto; background: var(--white); }
+  .shot-window.static img { height: auto; }
+  /* Placeholder window */
   .shot-window.placeholder {
-    cursor: default; background: rgba(69,182,183,0.05);
-    border: 1.5px dashed var(--hairline);
-    display: flex; align-items: center; justify-content: center; text-align: center;
+    cursor: default; background: rgba(69,182,183,0.05); border: 1.5px dashed var(--hairline);
+    display: flex; align-items: center; justify-content: center; text-align: center; height: clamp(260px, 42vh, 420px);
   }
-  .shot-window.placeholder::after { display: none; }
-  .shot-window.placeholder .ph {
-    color: var(--slate); font-weight: 600; font-size: 1rem; padding: 24px;
-  }
+  .shot-window.placeholder .ph { color: var(--slate); font-weight: 600; font-size: 1rem; padding: 24px; }
   .shot-window.placeholder .ph small { display: block; font-weight: 400; font-size: 0.85rem; margin-top: 6px; opacity: 0.8; }
 
   /* ---------- Strengths ---------- */
   .str-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .str {
-    display: grid; grid-template-columns: 50px 1fr; gap: 16px; align-items: center;
-    background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; padding: 14px 18px;
-  }
-  .str .rank {
-    width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--ink);
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 1.05rem; color: var(--ink); flex: none;
-  }
+  .str { display: grid; grid-template-columns: 50px 1fr; gap: 16px; align-items: center;
+    background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; padding: 14px 18px; }
+  .str .rank { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--ink);
+    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.05rem; color: var(--ink); flex: none; }
   .str .meta .name { font-weight: 700; color: var(--ink); font-size: 1.08rem; }
   .str .meta .domain { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); }
   .str .meta .desc { font-size: 0.9rem; color: var(--slate); margin-top: 2px; line-height: 1.4; }
-
-  .supporting { font-size: 1rem; color: var(--slate); max-width: 72ch; }
+  .supporting { font-size: 1rem; color: var(--slate); max-width: 74ch; }
   .supporting strong { color: var(--ink); }
 
-  .grow-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 30px; }
+  /* ---------- Growth themes ---------- */
+  .grow-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 30px; }
   .grow { padding-left: 26px; position: relative; }
   .grow::before { content: ""; position: absolute; left: 0; top: 7px; width: 13px; height: 13px;
     border-radius: 50%; border: 1px solid var(--ink); background: var(--teal); }
-  .grow .g-name { font-weight: 700; color: var(--ink); }
-  .grow .g-desc { font-size: 0.95rem; color: var(--slate); }
+  .grow .g-name { font-weight: 700; color: var(--ink); font-size: 1.08rem; }
+  .grow .g-desc { font-size: 0.96rem; color: var(--slate); line-height: 1.5; }
 
   /* ---------- Trust / commitments ---------- */
-  .trust-line { font-size: clamp(1.1rem, 1.4vw, 1.32rem); color: var(--slate); max-width: 70ch; }
   .commit { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
-  .commit .c {
-    position: relative; padding: 16px 18px 16px 40px;
-    background: var(--white); border: 1px solid var(--hairline); border-radius: 12px;
-    font-size: 1rem; color: var(--slate); line-height: 1.45;
-  }
-  .commit .c::before { content:""; position:absolute; left:16px; top:20px; width:13px; height:13px; border-radius:50%;
-    background: var(--teal); border: 1px solid var(--ink); }
+  .commit .c { position: relative; padding: 16px 18px 16px 40px; background: var(--white);
+    border: 1px solid var(--hairline); border-radius: 12px; font-size: 1rem; color: var(--slate); line-height: 1.45; }
+  .commit .c::before { content:""; position:absolute; left:16px; top:20px; width:13px; height:13px;
+    border-radius:50%; background: var(--teal); border: 1px solid var(--ink); }
   .commit .c strong { color: var(--ink); }
 
   /* ---------- Toolkit callout ---------- */
-  .toolkit {
-    display: flex; gap: 18px; align-items: flex-start;
-    background: var(--white); border: 1px solid var(--hairline); border-left: 3px solid var(--teal);
-    border-radius: 14px; padding: 20px 24px; max-width: 80ch;
-  }
-  .toolkit .tk-dot { width: 32px; height: 32px; border-radius: 50%; background: var(--teal); border: 1px solid var(--ink); flex: none; margin-top: 3px; }
+  .toolkit { display: flex; gap: 18px; align-items: flex-start; background: var(--white);
+    border: 1px solid var(--hairline); border-left: 3px solid var(--teal); border-radius: 14px; padding: 20px 24px; max-width: 84ch; }
+  .toolkit .tk-dot { width: 30px; height: 30px; border-radius: 50%; background: var(--teal); border: 1px solid var(--ink); flex: none; margin-top: 3px; }
   .toolkit p { font-size: 0.98rem; line-height: 1.55; }
   .toolkit .tk-name { font-weight: 700; color: var(--ink); }
-  .btn-link {
-    display: inline-flex; align-items: center; gap: 7px; margin-top: 12px;
-    font-size: 0.9rem; font-weight: 700; color: var(--white); background: var(--ink);
-    text-decoration: none; padding: 9px 16px; border-radius: 999px; transition: opacity 0.2s;
-  }
-  .btn-link:hover { opacity: 0.88; }
+  .btn-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 12px; font-size: 0.9rem; font-weight: 700;
+    color: var(--white); background: var(--ink); text-decoration: none; padding: 9px 16px; border-radius: 999px; transition: opacity 0.2s; }
+
+  /* ---------- People cards (leadership) ---------- */
+  .lcard { background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; padding: 20px 24px; }
+  .lcard .lname { font-weight: 700; color: var(--ink); font-size: 1.1rem; margin-bottom: 8px; }
+  .lcard .lrole { color: var(--teal); font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  .lcard p { font-size: 0.96rem; line-height: 1.5; }
 
   /* ---------- Asks ---------- */
   .ask-hero { display: flex; flex-wrap: wrap; align-items: baseline; gap: 18px; }
   .ask-hero .from { font-size: clamp(1.8rem,3vw,2.6rem); font-weight: 700; color: var(--slate); text-decoration: line-through; text-decoration-thickness: 2px; }
   .ask-hero .arrow { font-size: clamp(1.6rem,2.6vw,2.2rem); color: var(--teal); }
   .ask-hero .to { font-size: clamp(2.6rem,5vw,4.2rem); font-weight: 700; color: var(--ink); }
-
-  .ask-card {
-    background: var(--white); border: 1px solid var(--hairline); border-radius: 18px;
-    padding: 22px 26px;
-  }
+  .ask-card { background: var(--white); border: 1px solid var(--hairline); border-radius: 18px; padding: 22px 26px; }
   .ask-card h3 { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
   .ask-card h3 .bullet { width: 16px; height: 16px; border-radius: 50%; border: 1px solid var(--ink); flex: none; background: var(--teal); }
   .ask-card p, .ask-card li { font-size: 0.98rem; line-height: 1.5; }
+  .quote-cap { font-size: 0.85rem; color: var(--slate); margin-top: 10px; text-align: center; }
 
   /* ---------- Conclusion recap chips ---------- */
   .recap { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-  .recap .chip {
-    background: var(--white); border: 1px solid var(--hairline); border-radius: 16px;
-    padding: 20px 22px; text-align: center;
-  }
+  .recap .chip { background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; padding: 20px 22px; text-align: center; }
   .recap .chip .big { font-weight: 700; color: var(--ink); font-size: 1.2rem; }
   .recap .chip .sub { font-size: 0.85rem; color: var(--slate); margin-top: 4px; }
 
-  /* ---------- Progress / nav ---------- */
-  .rail {
-    position: fixed; right: 26px; top: 50%; transform: translateY(-50%);
-    z-index: 50; display: flex; flex-direction: column; gap: 12px;
-  }
-  .rail a {
-    width: 11px; height: 11px; border-radius: 50%;
-    border: 1px solid var(--ink); background: var(--white);
-    transition: all 0.25s; cursor: pointer;
-  }
-  .rail a.active { background: var(--teal); transform: scale(1.35); }
-
-  .topbar {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 16px 7vw; pointer-events: none;
-  }
+  /* ---------- Top bar ---------- */
+  .topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    display: flex; justify-content: space-between; align-items: center; padding: 16px 7vw; pointer-events: none; }
   .topbar .logo { pointer-events: auto; }
-  .progress-label {
-    pointer-events: auto;
-    display: inline-flex; align-items: center; gap: 3px;
-    font-weight: 700; font-size: 0.9rem; color: var(--slate);
-    background: var(--white); border: 1px solid var(--hairline);
-    padding: 6px 12px; border-radius: 999px; font-variant-numeric: tabular-nums;
-    user-select: none;
-  }
+  .progress-label { pointer-events: auto; display: inline-flex; align-items: center; gap: 3px;
+    font-weight: 700; font-size: 0.9rem; color: var(--slate); background: var(--white); border: 1px solid var(--hairline);
+    padding: 6px 12px; border-radius: 999px; font-variant-numeric: tabular-nums; user-select: none; }
   .progress-label .pnav { cursor: pointer; padding: 2px 6px; border-radius: 7px; transition: color 0.2s, background 0.2s; }
-  .progress-label .pnav:hover { color: var(--teal); background: rgba(69,182,183,0.12); }
   .progress-label #pPrev { color: var(--ink); }
   .progress-label .sep { opacity: 0.5; }
 
-  /* Bottom-right arrow controls */
-  .navarrows {
-    position: fixed; right: 26px; bottom: 26px; z-index: 60;
-    display: flex; flex-direction: column; gap: 10px;
-  }
-  .navarrows button {
-    width: 46px; height: 46px; border-radius: 50%;
-    border: 1px solid var(--ink); background: var(--white); color: var(--ink);
-    font-size: 1.05rem; line-height: 1; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s, color 0.2s, transform 0.15s, opacity 0.2s;
-    box-shadow: 0 6px 18px rgba(14,19,42,0.10);
-  }
-  .navarrows button:hover { background: var(--teal); color: #fff; }
-  .navarrows button:active { transform: scale(0.94); }
-  .navarrows button:disabled { opacity: 0.3; cursor: default; background: var(--white); color: var(--ink); }
+  /* ---------- Bottom pagination dots (desktop) ---------- */
+  .dotbar { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 50;
+    display: flex; gap: 12px; align-items: center; }
+  .dotbar a { width: 11px; height: 11px; border-radius: 50%; border: 0.75px solid var(--ink);
+    background: var(--white); transition: all 0.25s; cursor: pointer; }
+  .dotbar a.active { background: var(--teal); transform: scale(1.35); }
 
-  .hint {
-    position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
-    z-index: 50; font-size: 0.8rem; color: var(--slate);
-    background: var(--white); border: 1px solid var(--hairline);
-    padding: 7px 16px; border-radius: 999px; opacity: 0.9;
-    animation: fade 0.5s ease 6s forwards;
-  }
-  @keyframes fade { to { opacity: 0; visibility: hidden; } }
+  /* ---------- Mobile arrow controls ---------- */
+  .navarrows { position: fixed; right: 20px; bottom: 20px; z-index: 60; display: none; flex-direction: column; gap: 10px; }
+  .navarrows button { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--ink); background: var(--white); color: var(--ink);
+    font-size: 1.1rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 18px rgba(14,19,42,0.12); transition: opacity 0.2s; }
+  .navarrows button:disabled { opacity: 0.3; }
 
   /* ---------- Reveal animation ---------- */
   .slide .inner > * { opacity: 0; transform: translateY(24px); }
@@ -364,111 +288,89 @@
   .slide.seen .inner > *:nth-child(4) { transition-delay: 0.24s; }
   .slide.seen .inner > *:nth-child(5) { transition-delay: 0.32s; }
   .slide.seen .inner > *:nth-child(6) { transition-delay: 0.40s; }
-  @media (prefers-reduced-motion: reduce) {
-    .slide .inner > * { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .slide .inner > * { opacity: 1; transform: none; } }
+
+  /* ---------- Hover only on real pointers (no sticky mobile hover) ---------- */
+  @media (hover: hover) {
+    .proj:hover img { transform: translateY(-6px); }
+    .car-arrow:hover { background: var(--teal); color: #fff; }
+    .navarrows button:hover { background: var(--teal); color: #fff; }
+    .progress-label .pnav:hover { color: var(--teal); background: rgba(69,182,183,0.12); }
+    .btn-link:hover { opacity: 0.88; }
+    .shot-window:hover { box-shadow: 0 22px 52px rgba(14,19,42,0.24); }
+    .shot-window:hover .play-btn { transform: translate(-50%,-50%) scale(1.06); }
+    .gate button:hover { opacity: 0.9; }
   }
 
-  /* ---------- Lightbox (scroll-through preview) ---------- */
-  .lightbox {
-    position: fixed; inset: 0; z-index: 9998;
-    background: rgba(14,19,42,0.88);
-    display: flex; align-items: center; justify-content: center;
-    padding: 40px 20px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
-  }
+  /* ---------- Lightbox ---------- */
+  .lightbox { position: fixed; inset: 0; z-index: 9998; background: rgba(14,19,42,0.9);
+    display: flex; align-items: center; justify-content: center; padding: 40px 20px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
   .lightbox.open { opacity: 1; pointer-events: auto; }
-  .lightbox .frame {
-    position: relative; width: min(920px, 92vw); height: min(86vh, 940px);
-    background: var(--ink); border-radius: 14px; overflow: hidden;
-    box-shadow: 0 30px 90px rgba(0,0,0,0.55);
-  }
-  .lightbox .scroller { width: 100%; height: 100%; overflow-y: auto; scrollbar-width: thin; }
+  .lightbox .frame { position: relative; border-radius: 14px; overflow: hidden; box-shadow: 0 30px 90px rgba(0,0,0,0.55); background: var(--ink); }
+  .lightbox.mode-image .frame { width: min(920px, 92vw); height: min(86vh, 940px); }
+  .lightbox.mode-video .frame { width: min(1040px, 94vw); height: auto; background: #000; }
+  .lightbox .scroller { width: 100%; height: 100%; overflow-y: auto; scrollbar-width: thin; display: none; }
+  .lightbox.mode-image .scroller { display: block; }
   .lightbox .scroller img { width: 100%; display: block; }
-  .lightbox .lb-close {
-    position: absolute; top: 14px; right: 14px; z-index: 3;
-    width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer;
-    background: rgba(255,255,255,0.92); color: var(--ink); font-size: 1rem; line-height: 1;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .lightbox .lb-hint {
-    position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
-    color: rgba(255,255,255,0.85); font-size: 0.82rem; letter-spacing: 0.04em;
-  }
+  .lightbox video { display: none; width: 100%; max-height: 86vh; background: #000; }
+  .lightbox.mode-video video { display: block; }
+  .lightbox .lb-close { position: absolute; top: 14px; right: 14px; z-index: 3; width: 38px; height: 38px; border-radius: 50%;
+    border: none; cursor: pointer; background: rgba(255,255,255,0.92); color: var(--ink); font-size: 1rem; display: flex; align-items: center; justify-content: center; }
+  .lightbox .lb-hint { position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.85); font-size: 0.82rem; letter-spacing: 0.04em; }
+  .lightbox.mode-video .lb-hint { display: none; }
 
   /* ---------- Responsive ---------- */
-  @media (max-width: 1600px) { .decor { display: none; } }
+  /* Decorative shapes only on big monitors/TV, except cover/conclusion which keep them */
+  @media (max-width: 1600px) { .decor:not(.keep) { display: none; } }
 
   @media (max-width: 1100px) {
     .grid-2, .feat-split, .commit, .grow-grid, .str-list, .recap { grid-template-columns: 1fr; }
-    .proj-grid { grid-template-columns: 1fr 1fr; }
-    h2 { max-width: none; }
   }
-  @media (max-width: 1000px), (max-height: 760px) {
-    .deck { scroll-snap-type: y proximity; }
-  }
+  @media (max-width: 1000px), (max-height: 760px) { .deck { scroll-snap-type: y proximity; } }
+
   @media (max-width: 760px) {
-    .deck { scroll-snap-type: none; }
-    .slide { min-height: auto; scroll-snap-align: none; padding: 104px 6vw 84px; }
-    .proj-grid { grid-template-columns: 1fr; }
-    .rail { display: none; }
-    .navarrows { right: 16px; bottom: 16px; }
-    .navarrows button { width: 42px; height: 42px; }
-    .shot-window { height: clamp(260px, 50vh, 460px); }
+    .dotbar { display: none; }
+    .navarrows { display: flex; }
+    .slide { padding: 92px 6vw 96px; }
+    .deck { scroll-snap-type: y proximity; }
+    .logo img { height: 38px; }
+    h1 { font-size: clamp(2.3rem, 9vw, 3rem); }
+    h2 { font-size: clamp(1.55rem, 6.2vw, 2rem); }
+    .lead { font-size: 1.08rem; }
+    .commit { grid-template-columns: 1fr; }
+    .car-arrow { width: 42px; height: 42px; font-size: 1.2rem; }
+    .car-arrow.prev { left: -4px; } .car-arrow.next { right: -4px; }
+    .car-item { padding: 0 8%; }
+    .car-item img { max-height: 38vh; }
+    .shot-window { height: clamp(220px, 40vh, 380px); }
+    .stat { min-width: 100%; }
+    .rev-table th, .rev-table td { padding: 11px 12px; font-size: 0.9rem; }
+    .decor.keep .dot { transform: scale(0.6); }
   }
   @media (max-width: 600px) {
-    .topbar .progress-label { font-size: 0.82rem; }
     .topbar { padding: 12px 6vw; }
+    .progress-label { font-size: 0.82rem; }
   }
 
   /* ---------- Password gate ---------- */
   body.locked { overflow: hidden; }
-  .gate {
-    position: fixed; inset: 0; z-index: 9999;
-    display: flex; align-items: center; justify-content: center;
-    padding: 24px;
-    background-color: var(--white);
-    background-image: var(--grid-bg);
-    background-size: 56px 56px;
-    transition: opacity 0.5s ease;
-  }
+  .gate { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 24px;
+    background-color: var(--white); background-image: var(--grid-bg); background-size: 56px 56px; transition: opacity 0.5s ease; }
   .gate.hide { opacity: 0; pointer-events: none; }
-  .gate-card {
-    width: 100%; max-width: 430px; text-align: center;
-    background: var(--white);
-    border: 1px solid var(--hairline);
-    border-radius: 20px;
-    padding: 44px 38px;
-    box-shadow: 0 30px 80px rgba(14, 19, 42, 0.10);
-  }
-  .gate-logo { width: 168px; height: auto; display: block; margin: 0 auto 26px; }
+  .gate-card { width: 100%; max-width: 430px; text-align: center; background: var(--white); border: 1px solid var(--hairline);
+    border-radius: 20px; padding: 44px 38px; box-shadow: 0 30px 80px rgba(14, 19, 42, 0.10); }
+  .gate-logo { width: 180px; height: auto; display: block; margin: 0 auto 26px; }
   .gate h2 { font-size: 1.5rem; letter-spacing: -0.02em; margin-bottom: 6px; }
   .gate p { color: var(--slate); font-size: 0.92rem; margin-bottom: 26px; }
   .gate form { display: flex; flex-direction: column; gap: 12px; }
-  .gate input {
-    font-family: var(--font); font-size: 1rem;
-    padding: 14px 16px; border-radius: 12px;
-    border: 1px solid var(--hairline); color: var(--ink);
-    outline: none; transition: border-color 0.2s ease;
-  }
+  .gate input { font-family: var(--font); font-size: 1rem; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--hairline); color: var(--ink); outline: none; transition: border-color 0.2s ease; }
   .gate input:focus { border-color: var(--teal); }
-  .gate button {
-    font-family: var(--font); font-size: 0.95rem; font-weight: 600;
-    padding: 14px 16px; border-radius: 12px; border: none; cursor: pointer;
-    background: var(--ink); color: var(--white);
-    transition: transform 0.15s ease, opacity 0.2s ease;
-  }
-  .gate button:hover { opacity: 0.9; }
+  .gate button { font-family: var(--font); font-size: 0.95rem; font-weight: 600; padding: 14px 16px; border-radius: 12px; border: none; cursor: pointer; background: var(--ink); color: var(--white); transition: transform 0.15s ease, opacity 0.2s ease; }
   .gate button:active { transform: scale(0.98); }
-  .gate .err {
-    color: var(--red); font-size: 0.85rem; min-height: 1.1em;
-    margin: 0; opacity: 0; transition: opacity 0.2s ease;
-  }
+  .gate .err { color: var(--red); font-size: 0.85rem; min-height: 1.1em; margin: 0; opacity: 0; transition: opacity 0.2s ease; }
   .gate .err.show { opacity: 1; }
   .gate.shake .gate-card { animation: shake 0.4s; }
-  @keyframes shake {
-    0%,100% { transform: translateX(0); }
-    20%,60% { transform: translateX(-8px); }
-    40%,80% { transform: translateX(8px); }
-  }
+  @keyframes shake { 0%,100% { transform: translateX(0); } 20%,60% { transform: translateX(-8px); } 40%,80% { transform: translateX(8px); } }
 </style>
 </head>
 <body class="locked">
@@ -482,49 +384,52 @@
     <form id="gateForm" autocomplete="off">
       <input type="password" id="gatePass" placeholder="Password" aria-label="Password" autofocus>
       <button type="submit">Unlock</button>
-      <p class="err" id="gateErr">Incorrect password — try again.</p>
+      <p class="err" id="gateErr">Incorrect password, try again.</p>
     </form>
   </div>
 </div>
 
 <!-- Top bar -->
 <div class="topbar">
-  <a class="logo" id="homeLogo" href="#s0" aria-label="TDC Marketing — go to start">
+  <a class="logo" id="homeLogo" href="#s0" aria-label="TDC Marketing, go to start">
     <img src="assets/tdc-logo.webp" alt="TDC Marketing">
   </a>
-  <div class="progress-label" id="plabel" aria-label="Slide navigation — click the left number to go back, the right number to go forward">
+  <div class="progress-label" id="plabel" aria-label="Slide navigation: left number goes back, right number goes forward">
     <span class="pnav" id="pPrev" title="Previous slide">01</span>
     <span class="sep">/</span>
     <span class="pnav" id="pNext" title="Next slide">14</span>
   </div>
 </div>
 
-<!-- Side rail -->
-<nav class="rail" id="rail"></nav>
+<!-- Bottom pagination dots (desktop) -->
+<nav class="dotbar" id="dotbar" aria-label="Slide dots"></nav>
 
-<!-- Bottom-right arrow controls -->
+<!-- Mobile arrow controls -->
 <div class="navarrows">
   <button id="navPrev" aria-label="Previous slide" title="Previous slide">&#8593;</button>
   <button id="navNext" aria-label="Next slide" title="Next slide">&#8595;</button>
 </div>
 
-<div class="hint">Scroll &middot; &uarr; &darr; arrows &middot; or use the controls</div>
-
 <div class="deck" id="deck">
 
   <!-- 0 · COVER -->
-  <section class="slide" id="s0">
-    <div class="decor">
-      <span class="dot" style="width:88px;height:88px;background:#45b6b7;top:14%;right:9%"></span>
-      <span class="dot" style="width:34px;height:34px;background:#eed229;top:26%;right:18%"></span>
-      <span class="pill r" style="width:520px;background:#bddd75;top:70%"></span>
-      <span class="dot" style="width:54px;height:54px;background:#5f66d7;bottom:18%;left:6%"></span>
+  <section class="slide" id="s0" style="text-align:center">
+    <div class="decor keep">
+      <span class="dot" style="width:70px;height:70px;background:#f65d61;top:9%;left:10%"></span>
+      <span class="dot" style="width:30px;height:30px;background:#eed229;top:7%;left:45%"></span>
+      <span class="dot" style="width:46px;height:46px;background:#ff9800;top:14%;right:12%"></span>
+      <span class="dot" style="width:22px;height:22px;background:#45b6b7;top:24%;right:30%"></span>
+      <span class="dot" style="width:40px;height:40px;background:#ffffff;top:44%;left:6%"></span>
+      <span class="dot" style="width:26px;height:26px;background:#5f66d7;top:46%;right:7%"></span>
+      <span class="dot" style="width:54px;height:54px;background:#c46fe2;bottom:12%;left:13%"></span>
+      <span class="dot" style="width:28px;height:28px;background:#bddd75;bottom:18%;left:45%"></span>
+      <span class="dot" style="width:64px;height:64px;background:#00a56c;bottom:10%;right:15%"></span>
     </div>
-    <div class="inner stack">
-      <span class="eyebrow"><span class="tick"></span>TDC Marketing &middot; 2026 Pitch</span>
+    <div class="inner stack" style="max-width:820px;margin:0 auto">
+      <span class="eyebrow" style="margin:0 auto"><span class="tick"></span>TDC Marketing &middot; 2026 Pitch</span>
       <h1>Noah Mills</h1>
-      <p class="lead" style="color:var(--ink);font-weight:700;font-size:clamp(1.4rem,2.4vw,2rem);max-width:none">Web Strategist</p>
-      <p class="lead">A clear look at the work I've delivered, who I am, and where I'm taking TDC's web strategy next.</p>
+      <p style="color:var(--ink);font-weight:700;font-size:clamp(1.4rem,2.6vw,2.1rem)">Web Strategist</p>
+      <p class="lead" style="margin-left:auto;margin-right:auto">A focused look at what I've built this year, who I am as a strategist, and the case for what comes next.</p>
     </div>
   </section>
 
@@ -537,44 +442,44 @@
     <div class="inner stack">
       <span class="eyebrow"><span class="tick"></span>Starting with honesty</span>
       <h1>Addressing it directly.</h1>
-      <p class="trust-line">I know I have real work to do on how I show up — specifically my <strong>attitude and mood under pressure</strong>, and how I respond to <strong>negative feedback and stressful situations</strong>. I'm not here to explain that away. I own it.</p>
+      <p class="lead">I know I have real work to do on how I show up, specifically my <strong>attitude and mood under pressure</strong>, and how I respond to <strong>negative feedback and stressful situations</strong>. I want to acknowledge and own my mistakes. Here is my plan moving forward to grow, learn, and rebuild trust with the team:</p>
       <div class="commit">
-        <div class="c"><strong>Pause before I react.</strong> Stop, assess, then respond — instead of responding from stress.</div>
-        <div class="c"><strong>Treat feedback as information.</strong> Not a threat. It's how I get better, and I want more of it.</div>
+        <div class="c"><strong>Pause before I react.</strong> Stop, assess, then respond instead of responding out of stress.</div>
+        <div class="c"><strong>Lead by example on hard days.</strong> Everyone has tough days in a high-pressure environment. When I do, I focus on keeping my reactions and attitude from affecting the team, and on improving how I respond so I can help others stay out of that headspace too.</div>
         <div class="c"><strong>Communicate early when I'm stretched.</strong> Flag pressure before it shows up in my tone.</div>
-        <div class="c"><strong>Measure it over time.</strong> Consistency week over week is the only proof that counts.</div>
+        <div class="c"><strong>Rebuild trust over time.</strong> Consistency week over week is the only proof that counts.</div>
       </div>
       <div class="toolkit">
         <span class="tk-dot"></span>
         <div>
-          <p><span class="tk-name">My Journal &amp; Response Toolkit.</span> Nick helped me set up a dedicated space in Notion to journal my thoughts and reactions, work through feedback deliberately, and build better responses to pressure over time. It's how I'm holding myself to the commitments above — and I'm using it moving forward.</p>
+          <p><span class="tk-name">My Journal &amp; Response Toolkit.</span> Nick set up a dedicated space in Notion for me to journal my thoughts and reactions, and build better responses to stress over time. This is how I am going to hold myself accountable to the commitments above.</p>
           <a class="btn-link" href="https://app.notion.com/p/tdcmarketing/Noah-Mills-Journal-Response-Toolkit-376b6a85930780218154f190c2aaec23?source=copy_link" target="_blank" rel="noopener">Open the Toolkit &#8599;</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 2 · STRENGTHS TOP 5 -->
+  <!-- 2 · CLIFTONSTRENGTHS TOP 5 -->
   <section class="slide" id="s2">
     <div class="decor">
       <span class="dot" style="width:60px;height:60px;background:#ff9800;top:12%;right:8%"></span>
       <span class="pill r" style="width:340px;background:#eed229;bottom:10%"></span>
     </div>
     <div class="inner stack">
-      <span class="eyebrow"><span class="tick"></span>CliftonStrengths &middot; completed June 2026</span>
+      <span class="eyebrow"><span class="tick"></span>CliftonStrengths</span>
       <h2>This is how I'm <span class="accent">wired</span>.</h2>
       <div class="str-list">
         <div class="str"><div class="rank">1</div><div class="meta"><span class="domain">Strategic Thinking</span><div class="name">Futuristic</div><div class="desc">I see where things can go before others do, and build toward it.</div></div></div>
-        <div class="str"><div class="rank">2</div><div class="meta"><span class="domain">Relationship Building</span><div class="name">Relator</div><div class="desc">Deep, real trust with clients and teammates — not surface level.</div></div></div>
+        <div class="str"><div class="rank">2</div><div class="meta"><span class="domain">Relationship Building</span><div class="name">Relator</div><div class="desc">Deep, real trust with clients and teammates, not surface level.</div></div></div>
         <div class="str"><div class="rank">3</div><div class="meta"><span class="domain">Influencing</span><div class="name">Competition</div><div class="desc">I set a high bar and don't let up. I want to win for TDC.</div></div></div>
-        <div class="str"><div class="rank">4</div><div class="meta"><span class="domain">Executing</span><div class="name">Restorative</div><div class="desc">Drawn to broken things — messy handoffs, failing servers, broken forms. I fix them.</div></div></div>
+        <div class="str"><div class="rank">4</div><div class="meta"><span class="domain">Executing</span><div class="name">Restorative</div><div class="desc">Drawn to broken things, like messy handoffs, failing servers, and broken forms. I fix them.</div></div></div>
         <div class="str"><div class="rank">5</div><div class="meta"><span class="domain">Strategic Thinking</span><div class="name">Strategic</div><div class="desc">I spot patterns, find the best path, and execute.</div></div></div>
       </div>
-      <p class="supporting">I lead with the <strong>Executing</strong> domain — I make things happen. <strong>6&ndash;10:</strong> Achiever &middot; Activator &middot; Individualization &middot; Discipline &middot; Deliberative.</p>
+      <p class="supporting"><strong>6&ndash;10:</strong> Achiever &middot; Activator &middot; Individualization &middot; Discipline &middot; Deliberative.</p>
     </div>
   </section>
 
-  <!-- 3 · GROWING INTO THE FULL PROFILE -->
+  <!-- 3 · LOWER THEMES / GROWTH -->
   <section class="slide" id="s3">
     <div class="decor">
       <span class="pill l" style="width:440px;background:#c46fe2;top:14%"></span>
@@ -582,16 +487,14 @@
     </div>
     <div class="inner stack">
       <span class="eyebrow"><span class="tick"></span>Growing into the full profile</span>
-      <h2>I know where I'm strong. I know where I'm growing.</h2>
+      <h2>Knowing where I have room to grow.</h2>
+      <p class="lead">My lower CliftonStrengths themes are the ones I am most mindful of. They were flagged as areas to be aware of, and here is how I am approaching each.</p>
       <div class="grow-grid">
-        <div class="grow"><div class="g-name">Developer</div><div class="g-desc">Investing in teammates' growth and helping them build real skill.</div></div>
-        <div class="grow"><div class="g-name">Focus</div><div class="g-desc">Protecting deep-work time and staying outcome-oriented under pressure.</div></div>
-        <div class="grow"><div class="g-name">Communication</div><div class="g-desc">Presenting clearly to leadership, clients, and team — including the hard conversations.</div></div>
-        <div class="grow"><div class="g-name">Maximizer</div><div class="g-desc">Pushing quality and standards higher without burning out the people around me.</div></div>
-        <div class="grow"><div class="g-name">Learner</div><div class="g-desc">The plugin, the reCAPTCHA fix, the offshore coordination — I seek out what I don't know yet.</div></div>
-        <div class="grow"><div class="g-name">Command &amp; Adaptability</div><div class="g-desc">Owning the room calmly, and staying steady when situations shift.</div></div>
+        <div class="grow"><div class="g-name">Harmony</div><div class="g-desc">I am comfortable with healthy debate and won't smooth things over just to keep the peace. I'm working on reading the room and choosing the moments when consensus matters most.</div></div>
+        <div class="grow"><div class="g-name">Includer</div><div class="g-desc">Pulling everyone into the process doesn't always come naturally to me. I am being intentional about bringing teammates in earlier and more often.</div></div>
+        <div class="grow"><div class="g-name">Woo</div><div class="g-desc">Winning over a room of new people is not my instinct. I build trust deeply with a few rather than quickly with many, and I'm aware of when a situation calls for more outreach.</div></div>
+        <div class="grow"><div class="g-name">Connectedness</div><div class="g-desc">I am practical and focused by default. I'm working on stepping back to see how the pieces connect to the bigger picture for the team and our clients.</div></div>
       </div>
-      <p class="supporting">I'm managing my lower themes — Harmony, Includer, Woo, Connectedness — consciously, especially when team dynamics call for them.</p>
     </div>
   </section>
 
@@ -605,9 +508,8 @@
       <span class="eyebrow"><span class="tick"></span>Revenue &amp; value</span>
       <h2>$85,370 in billed web work this year.</h2>
       <div class="stat-row">
-        <div class="stat"><div class="stat-num">$85,370</div><div class="stat-label">Estimated billed, Jun 2025 &ndash; Jun 2026</div></div>
+        <div class="stat"><div class="stat-num">$85,370</div><div class="stat-label">Estimated billed, Jun 2025 to Jun 2026</div></div>
         <div class="stat"><div class="stat-num">606.75</div><div class="stat-label">Hours of web publication &amp; design/dev</div></div>
-        <div class="stat"><div class="stat-num">1.58&times;</div><div class="stat-label">Return on a $54K salary</div></div>
       </div>
       <table class="rev-table">
         <thead><tr><th>Category</th><th>Hours</th><th>Rate</th><th>Total</th></tr></thead>
@@ -617,11 +519,11 @@
           <tr class="total"><td>Total</td><td class="num">606.75</td><td class="num"></td><td class="num">$85,370</td></tr>
         </tbody>
       </table>
-      <div class="note">This is just an estimate, built from my logged hours of web publication and design/development work. It does <strong>not</strong> include the full price of the web builds and larger contracts I led — it's simply a breakdown of those billable hours. The real value I add to TDC sits well above this number.</div>
+      <div class="note">This is just a loose estimate, built from my logged hours of web publication and design/development work. This estimate does not include the full price of the web builds and contracts.</div>
     </div>
   </section>
 
-  <!-- 5 · PROJECTS -->
+  <!-- 5 · PROJECTS CAROUSEL -->
   <section class="slide" id="s5">
     <div class="decor">
       <span class="pill l" style="width:420px;background:#eed229;top:10%"></span>
@@ -629,21 +531,28 @@
     <div class="inner stack">
       <span class="eyebrow"><span class="tick"></span>Project highlights</span>
       <h2>Builds too big for one person. Delivered anyway.</h2>
-      <div class="proj-grid">
-        <div class="proj"><img src="assets/first-airforce-one-slider-1.png" alt="First Air Force One website">
-          <div class="name">First Air Force One</div><div class="ctx">New design-to-code process. Custom reCAPTCHA built from scratch when Bloomerang's failed.</div></div>
-        <div class="proj"><img src="assets/kdb-slider-1.png" alt="Kent Design Build website">
-          <div class="name">Kent Design Build</div><div class="ctx">Solo build scoped for 2&ndash;3 people. Client pivoted 3&times;, changed POC, delayed copy. Delivered.</div></div>
-        <div class="proj"><img src="assets/campus-movers-slider-1.png" alt="Campus Movers website">
-          <div class="name">Campus Movers</div><div class="ctx">Found, hired &amp; integrated an offshore dev — a first for TDC. Custom advanced build.</div></div>
-        <div class="proj"><img src="assets/pwd-home-slider-1.png" alt="PWD Home website">
-          <div class="name">PWD Home</div><div class="ctx">Build plus ongoing support. High-quality delivery.</div></div>
-        <div class="proj"><img src="assets/hanks-slider-1.png" alt="Hank's Grille website">
-          <div class="name">Hank's Grille</div><div class="ctx">Redesign. Clean, on-brand execution.</div></div>
-        <div class="proj"><img src="assets/tdc-slider-1.png" alt="TDC Marketing website">
-          <div class="name">TDC Marketing</div><div class="ctx">Our own agency site. High visibility, high stakes.</div></div>
+      <div class="carousel" id="projCarousel">
+        <div class="car-viewport">
+          <div class="car-track" id="carTrack">
+            <figure class="car-item"><img src="assets/first-airforce-one-slider-1.png" alt="First Air Force One website">
+              <figcaption><div class="name">First Air Force One</div><div class="ctx">New design-to-code process. Custom reCAPTCHA built from scratch when Bloomerang's failed.</div></figcaption></figure>
+            <figure class="car-item"><img src="assets/kdb-slider-1.png" alt="Kent Design Build website">
+              <figcaption><div class="name">Kent Design Build</div><div class="ctx">Solo build scoped for two to three people. Client pivoted three times, changed POC, delayed copy. Delivered.</div></figcaption></figure>
+            <figure class="car-item"><img src="assets/campus-movers-slider-1.png" alt="Campus Movers website">
+              <figcaption><div class="name">Campus Movers</div><div class="ctx">Found, hired, and integrated an offshore dev, a first for TDC. Custom advanced build.</div></figcaption></figure>
+            <figure class="car-item"><img src="assets/pwd-home-slider-1.png" alt="PWD Home website">
+              <figcaption><div class="name">PWD Home</div><div class="ctx">Build plus ongoing support. High-quality delivery.</div></figcaption></figure>
+            <figure class="car-item"><img src="assets/hanks-slider-1.png" alt="Hank's Grille website">
+              <figcaption><div class="name">Hank's Grille</div><div class="ctx">Redesign. Clean, on-brand execution.</div></figcaption></figure>
+            <figure class="car-item"><img src="assets/tdc-slider-1.png" alt="TDC Marketing website">
+              <figcaption><div class="name">TDC Marketing</div><div class="ctx">Our own agency site. High visibility, high stakes.</div></figcaption></figure>
+          </div>
+        </div>
+        <button class="car-arrow prev" id="carPrev" aria-label="Previous project">&#8249;</button>
+        <button class="car-arrow next" id="carNext" aria-label="Next project">&#8250;</button>
+        <div class="car-dots" id="carDots"></div>
       </div>
-      <p class="supporting">Also completed or assisted: <strong>Weiler Orthodontics</strong> (server fix + WordPress &rarr; Squarespace migration), <strong>VA Golf Course Reviews</strong> (100% independent — brought in, managed, and delivered on my own), HDR (dev side), Montpelier Hunt Races, Red Wing Roots, LW&amp;G.</p>
+      <p class="supporting" style="margin-top:18px">Also completed or assisted: <strong>Weiler Orthodontics</strong> (server fix plus WordPress to Squarespace migration), <strong>VA Golf Course Reviews</strong> (100% independent, brought in, managed, and delivered on my own), HDR (dev side), Montpelier Hunt Races, Red Wing Roots, LW&amp;G.</p>
     </div>
   </section>
 
@@ -659,10 +568,10 @@
         <div class="copy">
           <span class="tag">Built on my own initiative</span>
           <h2>The Code Compendium</h2>
-          <p>TDC's central resource for every plugin, CSS snippet, JS solution, and code block — a browsable, ready-to-use code library, brandable templates with built-in AI prompts, a plugin library with credentials and licensing, and a client code archive organized by team.</p>
-          <p style="margin-top:14px">It doubles as a training resource: teammates can learn how code works and how to adapt it for client sites. I'm using it right now to train Regan and Sara.</p>
+          <p>TDC's central resource for every plugin, CSS snippet, JS solution, and code block. It includes a browsable, ready-to-use code library, brandable templates with built-in AI prompts, a plugin library with credentials and licensing, and a client code archive organized by team.</p>
+          <p style="margin-top:14px">It doubles as a training resource. Teammates can learn how code works and how to adapt it for client sites, and I'm using it right now to train Regan and Sara.</p>
         </div>
-        <div class="shot-window" id="ccShot" role="button" tabindex="0" aria-label="Open the Code Compendium preview">
+        <div class="shot-window scroll" id="ccShot" role="button" tabindex="0" aria-label="Open the Code Compendium preview">
           <img src="assets/code-compendium.png" alt="The Code Compendium resource">
           <div class="peek-hint">&#8597; Click to scroll through the full page</div>
         </div>
@@ -670,7 +579,7 @@
     </div>
   </section>
 
-  <!-- 7 · WEB STRATEGY · PORTFOLIO PLUGIN -->
+  <!-- 7 · WEB STRATEGY · PORTFOLIO PLUGIN (VIDEO) -->
   <section class="slide" id="s7">
     <div class="decor">
       <span class="pill l" style="width:460px;background:#c46fe2;top:18%"></span>
@@ -682,18 +591,19 @@
         <div class="copy">
           <span class="tag">Expanded my comfort zone</span>
           <h2>TDC's First Custom Plugin</h2>
-          <p>The Portfolio Summary Block Configurator — TDC's first-ever custom Squarespace plugin. A visual tool that lets teammates configure portfolio layouts (Hero Carousel, Hero Columns, List, Grid, Masonry) and generates the embed code automatically — no manual coding required.</p>
+          <p>The Portfolio Summary Block Configurator, TDC's first ever custom Squarespace plugin. A visual tool that lets teammates configure portfolio layouts (Hero Carousel, Hero Columns, List, Grid, Masonry) and generates the embed code automatically, with no manual coding required.</p>
           <p style="margin-top:14px">I built it to push my own development skills and to scale our capability as a team without scaling headcount.</p>
         </div>
-        <div class="shot-window" id="pdShot" role="button" tabindex="0" aria-label="Open the portfolio plugin preview">
-          <img src="assets/portfolio-plugin.png" alt="TDC Portfolio Summary Block Configurator plugin">
-          <div class="peek-hint">&#8597; Click to view full</div>
+        <div class="shot-window video" id="pdShot" role="button" tabindex="0" aria-label="Play the plugin demo video">
+          <img src="assets/tdc-plugin-poster.png" alt="TDC portfolio plugin demo">
+          <span class="play-btn">&#9658;</span>
+          <div class="peek-hint">Click to play the demo</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 8 · WEB STRATEGY · BUILD LIFECYCLE -->
+  <!-- 8 · WEB STRATEGY · BUILD LIFECYCLE (STATIC IMAGE) -->
   <section class="slide" id="s8">
     <div class="decor">
       <span class="dot" style="width:80px;height:80px;background:#00a56c;top:14%;right:8%"></span>
@@ -705,16 +615,14 @@
         <div class="copy">
           <span class="tag">A process redesign</span>
           <h2>The Web Build Lifecycle</h2>
-          <p>I replaced our old 3-milestone process with a multi-milestone, sprint-based system — adding cross-functional collaboration between Strategy, WDT, and Content, and giving leadership real-time visibility into web workload.</p>
+          <p>I replaced our old 3-milestone process with a multi-milestone, sprint-based system. It adds cross-functional collaboration between Strategy, WDT, and Content, and gives leadership real-time visibility into web workload.</p>
           <p style="margin-top:14px">In 2026 I merged sprint cards with monthly web update cards, so everything tracks in one place. It's one of the most significant contributions I've made to the team.</p>
         </div>
-        <!-- TODO: add lifecycle screenshot at assets/web-build-lifecycle.png and replace this placeholder with:
-             <div class="shot-window"><img src="assets/web-build-lifecycle.png" alt="Web build lifecycle board"></div> -->
-        <div class="shot-window placeholder">
-          <div class="ph">Image coming soon<small>web build lifecycle board</small></div>
+        <div class="shot-window static">
+          <img src="assets/web-build-lifecycle.png" alt="Proposed web build structure for 2026">
         </div>
       </div>
-      <p class="supporting">These three initiatives — the Compendium, the plugin, and this lifecycle — are the core of my case: I'm not just billing hours, I'm building the systems the whole company runs on.</p>
+      <p class="supporting">These three initiatives, the Compendium, the plugin, and this lifecycle, are the core of my case. I'm not just billing hours, I'm building the systems the whole company runs on.</p>
     </div>
   </section>
 
@@ -726,17 +634,21 @@
     </div>
     <div class="inner stack">
       <span class="eyebrow"><span class="tick"></span>Leadership &amp; supervision</span>
-      <h2>I'm developing the people who do the work, too.</h2>
+      <h2>Developing the people who do the work.</h2>
+      <p class="lead">I directly supervise Regan and Sara. I check in daily on workload and how they're really doing, with formal one-on-ones every two weeks.</p>
       <div class="grid-2">
-        <ul class="clean">
-          <li>Directly supervise <strong>Regan and Sara</strong></li>
-          <li>Bi-weekly check-ins and professional-development goals</li>
-        </ul>
-        <ul class="clean">
-          <li>Work-life-balance check-ins, with feedback carried up to leadership</li>
-          <li>De facto web training lead across the company</li>
-        </ul>
+        <div class="lcard">
+          <div class="lrole">Marketing Specialist</div>
+          <div class="lname">Regan</div>
+          <p>Web isn't even in her title, but she's all in. I've trained her through complex builds for her color team, including dynamic summary blocks for PWD Home and a custom vertical timeline for the Waynesboro Redevelopment and Housing Authority.</p>
+        </div>
+        <div class="lcard">
+          <div class="lrole">Marketing Specialist</div>
+          <div class="lname">Sara</div>
+          <p>I'm bringing her into the North River website build to understudy how I plan a site from the ground up, and to collaborate with me directly on the design.</p>
+        </div>
       </div>
+      <p class="supporting">Beyond the two of them, I help train Cat and other specialists whenever a web opportunity comes up. Mike and Megan have me leading web training across the company, and it's the part of this role I most want to grow. Teaching re-energizes me, and watching the team get excited about web makes it worth it.</p>
     </div>
   </section>
 
@@ -751,13 +663,21 @@
       <div class="ask-hero">
         <span class="from">$54,000</span><span class="arrow">&rarr;</span><span class="to">$64,000</span>
       </div>
-      <p class="lead">Grounded in contribution and scope — not tenure.</p>
-      <ul class="clean">
-        <li>$85K+ billed on a $54K salary — and that's billed hours only, not the full value of the builds.</li>
-        <li>I'm the only person at TDC who can take an advanced, custom web build from start to finish <strong>fully independently</strong> — and deliver success. Others work on sites; I'm the one who can carry the hard builds alone. Proven this year on <strong>Campus Movers</strong>, <strong>Kent Design Build</strong>, <strong>VA Golf Course Reviews</strong>, and <strong>Weiler Orthodontics</strong>.</li>
-        <li>Beyond billable work, I built the systems the whole team now runs on — the <strong>Code Compendium</strong>, TDC's <strong>first custom plugin</strong>, and a redesigned <strong>web build lifecycle</strong>.</li>
-      </ul>
-      <div class="note">The handbook baseline is 2.5% per year of experience. This ask reflects a genuine expansion in scope and value — what fair compensation looks like for a role this central, held by one person.</div>
+      <div class="feat-split" style="align-items:start">
+        <ul class="clean">
+          <li>I am the only person at TDC who can take a high-level web project from concept to launch completely on my own, with no one else building any part of it for me.</li>
+          <li>Beyond my own builds, I'm creating the systems that help all of TDC grow, not only the publication team. I train teammates directly and support others I'm not responsible for, all to raise our web performance as a company.</li>
+          <li>I'm leading the web build for <strong>Harrisonburg Economic Development</strong>, a major new client, fully independently, with Mike and Miguel supporting the marketing strategy side to bring them on board.</li>
+        </ul>
+        <div>
+          <!-- TODO: add Mike's quote screenshot at assets/mike-hed-quote.png and replace this placeholder with:
+               <div class="shot-window static"><img src="assets/mike-hed-quote.png" alt="Mike's note after the HED sprint review"></div> -->
+          <div class="shot-window placeholder">
+            <div class="ph">Mike's quote screenshot<small>commending the last Harrisonburg Economic Development sprint review</small></div>
+          </div>
+          <p class="quote-cap">From Mike, after our last Harrisonburg Economic Development sprint review.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -769,18 +689,18 @@
     </div>
     <div class="inner stack">
       <span class="eyebrow"><span class="tick"></span>The ask &middot; structure &amp; role</span>
-      <h2>Space to lead — and a plan to lead bigger.</h2>
+      <h2>The space and structure to lead.</h2>
       <div class="ask-card">
         <h3><span class="bullet"></span>Shared office space</h3>
         <p>Proximity to other strategists makes collaboration easier and supports the leadership and client work I'm doing. A functional ask, not a perk.</p>
       </div>
       <div class="ask-card">
-        <h3><span class="bullet"></span>Transition off low-level work</h3>
-        <p>Train Regan, Sara, and others to own publication, updates, and routine maintenance — so my time goes where it creates the most value.</p>
+        <h3><span class="bullet"></span>Transition off publication work</h3>
+        <p>Train Regan, Sara, and other marketing specialists to own publication updates and routine maintenance, so my time can go where it creates the most value: high-level web builds, bringing in new clients, and helping all teams with their web strategy.</p>
       </div>
       <div class="ask-card">
         <h3><span class="bullet"></span>Support all teams in their web strategy</h3>
-        <p>Not rotating onto every team at will — that would be a structural nightmare. Instead, I want to support teams more than I have: helping plan builds, jumping in on code, and training members so they feel confident in their projects. Specifically, I want to find more time to support <strong>Blue</strong> and <strong>Red</strong> on their web initiatives.</p>
+        <p>I'm not looking to rotate onto every team at will, which would be a structural headache. Instead, I want to support teams more than I have: helping plan builds, jumping in on code, and training members so they feel confident in their projects. Specifically, I want to find more time to support Blue and Red on their web initiatives.</p>
       </div>
     </div>
   </section>
@@ -795,43 +715,48 @@
       <span class="eyebrow"><span class="tick"></span>What I'm committing to</span>
       <h2>Where I'm taking this over the next 12 months.</h2>
       <ul class="clean">
-        <li>Keep building TDC's web strategy — with the goal to <strong>10&times; our web performance</strong>.</li>
-        <li>Lean into one-off web projects that build new client relationships — and can bring new <strong>full-stack clients</strong> into the company.</li>
+        <li>Lean into one-off web projects that build new client relationships and can bring new <strong>full-stack clients</strong> into the company.</li>
         <li>Keep delivering high-quality builds and bringing in new clients independently.</li>
         <li>Fully train the team on the Compendium and publication workflows.</li>
-        <li>Show up steady — rebuilding trust through consistency.</li>
+        <li>Show up steady and rebuild trust through consistency.</li>
       </ul>
     </div>
   </section>
 
   <!-- 13 · CONCLUSION -->
-  <section class="slide" id="s13">
-    <div class="decor">
-      <span class="dot" style="width:84px;height:84px;background:#45b6b7;top:14%;right:9%"></span>
-      <span class="dot" style="width:30px;height:30px;background:#f65d61;top:28%;right:19%"></span>
-      <span class="pill r" style="width:560px;background:#eed229;bottom:16%"></span>
-      <span class="dot" style="width:50px;height:50px;background:#5f66d7;bottom:20%;left:7%"></span>
+  <section class="slide" id="s13" style="text-align:center">
+    <div class="decor keep">
+      <span class="dot" style="width:66px;height:66px;background:#f65d61;top:10%;left:11%"></span>
+      <span class="dot" style="width:28px;height:28px;background:#ff9800;top:8%;left:44%"></span>
+      <span class="dot" style="width:44px;height:44px;background:#eed229;top:15%;right:13%"></span>
+      <span class="dot" style="width:22px;height:22px;background:#c46fe2;top:26%;right:32%"></span>
+      <span class="dot" style="width:40px;height:40px;background:#ffffff;top:45%;right:7%"></span>
+      <span class="dot" style="width:26px;height:26px;background:#5f66d7;top:43%;left:7%"></span>
+      <span class="dot" style="width:56px;height:56px;background:#45b6b7;bottom:11%;left:14%"></span>
+      <span class="dot" style="width:28px;height:28px;background:#bddd75;bottom:18%;left:46%"></span>
+      <span class="dot" style="width:62px;height:62px;background:#00a56c;bottom:10%;right:16%"></span>
     </div>
-    <div class="inner stack">
-      <span class="eyebrow"><span class="tick"></span>Thank you</span>
+    <div class="inner stack" style="max-width:860px;margin:0 auto">
+      <span class="eyebrow" style="margin:0 auto"><span class="tick"></span>Thank you</span>
       <h1>Thank you.</h1>
-      <p class="lead">I appreciate you taking the time — and the chance to keep growing here. Here's what I'm asking for:</p>
+      <p class="lead" style="margin-left:auto;margin-right:auto">I appreciate you taking the time, and the chance to keep growing here. Here is what I'm asking for:</p>
       <div class="recap">
         <div class="chip"><div class="big">$64,000</div><div class="sub">Salary</div></div>
         <div class="chip"><div class="big">Shared office</div><div class="sub">Space to lead &amp; collaborate</div></div>
         <div class="chip"><div class="big">Strategist scope</div><div class="sub">Room to lead at a true level</div></div>
       </div>
-      <p class="lead">Now I'd love to open it up — questions, reflections, and where we go from here.</p>
+      <p class="lead" style="margin-left:auto;margin-right:auto">Now I'd love to open it up: questions, reflections, and where we go from here.</p>
     </div>
   </section>
 
 </div>
 
-<!-- Lightbox (scroll-through preview) -->
+<!-- Lightbox -->
 <div class="lightbox" id="lightbox" aria-hidden="true">
   <div class="frame">
     <button class="lb-close" id="lbClose" aria-label="Close preview">&#10005;</button>
     <div class="scroller" id="lbScroller"><img id="lbImg" src="" alt=""></div>
+    <video id="lbVideo" playsinline controls preload="auto"></video>
   </div>
   <div class="lb-hint">Scroll to explore &middot; Esc to close</div>
 </div>
@@ -845,8 +770,6 @@
     const form = document.getElementById('gateForm');
     const pass = document.getElementById('gatePass');
     const err = document.getElementById('gateErr');
-
-    // Minimal SHA-256 (works in any context, incl. file://). Returns hex string.
     function sha256(ascii) {
       function rotr(n, x) { return (x >>> n) | (x << (32 - n)); }
       const K = [
@@ -887,39 +810,26 @@
       }
       return H.map(x => ('00000000' + (x >>> 0).toString(16)).slice(-8)).join('');
     }
-
-    function unlock() {
-      gate.classList.add('hide');
-      document.body.classList.remove('locked');
-      setTimeout(() => gate.remove(), 600);
-    }
-
+    function unlock() { gate.classList.add('hide'); document.body.classList.remove('locked'); setTimeout(() => gate.remove(), 600); }
     if (sessionStorage.getItem(KEY) === '1') { unlock(); return; }
-
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (sha256(pass.value) === GATE_HASH) {
-        sessionStorage.setItem(KEY, '1');
-        unlock();
-      } else {
-        err.classList.add('show');
-        gate.classList.add('shake');
-        setTimeout(() => gate.classList.remove('shake'), 450);
-        pass.select();
-      }
+      if (sha256(pass.value) === GATE_HASH) { sessionStorage.setItem(KEY, '1'); unlock(); }
+      else { err.classList.add('show'); gate.classList.add('shake'); setTimeout(() => gate.classList.remove('shake'), 450); pass.select(); }
     });
   })();
 
   /* ---------- Deck navigation ---------- */
   const slides = Array.from(document.querySelectorAll('.slide'));
-  const rail = document.getElementById('rail');
   const deck = document.getElementById('deck');
+  const dotbar = document.getElementById('dotbar');
   const total = slides.length;
   const pPrev = document.getElementById('pPrev');
   const pNext = document.getElementById('pNext');
   const navPrev = document.getElementById('navPrev');
   const navNext = document.getElementById('navNext');
   const lightbox = document.getElementById('lightbox');
+  const projSlide = document.getElementById('s5');
 
   pNext.textContent = String(total).padStart(2, '0');
 
@@ -927,22 +837,19 @@
     const a = document.createElement('a');
     a.title = 'Slide ' + (i + 1);
     a.addEventListener('click', () => goTo(i));
-    rail.appendChild(a);
+    dotbar.appendChild(a);
   });
-  const dots = Array.from(rail.children);
+  const dots = Array.from(dotbar.children);
 
   function current() {
     const top = deck.scrollTop;
     let idx = 0, best = Infinity;
-    slides.forEach((s, i) => {
-      const d = Math.abs(s.offsetTop - top);
-      if (d < best) { best = d; idx = i; }
-    });
+    slides.forEach((s, i) => { const d = Math.abs(s.offsetTop - top); if (d < best) { best = d; idx = i; } });
     return idx;
   }
   function goTo(n) {
     n = Math.max(0, Math.min(total - 1, n));
-    slides[n].scrollIntoView({ behavior: 'smooth' });
+    deck.scrollTo({ top: slides[n].offsetTop, behavior: 'smooth' });
   }
 
   const io = new IntersectionObserver((entries) => {
@@ -956,34 +863,74 @@
         navNext.disabled = (i === total - 1);
       }
     });
-  }, { threshold: 0.55 });
+  }, { root: deck, threshold: 0.5 });
   slides.forEach(s => io.observe(s));
 
-  // Click controls
   navPrev.addEventListener('click', () => goTo(current() - 1));
   navNext.addEventListener('click', () => goTo(current() + 1));
-  pPrev.addEventListener('click', () => goTo(current() - 1));   // left number = back
-  pNext.addEventListener('click', () => goTo(current() + 1));   // right number = forward
+  pPrev.addEventListener('click', () => goTo(current() - 1));
+  pNext.addEventListener('click', () => goTo(current() + 1));
   document.getElementById('homeLogo').addEventListener('click', (e) => { e.preventDefault(); goTo(0); });
 
-  // Keyboard
+  /* ---------- Projects carousel ---------- */
+  const carTrack = document.getElementById('carTrack');
+  const carItems = carTrack ? carTrack.children.length : 0;
+  const carPrevBtn = document.getElementById('carPrev');
+  const carNextBtn = document.getElementById('carNext');
+  const carDots = document.getElementById('carDots');
+  let carIndex = 0;
+  if (carTrack) {
+    for (let i = 0; i < carItems; i++) {
+      const b = document.createElement('button');
+      b.setAttribute('aria-label', 'Project ' + (i + 1));
+      b.addEventListener('click', () => carGo(i));
+      carDots.appendChild(b);
+    }
+  }
+  function carUpdate() {
+    carTrack.style.transform = 'translateX(' + (-carIndex * 100) + '%)';
+    Array.from(carDots.children).forEach((d, j) => d.classList.toggle('active', j === carIndex));
+    carPrevBtn.disabled = (carIndex === 0);
+    carNextBtn.disabled = (carIndex === carItems - 1);
+  }
+  function carGo(i) { carIndex = Math.max(0, Math.min(carItems - 1, i)); carUpdate(); }
+  if (carTrack) {
+    carPrevBtn.addEventListener('click', () => carGo(carIndex - 1));
+    carNextBtn.addEventListener('click', () => carGo(carIndex + 1));
+    carUpdate();
+    // swipe on touch
+    let sx = null;
+    const vp = carTrack.parentElement;
+    vp.addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; }, { passive: true });
+    vp.addEventListener('touchend', (e) => {
+      if (sx === null) return;
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 45) { dx < 0 ? carGo(carIndex + 1) : carGo(carIndex - 1); }
+      sx = null;
+    }, { passive: true });
+  }
+
+  /* ---------- Keyboard ---------- */
   document.addEventListener('keydown', (e) => {
     if (document.body.classList.contains('locked')) return;
-    if (lightbox.classList.contains('open')) {
-      if (e.key === 'Escape') closeLightbox();
-      return;
-    }
-    if (['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)) {
-      e.preventDefault(); goTo(current() + 1);
-    } else if (['ArrowUp','ArrowLeft','PageUp'].includes(e.key)) {
-      e.preventDefault(); goTo(current() - 1);
+    if (lightbox.classList.contains('open')) { if (e.key === 'Escape') closeLightbox(); return; }
+    const onProjects = slides[current()] === projSlide;
+    if (['ArrowDown','PageDown',' '].includes(e.key)) { e.preventDefault(); goTo(current() + 1); }
+    else if (['ArrowUp','PageUp'].includes(e.key)) { e.preventDefault(); goTo(current() - 1); }
+    else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      if (onProjects && carIndex < carItems - 1) carGo(carIndex + 1); else goTo(current() + 1);
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      if (onProjects && carIndex > 0) carGo(carIndex - 1); else goTo(current() - 1);
     } else if (e.key === 'Home') { goTo(0); }
     else if (e.key === 'End') { goTo(total - 1); }
   });
 
-  /* ---------- Lightbox: scroll-through preview ---------- */
+  /* ---------- Lightbox (image scroll + video) ---------- */
   const lbScroller = document.getElementById('lbScroller');
   const lbImg = document.getElementById('lbImg');
+  const lbVideo = document.getElementById('lbVideo');
   const lbClose = document.getElementById('lbClose');
   let lbRAF = null, lbUserTook = false;
 
@@ -1004,24 +951,28 @@
       };
       lbRAF = requestAnimationFrame(step);
     };
-    // wait a beat so the open transition + layout settle
     setTimeout(run, 550);
   }
-  function openLightbox(src, alt) {
+  function openImage(src, alt) {
     lbUserTook = false;
-    lbImg.src = src;
-    lbImg.alt = alt || '';
-    lbScroller.scrollTop = 0;
-    lightbox.classList.add('open');
+    lightbox.classList.remove('mode-video');
+    lightbox.classList.add('mode-image', 'open');
     lightbox.setAttribute('aria-hidden', 'false');
-    if (lbImg.complete) startAutoScroll();
-    else lbImg.onload = startAutoScroll;
+    lbImg.src = src; lbImg.alt = alt || ''; lbScroller.scrollTop = 0;
+    if (lbImg.complete) startAutoScroll(); else lbImg.onload = startAutoScroll;
+  }
+  function openVideo(src) {
+    lightbox.classList.remove('mode-image');
+    lightbox.classList.add('mode-video', 'open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    lbVideo.src = src; lbVideo.currentTime = 0;
+    const p = lbVideo.play(); if (p && p.catch) p.catch(() => {});
   }
   function closeLightbox() {
     lightbox.classList.remove('open');
     lightbox.setAttribute('aria-hidden', 'true');
-    cancelAnimationFrame(lbRAF);
-    lbUserTook = true;
+    cancelAnimationFrame(lbRAF); lbUserTook = true;
+    try { lbVideo.pause(); } catch (e) {}
   }
   ['wheel','touchstart','pointerdown','keydown'].forEach(evt =>
     lbScroller.addEventListener(evt, () => { lbUserTook = true; cancelAnimationFrame(lbRAF); }, { passive: true })
@@ -1029,18 +980,13 @@
   lbClose.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
 
-  const ccShot = document.getElementById('ccShot');
-  if (ccShot) {
-    const open = () => openLightbox('assets/code-compendium.png', 'The Code Compendium');
-    ccShot.addEventListener('click', open);
-    ccShot.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+  function bindShot(el, fn) {
+    if (!el) return;
+    el.addEventListener('click', fn);
+    el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fn(); } });
   }
-  const pdShot = document.getElementById('pdShot');
-  if (pdShot) {
-    const open = () => openLightbox('assets/portfolio-plugin.png', 'TDC Portfolio Plugin');
-    pdShot.addEventListener('click', open);
-    pdShot.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
-  }
+  bindShot(document.getElementById('ccShot'), () => openImage('assets/code-compendium.png', 'The Code Compendium'));
+  bindShot(document.getElementById('pdShot'), () => openVideo('assets/tdc-plugin-demo.mp4'));
 </script>
 </body>
 </html>
