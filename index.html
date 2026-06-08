@@ -21,13 +21,12 @@
     --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
     --grid-bg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cg fill='none' stroke='%230e132a' stroke-opacity='0.07' stroke-width='1.3' stroke-dasharray='3 5'%3E%3Cpath d='M0 0H56'/%3E%3Cpath d='M0 0V56'/%3E%3C/g%3E%3C/svg%3E");
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { font-family: var(--font); color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; line-height: 1.6; }
 
   /* ---------- Scroll container ---------- */
-  .deck { height: 100vh; height: 100dvh; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+  .deck { height: 100vh; height: 100dvh; overflow-y: scroll; scroll-snap-type: y mandatory; }
   .slide {
     position: relative; min-height: 100vh; min-height: 100dvh; scroll-snap-align: start;
     display: flex; align-items: center; overflow: hidden; padding: 100px 7vw;
@@ -42,7 +41,7 @@
   h2 { font-size: clamp(1.8rem, 3.4vw, 2.9rem); line-height: 1.14; color: var(--ink); }
   h3 { font-size: clamp(1.1rem, 1.6vw, 1.45rem); line-height: 1.25; color: var(--ink); }
   p, li { font-weight: 400; font-size: clamp(1rem, 1.15vw, 1.16rem); color: var(--slate); }
-  .lead { font-size: clamp(1.12rem, 1.45vw, 1.4rem); color: var(--slate); max-width: 64ch; }
+  .lead { font-size: clamp(1.1rem, 1.45vw, 1.4rem); color: var(--slate); max-width: 64ch; }
 
   .eyebrow { display: inline-flex; align-items: center; gap: 11px; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--teal); margin-bottom: 4px; }
   .eyebrow .tick { width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--ink); background: var(--teal); flex: none; }
@@ -53,12 +52,13 @@
   .logo { display: inline-flex; align-items: center; }
   .logo img { height: 48px; width: auto; display: block; }
 
-  /* ---------- Cover: equal-width, auto-fit lines ---------- */
-  .cover-fit { width: min(740px, 86vw); margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
-  .cover-fit .cf { display: inline-block; white-space: nowrap; line-height: 1.04; font-weight: 700; }
-  .cover-fit .cf-eyebrow { color: var(--teal); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5em; }
-  .cover-fit .cf-name { color: var(--ink); letter-spacing: -0.02em; }
-  .cover-fit .cf-role { color: var(--ink); letter-spacing: -0.01em; margin-top: 0.14em; }
+  /* ---------- Cover ---------- */
+  #s0 .inner { text-align: center; }
+  .cover { max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+  .cover-kicker { color: var(--ink); text-transform: uppercase; letter-spacing: 0.26em; font-weight: 700; font-size: clamp(0.68rem, 0.95vw, 0.86rem); }
+  .cover-name { color: var(--ink); font-weight: 700; letter-spacing: -0.03em; font-size: clamp(2.6rem, 7vw, 4.8rem); line-height: 1.0; margin-top: 0.55em; }
+  .cover-rule { width: 54px; height: 3px; border-radius: 2px; background: var(--teal); margin: clamp(18px, 2.6vh, 28px) 0; }
+  .cover-role { color: var(--slate); font-weight: 600; font-size: clamp(1.05rem, 2.1vw, 1.55rem); letter-spacing: 0.01em; }
 
   /* ---------- Decorative layer ---------- */
   .decor { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
@@ -69,7 +69,7 @@
 
   /* ---------- Layout helpers ---------- */
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 3vw, 40px); align-items: stretch; }
-  .stack > * + * { margin-top: 24px; }
+  .stack > * + * { margin-top: clamp(16px, 2.4vh, 24px); }
   .tag { display: inline-block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--teal); margin-bottom: 12px; }
 
   /* ---------- Clean bullet lists (all teal) ---------- */
@@ -101,7 +101,7 @@
   .car-viewport { overflow: hidden; }
   .car-track { display: flex; transition: transform 0.5s cubic-bezier(.2,.7,.2,1); }
   .car-item { flex: 0 0 100%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 2%; }
-  .car-item img { width: auto; max-width: 100%; max-height: clamp(280px, 50vh, 540px); display: block; object-fit: contain; filter: drop-shadow(0 18px 30px rgba(14,19,42,0.16)); }
+  .car-item img { width: auto; max-width: 100%; max-height: clamp(280px, 48vh, 520px); display: block; object-fit: contain; filter: drop-shadow(0 18px 30px rgba(14,19,42,0.16)); }
   .car-item .name { font-weight: 700; color: var(--ink); font-size: clamp(1.2rem, 2vw, 1.6rem); margin-top: 22px; }
   .car-item .ctx { font-size: 1rem; color: var(--slate); margin-top: 8px; max-width: 60ch; line-height: 1.5; }
   .car-arrow { position: absolute; top: 38%; transform: translateY(-50%); z-index: 6; width: 50px; height: 50px; border-radius: 50%; border: 1px solid var(--ink); background: var(--white); color: var(--ink); font-size: 1.4rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(14,19,42,0.10); transition: background 0.2s, color 0.2s, opacity 0.2s, transform 0.15s; }
@@ -109,15 +109,19 @@
   .car-arrow.next { right: -20px; }
   .car-arrow:active { transform: translateY(-50%) scale(0.93); }
   .car-arrow:disabled { opacity: 0.3; cursor: default; }
-  .car-dots { display: flex; gap: 9px; justify-content: center; margin-top: 24px; }
-  .car-dots button { width: 9px; height: 9px; border-radius: 50%; border: 0.75px solid var(--ink); background: var(--white); cursor: pointer; padding: 0; transition: all 0.25s; }
+  .car-dots { display: flex; gap: 9px; justify-content: center; margin-top: 22px; }
+  .car-dots button { width: 9px; height: 9px; border-radius: 50%; border: 1px solid var(--ink); background: var(--white); cursor: pointer; padding: 0; transition: all 0.25s; }
   .car-dots button.active { background: var(--teal); transform: scale(1.35); }
 
   /* ---------- One-off project cards ---------- */
-  .ocard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .ocard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .ocard { background: var(--white); border: 1px solid var(--hairline); border-radius: 14px; padding: 18px 20px; }
-  .ocard .on { font-weight: 700; color: var(--ink); font-size: 1.04rem; }
-  .ocard .od { font-size: 0.92rem; color: var(--slate); margin-top: 4px; line-height: 1.45; }
+  .ocard .on { font-weight: 700; color: var(--ink); font-size: 1.02rem; }
+  .ocard .od { font-size: 0.9rem; color: var(--slate); margin-top: 4px; line-height: 1.45; }
+
+  /* ---------- Quote screenshot card ---------- */
+  .quote-shot { max-width: 720px; margin: 0 auto; background: var(--white); border: 1px solid var(--hairline); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 10px 30px rgba(14,19,42,0.06); }
+  .quote-shot img { width: 100%; height: auto; display: block; border-radius: 8px; }
 
   /* ---------- Feature split (strategy) ---------- */
   .feat-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
@@ -128,10 +132,12 @@
   /* Screenshot / media window */
   .shot-window { position: relative; cursor: zoom-in; border-radius: 14px; overflow: hidden; border: 1px solid var(--hairline); box-shadow: 0 16px 40px rgba(14,19,42,0.16); height: clamp(300px, 56vh, 600px); background: var(--ink); display: block; }
   .shot-window img { width: 100%; display: block; object-position: top center; }
-  .shot-window.scroll::after, .shot-window.linkout::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 130px; background: linear-gradient(transparent, rgba(14,19,42,0.88)); pointer-events: none; }
-  .shot-window .peek-hint { position: absolute; bottom: 16px; left: 0; right: 0; z-index: 2; text-align: center; color: #fff; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.02em; pointer-events: none; }
-  .shot-window.linkout { text-decoration: none; cursor: pointer; }
-  /* Static window (no interaction) */
+  .shot-window.scroll::after, .shot-window.linkout::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 120px; background: linear-gradient(transparent, rgba(14,19,42,0.85)); pointer-events: none; }
+  .shot-window .peek-hint { position: absolute; bottom: 14px; left: 0; right: 0; z-index: 2; text-align: center; color: #fff; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.02em; pointer-events: none; }
+  /* Link-out window: only as tall as the image */
+  .shot-window.linkout { height: auto; background: transparent; text-decoration: none; cursor: pointer; }
+  .shot-window.linkout img { height: auto; }
+  /* Static window */
   .shot-window.static { cursor: default; height: auto; background: var(--white); }
   .shot-window.static img { height: auto; }
   /* Placeholder window */
@@ -157,8 +163,8 @@
   .grow .g-desc { font-size: 0.96rem; color: var(--slate); line-height: 1.5; }
 
   /* ---------- Trust / commitments ---------- */
-  .commit { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
-  .commit .c { position: relative; padding: 16px 18px 16px 40px; background: var(--white); border: 1px solid var(--hairline); border-radius: 12px; font-size: 1rem; color: var(--slate); line-height: 1.45; }
+  .commit { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; align-items: start; }
+  .commit .c { position: relative; padding: 16px 18px 16px 40px; background: var(--white); border: 1px solid var(--hairline); border-radius: 12px; font-size: 0.98rem; color: var(--slate); line-height: 1.45; }
   .commit .c::before { content:""; position:absolute; left:16px; top:20px; width:13px; height:13px; border-radius:50%; background: var(--teal); border: 1px solid var(--ink); }
   .commit .c strong { color: var(--ink); }
 
@@ -170,8 +176,9 @@
   .btn-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 12px; font-size: 0.9rem; font-weight: 700; color: var(--white); background: var(--ink); text-decoration: none; padding: 9px 16px; border-radius: 999px; transition: opacity 0.2s; }
 
   /* ---------- People cards (leadership) ---------- */
-  .lcard { background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; padding: 20px 22px; display: grid; grid-template-columns: 88px 1fr; gap: 18px; align-items: start; }
-  .lcard .headshot { width: 88px; height: 88px; border-radius: 12px; background: rgba(69,182,183,0.08); border: 1.5px dashed var(--hairline); display: flex; align-items: center; justify-content: center; font-size: 0.66rem; color: var(--slate); text-align: center; flex: none; }
+  .lcard { background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; padding: 18px 20px; display: grid; grid-template-columns: 132px 1fr; gap: 20px; align-items: stretch; }
+  .lcard .headshot { width: 132px; align-self: stretch; border-radius: 12px; overflow: hidden; background: rgba(69,182,183,0.06); border: 1px solid var(--hairline); }
+  .lcard .headshot img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
   .lcard .lrole { color: var(--teal); font-weight: 700; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
   .lcard .lname { font-weight: 700; color: var(--ink); font-size: 1.1rem; }
   .lcard p { font-size: 0.94rem; line-height: 1.5; margin-top: 8px; }
@@ -185,7 +192,6 @@
   .ask-card h3 { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
   .ask-card h3 .bullet { width: 16px; height: 16px; border-radius: 50%; border: 1px solid var(--ink); flex: none; background: var(--teal); }
   .ask-card p, .ask-card li { font-size: 0.98rem; line-height: 1.5; }
-  .quote-cap { font-size: 0.85rem; color: var(--slate); margin-top: 10px; text-align: center; }
 
   /* ---------- Conclusion recap chips ---------- */
   .recap { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
@@ -203,23 +209,30 @@
 
   /* ---------- Pagination dots (desktop, right rail) ---------- */
   .dotbar { position: fixed; right: 26px; top: 50%; transform: translateY(-50%); z-index: 50; display: flex; flex-direction: column; gap: 12px; align-items: center; }
-  .dotbar a { width: 11px; height: 11px; border-radius: 50%; border: 0.75px solid var(--ink); background: var(--white); transition: all 0.25s; cursor: pointer; }
+  .dotbar a { width: 11px; height: 11px; border-radius: 50%; border: 1px solid var(--ink); background: var(--white); transition: all 0.25s; cursor: pointer; }
   .dotbar a.active { background: var(--teal); transform: scale(1.35); }
 
   /* ---------- Mobile arrow controls ---------- */
-  .navarrows { position: fixed; right: 20px; bottom: 20px; z-index: 60; display: none; flex-direction: column; gap: 10px; }
-  .navarrows button { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--ink); background: var(--white); color: var(--ink); font-size: 1.1rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(14,19,42,0.12); transition: opacity 0.2s; }
+  .navarrows { position: fixed; right: 18px; bottom: 18px; z-index: 60; display: none; flex-direction: column; gap: 10px; }
+  .navarrows button { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--ink); background: var(--white); color: var(--ink); font-size: 1.1rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(14,19,42,0.12); transition: opacity 0.2s; }
   .navarrows button:disabled { opacity: 0.3; }
 
-  /* ---------- Reveal animation ---------- */
-  .slide .inner > * { opacity: 0; transform: translateY(24px); }
-  .slide.seen .inner > * { opacity: 1; transform: none; transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.2,.7,.2,1); }
-  .slide.seen .inner > *:nth-child(2) { transition-delay: 0.08s; }
-  .slide.seen .inner > *:nth-child(3) { transition-delay: 0.16s; }
-  .slide.seen .inner > *:nth-child(4) { transition-delay: 0.24s; }
-  .slide.seen .inner > *:nth-child(5) { transition-delay: 0.32s; }
-  .slide.seen .inner > *:nth-child(6) { transition-delay: 0.40s; }
-  @media (prefers-reduced-motion: reduce) { .slide .inner > * { opacity: 1; transform: none; } }
+  /* ---------- Slide-to-slide entrance animations (fail-safe: content visible by default) ---------- */
+  @keyframes riseIn { from { opacity: 0; transform: translateY(34px); } }
+  @keyframes popIn  { from { opacity: 0; transform: scale(0.7); } }
+  .slide.show .inner > * { animation: riseIn 0.7s cubic-bezier(.2,.8,.2,1) both; }
+  .slide.show .inner > *:nth-child(1) { animation-delay: 0.04s; }
+  .slide.show .inner > *:nth-child(2) { animation-delay: 0.11s; }
+  .slide.show .inner > *:nth-child(3) { animation-delay: 0.18s; }
+  .slide.show .inner > *:nth-child(4) { animation-delay: 0.25s; }
+  .slide.show .inner > *:nth-child(5) { animation-delay: 0.32s; }
+  .slide.show .inner > *:nth-child(6) { animation-delay: 0.39s; }
+  .slide.show .inner > *:nth-child(7) { animation-delay: 0.46s; }
+  .slide.show .inner > *:nth-child(8) { animation-delay: 0.53s; }
+  .slide.show .decor .dot, .slide.show .decor .pill { animation: popIn 0.9s cubic-bezier(.2,.8,.2,1) 0.12s both; }
+  @media (prefers-reduced-motion: reduce) {
+    .slide.show .inner > *, .slide.show .decor .dot, .slide.show .decor .pill { animation: none; }
+  }
 
   /* ---------- Hover only on real pointers ---------- */
   @media (hover: hover) {
@@ -227,7 +240,7 @@
     .navarrows button:hover { background: var(--teal); color: #fff; }
     .progress-label .pnav:hover { color: var(--teal); background: rgba(69,182,183,0.12); }
     .btn-link:hover { opacity: 0.88; }
-    .shot-window:hover { box-shadow: 0 22px 52px rgba(14,19,42,0.24); }
+    .shot-window.scroll:hover, .shot-window.linkout:hover { box-shadow: 0 22px 52px rgba(14,19,42,0.24); }
     .gate button:hover { opacity: 0.9; }
   }
 
@@ -246,24 +259,52 @@
     .grid-2, .feat-split, .feat-split.media-lg, .commit, .grow-grid, .str-list, .recap, .ocard-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 1000px), (max-height: 760px) { .deck { scroll-snap-type: y proximity; } }
+
   @media (max-width: 760px) {
     .dotbar { display: none; }
     .navarrows { display: flex; }
-    .slide { padding: 92px 6vw 96px; }
     .deck { scroll-snap-type: y proximity; }
-    .logo img { height: 38px; }
-    h1 { font-size: clamp(2.3rem, 9vw, 3rem); }
-    h2 { font-size: clamp(1.55rem, 6.2vw, 2rem); }
-    .lead { font-size: 1.08rem; }
-    .commit { grid-template-columns: 1fr; }
-    .car-arrow { width: 40px; height: 40px; font-size: 1.2rem; }
-    .car-arrow.prev { left: -6px; } .car-arrow.next { right: -6px; }
-    .car-item img { max-height: 38vh; }
-    .shot-window { height: clamp(220px, 40vh, 380px); }
-    .lcard { grid-template-columns: 72px 1fr; gap: 14px; }
-    .lcard .headshot { width: 72px; height: 72px; }
-    .stat { min-width: 100%; }
-    .rev-table th, .rev-table td { padding: 11px 12px; font-size: 0.9rem; }
+    .slide { padding: 62px 6vw 70px; }
+    .logo img { height: 34px; }
+    h1 { font-size: clamp(1.6rem, 6.6vw, 2.05rem); line-height: 1.1; }
+    h2 { font-size: clamp(1.4rem, 5.6vw, 1.75rem); }
+    p, li { font-size: 0.9rem; }
+    .lead { font-size: 0.9rem; line-height: 1.4; }
+    .stack > * + * { margin-top: 11px; }
+    .cover-name { font-size: clamp(2.4rem, 13vw, 3.2rem); }
+    .cover-role { font-size: 1.1rem; }
+    .commit { grid-template-columns: 1fr; gap: 8px; }
+    .commit .c { padding: 9px 12px 9px 32px; font-size: 0.84rem; line-height: 1.38; }
+    .commit .c::before { top: 14px; left: 12px; width: 10px; height: 10px; }
+    .toolkit { padding: 11px 14px; gap: 10px; }
+    .toolkit p { font-size: 0.82rem; line-height: 1.4; }
+    .toolkit .tk-dot { width: 20px; height: 20px; }
+    .btn-link { margin-top: 8px; padding: 7px 13px; font-size: 0.82rem; }
+    .str-list { gap: 9px; }
+    .str { padding: 10px 12px; grid-template-columns: 40px 1fr; gap: 12px; }
+    .str .rank { width: 36px; height: 36px; font-size: 0.95rem; }
+    .str .meta .desc { font-size: 0.84rem; }
+    .grow-grid { gap: 12px; }
+    .grow .g-desc { font-size: 0.88rem; }
+    .stat { min-width: 100%; padding: 16px 20px; }
+    .rev-table th, .rev-table td { padding: 9px 11px; font-size: 0.84rem; }
+    .note { font-size: 0.9rem; padding: 13px 16px; }
+    .ocard-grid { gap: 10px; }
+    .ocard { padding: 13px 16px; }
+    .quote-shot { padding: 10px 12px; }
+    .car-arrow { width: 38px; height: 38px; font-size: 1.1rem; }
+    .car-arrow.prev { left: -4px; } .car-arrow.next { right: -4px; }
+    .car-item img { max-height: 32vh; }
+    .car-item .name { margin-top: 14px; }
+    .car-item .ctx { font-size: 0.9rem; }
+    .shot-window { height: clamp(200px, 36vh, 340px); }
+    .lcard { grid-template-columns: 92px 1fr; gap: 14px; padding: 14px; }
+    .lcard .headshot { width: 92px; }
+    .lcard p { font-size: 0.88rem; margin-top: 6px; }
+    .ask-card { padding: 16px 18px; }
+    .ask-card p { font-size: 0.92rem; }
+    .recap { gap: 10px; }
+    .recap .chip { padding: 14px 16px; }
   }
   @media (max-width: 600px) { .topbar { padding: 12px 6vw; } .progress-label { font-size: 0.82rem; } }
 
@@ -328,10 +369,11 @@
   <!-- 0 · COVER -->
   <section class="slide" id="s0">
     <div class="inner">
-      <div class="cover-fit">
-        <span class="cf cf-eyebrow">TDC Marketing &middot; 2026 Pitch</span>
-        <span class="cf cf-name">Noah Mills</span>
-        <span class="cf cf-role">Web Strategist</span>
+      <div class="cover">
+        <span class="cover-kicker">TDC Marketing &middot; 2026 Pitch</span>
+        <h1 class="cover-name">Noah Mills</h1>
+        <span class="cover-rule"></span>
+        <span class="cover-role">Web Strategist</span>
       </div>
     </div>
   </section>
@@ -348,7 +390,7 @@
       <p class="lead">I know I have real work to do on how I show up, specifically my <strong>attitude and mood under pressure</strong>, and how I respond to <strong>negative feedback and stressful situations</strong>. I want to acknowledge and own my mistakes. Here is my plan moving forward to grow, learn, and rebuild trust with the team:</p>
       <div class="commit">
         <div class="c"><strong>Pause before I react.</strong> Stop, assess, then respond instead of responding out of stress.</div>
-        <div class="c"><strong>Lead by example on hard days.</strong> Everyone has tough days in a high-pressure environment. When I do, I focus on keeping my reactions and attitude from affecting the team, and on improving how I respond so I can help others stay out of that headspace too.</div>
+        <div class="c"><strong>Lead by example.</strong> Everyone has good days and will have bad days. When I am having a tough day, I want my focus to be on keeping my reactions and attitude from affecting the team, and on improving how I respond so I can help others stay out of that headspace too.</div>
         <div class="c"><strong>Communicate early when I'm stretched.</strong> Flag pressure before it shows up in my tone.</div>
         <div class="c"><strong>Rebuild trust over time.</strong> Consistency week over week is the only proof that counts.</div>
       </div>
@@ -474,9 +516,12 @@
         <div class="ocard"><div class="on">VA Golf Course Reviews</div><div class="od">Brought in, managed, and delivered 100% on my own.</div></div>
         <div class="ocard"><div class="on">Weiler Orthodontics</div><div class="od">Server fix plus a full WordPress to Squarespace migration.</div></div>
         <div class="ocard"><div class="on">Harrisonburg Economic Development</div><div class="od">A major new client I'm building independently right now.</div></div>
-        <div class="ocard"><div class="on">And more</div><div class="od">HDR, Montpelier Hunt Races, Red Wing Roots, and LW&amp;G.</div></div>
       </div>
-      <p class="supporting">This is where I can create real new revenue for TDC, and it's exactly the kind of work I want more of.</p>
+      <div class="quote-shot">
+        <img src="assets/mike-hed-1.png" alt="Mike Miriello: outstanding job today with HED. Your methodology of giving them 3 choices and getting feedback was perfect. Super well done.">
+        <img src="assets/mike-hed-2.png" alt="Mike Miriello: You set the bar for how that sprint should be done. You should be proud.">
+      </div>
+      <p class="supporting" style="max-width:none;text-align:center;font-size:0.98rem">This is where I can create real new revenue for TDC, and it's exactly the kind of work I want more of.</p>
     </div>
   </section>
 
@@ -526,7 +571,7 @@
     </div>
   </section>
 
-  <!-- 8 · WEB STRATEGY · BUILD LIFECYCLE (STATIC IMAGE) -->
+  <!-- 8 · WEB STRATEGY · BUILD LIFECYCLE -->
   <section class="slide" id="s8">
     <div class="decor">
       <span class="dot" style="width:80px;height:80px;background:#00a56c;top:14%;right:8%"></span>
@@ -545,7 +590,7 @@
           <img src="assets/web-build-lifecycle.png" alt="Proposed web build structure for 2026">
         </div>
       </div>
-      <p class="supporting" style="margin-top:clamp(28px,5vh,60px)">These three initiatives, the Compendium, the plugin, and this lifecycle, are the core of my case. I'm not just billing hours, I'm building the systems the whole company can rely on to grow.</p>
+      <p class="supporting" style="margin-top:clamp(24px,4vh,52px)">These three initiatives, the Compendium, the plugin, and this lifecycle, are the core of my case. I'm not just billing hours, I'm building the systems the whole company can rely on to grow.</p>
     </div>
   </section>
 
@@ -561,17 +606,15 @@
       <p class="lead">I directly supervise Regan and Sara. I check in daily on workload and how they're really doing, with formal one-on-ones every two weeks.</p>
       <div class="grid-2">
         <div class="lcard">
-          <!-- TODO: replace with <img class="headshot" src="assets/regan.jpg" alt="Regan"> -->
-          <div class="headshot">Photo</div>
+          <div class="headshot"><img src="assets/regan.webp" alt="Regan McKinnon"></div>
           <div>
             <div class="lrole">Marketing Specialist</div>
             <div class="lname">Regan</div>
-            <p>Web isn't even in her title, but she's all in. I've trained her through complex builds for her color team, including dynamic summary blocks for PWD Home and a custom vertical timeline for the Waynesboro Redevelopment and Housing Authority.</p>
+            <p>Web isn't even in her title, but she's all in. I'm training her to handle updates, improvements, and new elements across her Blue team's client projects, like dynamic summary blocks for PWD Home and a custom vertical timeline for the Waynesboro Redevelopment and Housing Authority.</p>
           </div>
         </div>
         <div class="lcard">
-          <!-- TODO: replace with <img class="headshot" src="assets/sara.jpg" alt="Sara"> -->
-          <div class="headshot">Photo</div>
+          <div class="headshot"><img src="assets/sara.webp" alt="Sara Wharff"></div>
           <div>
             <div class="lrole">Marketing Design Specialist</div>
             <div class="lname">Sara</div>
@@ -579,7 +622,7 @@
           </div>
         </div>
       </div>
-      <p class="supporting">Beyond the two of them, I help train Kat and other specialists whenever a web opportunity comes up. Mike and Megan have me leading web training across the company, and it's the part of this role I most want to grow. Teaching re-energizes me, and watching the team get excited about web makes it worth it.</p>
+      <p class="supporting">Beyond the two of them, I jump in to help Kat and other marketing specialists whenever their web projects call for training or my expertise. It's the part of this role I most want to grow. Teaching re-energizes me, and seeing the team get excited about web makes it worth it.</p>
     </div>
   </section>
 
@@ -594,21 +637,11 @@
       <div class="ask-hero">
         <span class="from">$54,000</span><span class="arrow">&rarr;</span><span class="to">$64,000</span>
       </div>
-      <div class="feat-split" style="align-items:start">
-        <ul class="clean">
-          <li>I am the only person at TDC who can take a high-level web project from concept to launch completely on my own, with no one else building any part of it for me.</li>
-          <li>Beyond my own builds, I'm creating the systems that help all of TDC grow, not only the publication team. I train teammates directly and support others I'm not responsible for, all to raise our web performance as a company.</li>
-          <li>I'm leading the web build for <strong>Harrisonburg Economic Development</strong>, a major new client, fully independently, with Mike and Miguel supporting the marketing strategy side to bring them on board.</li>
-        </ul>
-        <div>
-          <!-- TODO: add Mike's quote screenshot at assets/mike-hed-quote.png and replace this placeholder with:
-               <div class="shot-window static"><img src="assets/mike-hed-quote.png" alt="Mike's note after the HED sprint review"></div> -->
-          <div class="shot-window placeholder">
-            <div class="ph">Mike's quote screenshot<small>commending the last Harrisonburg Economic Development sprint review</small></div>
-          </div>
-          <p class="quote-cap">From Mike, after our last Harrisonburg Economic Development sprint review.</p>
-        </div>
-      </div>
+      <ul class="clean" style="max-width:78ch">
+        <li>I am the only person at TDC who can take a high-level web project from concept to launch completely on my own, with no one else building any part of it for me.</li>
+        <li>Beyond my own builds, I'm creating the systems that help all of TDC grow, not only the publication team. I train teammates directly and support others I'm not responsible for, all to raise our web performance as a company.</li>
+        <li>I'm leading the web build for <strong>Harrisonburg Economic Development</strong>, a major new client, fully independently, with Mike and Miguel supporting the marketing strategy side to bring them on board.</li>
+      </ul>
     </div>
   </section>
 
@@ -659,7 +692,7 @@
     <div class="inner stack" style="max-width:860px;margin:0 auto">
       <span class="eyebrow" style="margin:0 auto"><span class="tick"></span>Thank you</span>
       <h1>Thank you.</h1>
-      <p class="lead" style="margin-left:auto;margin-right:auto">I appreciate you taking the time, and the chance to keep growing here. Here is what I'm asking for:</p>
+      <p class="lead" style="margin-left:auto;margin-right:auto">I appreciate you taking the time, and the chance to keep growing here.<br>Here is a recap of what I'm asking for:</p>
       <div class="recap">
         <div class="chip"><div class="big">$64,000</div><div class="sub">Salary</div></div>
         <div class="chip"><div class="big">Shared office</div><div class="sub">Space to lead &amp; collaborate</div></div>
@@ -729,7 +762,7 @@
       }
       return H.map(x => ('00000000' + (x >>> 0).toString(16)).slice(-8)).join('');
     }
-    function unlock() { gate.classList.add('hide'); document.body.classList.remove('locked'); setTimeout(() => gate.remove(), 600); fitCover(); }
+    function unlock() { gate.classList.add('hide'); document.body.classList.remove('locked'); setTimeout(() => gate.remove(), 600); if (window.__deckReady) updateActive(); }
     if (sessionStorage.getItem(KEY) === '1') { unlock(); return; }
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -737,22 +770,6 @@
       else { err.classList.add('show'); gate.classList.add('shake'); setTimeout(() => gate.classList.remove('shake'), 450); pass.select(); }
     });
   })();
-
-  /* ---------- Cover: fit each line to the same width ---------- */
-  function fitCover() {
-    const box = document.querySelector('.cover-fit');
-    if (!box) return;
-    const targetW = box.clientWidth;
-    if (!targetW) return;
-    box.querySelectorAll('.cf').forEach(el => {
-      el.style.fontSize = '100px';
-      const w = el.offsetWidth; // inline-block shrinks to text width
-      if (w > 0) el.style.fontSize = (100 * targetW / w).toFixed(2) + 'px';
-    });
-  }
-  window.addEventListener('load', fitCover);
-  window.addEventListener('resize', fitCover);
-  fitCover();
 
   /* ---------- Deck navigation ---------- */
   const slides = Array.from(document.querySelectorAll('.slide'));
@@ -782,24 +799,55 @@
     slides.forEach((s, i) => { const d = Math.abs(s.offsetTop - top); if (d < best) { best = d; idx = i; } });
     return idx;
   }
-  function goTo(n) {
-    n = Math.max(0, Math.min(total - 1, n));
-    deck.scrollTo({ top: slides[n].offsetTop, behavior: 'smooth' });
+
+  let activeIdx = -1;
+  function updateActive() {
+    const i = current();
+    if (i !== activeIdx) {
+      activeIdx = i;
+      slides.forEach((s, j) => s.classList.toggle('show', j === i));
+      dots.forEach((d, j) => d.classList.toggle('active', j === i));
+      pPrev.textContent = String(i + 1).padStart(2, '0');
+      navPrev.disabled = (i === 0);
+      navNext.disabled = (i === total - 1);
+    }
   }
 
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('seen');
-        const i = slides.indexOf(e.target);
-        dots.forEach((d, j) => d.classList.toggle('active', j === i));
-        pPrev.textContent = String(i + 1).padStart(2, '0');
-        navPrev.disabled = (i === 0);
-        navNext.disabled = (i === total - 1);
-      }
-    });
-  }, { root: deck, threshold: 0.5 });
-  slides.forEach(s => io.observe(s));
+  /* Controlled smooth scroll (reliable across browsers incl. iOS; snap can't fight it) */
+  let animating = false, navTimer = null;
+  function animateScroll(target, dur) {
+    dur = dur || 620;
+    const start = deck.scrollTop, dist = target - start, t0 = performance.now();
+    animating = true;
+    deck.style.scrollSnapType = 'none';
+    function step(now) {
+      const t = Math.min(1, (now - t0) / dur);
+      const e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; // easeInOutCubic
+      deck.scrollTop = start + dist * e;
+      updateActive();
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+    // Guaranteed landing (covers any environment where rAF is throttled, e.g. backgrounded iOS Safari)
+    clearTimeout(navTimer);
+    navTimer = setTimeout(function () {
+      deck.scrollTop = target;
+      animating = false;
+      deck.style.scrollSnapType = '';
+      updateActive();
+    }, dur + 180);
+  }
+  function goTo(n) {
+    n = Math.max(0, Math.min(total - 1, n));
+    animateScroll(slides[n].offsetTop);
+  }
+
+  let ticking = false;
+  deck.addEventListener('scroll', () => {
+    if (animating) return;
+    if (!ticking) { ticking = true; requestAnimationFrame(() => { updateActive(); ticking = false; }); }
+  }, { passive: true });
+  window.addEventListener('resize', () => { updateActive(); });
 
   navPrev.addEventListener('click', () => goTo(current() - 1));
   navNext.addEventListener('click', () => goTo(current() + 1));
@@ -898,13 +946,16 @@
   );
   lbClose.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-
   const ccShot = document.getElementById('ccShot');
   if (ccShot) {
     const open = () => openImage('assets/code-compendium.png', 'The Code Compendium');
     ccShot.addEventListener('click', open);
     ccShot.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
   }
+
+  /* initial active state */
+  window.__deckReady = true;
+  updateActive();
 </script>
 </body>
 </html>
