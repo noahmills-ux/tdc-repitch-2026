@@ -6,17 +6,9 @@
 <title>Noah Mills · Web Strategist · 2026 Pitch</title>
 <style>
   :root {
-    --ink: #0e132a;
-    --slate: #4f4f5b;
-    --white: #ffffff;
-    --teal: #45b6b7;
-    --yellow: #eed229;
-    --purple: #c46fe2;
-    --lime: #bddd75;
-    --red: #f65d61;
-    --orange: #ff9800;
-    --blue: #5f66d7;
-    --green: #00a56c;
+    --ink: #0e132a; --slate: #4f4f5b; --white: #ffffff;
+    --teal: #45b6b7; --yellow: #eed229; --purple: #c46fe2; --lime: #bddd75;
+    --red: #f65d61; --orange: #ff9800; --blue: #5f66d7; --green: #00a56c;
     --hairline: rgba(14, 19, 42, 0.12);
     --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
     --grid-bg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cg fill='none' stroke='%230e132a' stroke-opacity='0.07' stroke-width='1.3' stroke-dasharray='3 5'%3E%3Cpath d='M0 0H56'/%3E%3Cpath d='M0 0V56'/%3E%3C/g%3E%3C/svg%3E");
@@ -41,7 +33,7 @@
   h2 { font-size: clamp(1.8rem, 3.4vw, 2.9rem); line-height: 1.14; color: var(--ink); }
   h3 { font-size: clamp(1.1rem, 1.6vw, 1.45rem); line-height: 1.25; color: var(--ink); }
   p, li { font-weight: 400; font-size: clamp(1rem, 1.15vw, 1.16rem); color: var(--slate); }
-  .lead { font-size: clamp(1.1rem, 1.45vw, 1.4rem); color: var(--slate); max-width: 64ch; }
+  .lead { font-size: clamp(1.1rem, 1.45vw, 1.4rem); color: var(--slate); max-width: 66ch; }
 
   .eyebrow { display: inline-flex; align-items: center; gap: 11px; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--teal); margin-bottom: 4px; }
   .eyebrow .tick { width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--ink); background: var(--teal); flex: none; }
@@ -64,177 +56,196 @@
   .decor { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
   .dot { position: absolute; border-radius: 50%; border: 1px solid var(--ink); }
   .pill { position: absolute; height: 64px; border-radius: 999px; border: 1px solid var(--ink); }
-  .pill.r { right: -240px; }
-  .pill.l { left: -240px; }
+  .pill.r { right: -240px; } .pill.l { left: -240px; }
 
   /* ---------- Layout helpers ---------- */
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 3vw, 40px); align-items: stretch; }
   .stack > * + * { margin-top: clamp(16px, 2.4vh, 24px); }
   .tag { display: inline-block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--teal); margin-bottom: 12px; }
 
-  /* ---------- Clean bullet lists (all teal) ---------- */
   ul.clean { list-style: none; }
   ul.clean li { position: relative; padding-left: 30px; margin-bottom: 16px; line-height: 1.5; }
   ul.clean li:last-child { margin-bottom: 0; }
   ul.clean li::before { content: ""; position: absolute; left: 0; top: 8px; width: 13px; height: 13px; border-radius: 50%; background: var(--teal); border: 1px solid var(--ink); }
 
-  /* ---------- Stat cards ---------- */
+  /* ---------- Stat cards / tables ---------- */
   .stat-row { display: flex; flex-wrap: wrap; gap: 18px; }
   .stat { background: var(--white); border: 1px solid var(--hairline); border-radius: 18px; padding: 22px 26px; min-width: 200px; }
   .stat-num { font-size: clamp(2rem, 3.4vw, 2.9rem); color: var(--ink); line-height: 1; }
   .stat-label { font-size: 0.92rem; color: var(--slate); margin-top: 8px; }
 
-  /* ---------- Revenue table ---------- */
   .rev-table { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; overflow: hidden; }
-  .rev-table th, .rev-table td { padding: 14px 18px; text-align: left; font-size: 1rem; }
-  .rev-table thead th { background: rgba(69,182,183,0.12); color: var(--ink); font-weight: 700; font-size: 0.84rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  .rev-table th, .rev-table td { padding: 13px 18px; text-align: left; font-size: 0.98rem; }
+  .rev-table thead th { background: rgba(69,182,183,0.12); color: var(--ink); font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; }
   .rev-table tbody tr { border-top: 1px solid rgba(14,19,42,0.07); }
   .rev-table td.num { text-align: right; font-variant-numeric: tabular-nums; color: var(--slate); }
   .rev-table tr.total td { font-weight: 700; color: var(--ink); background: rgba(14,19,42,0.025); }
   .rev-table tr.total td.num { color: var(--ink); }
 
-  .note { padding: 16px 20px; border-left: 3px solid var(--teal); background: rgba(69,182,183,0.07); border-radius: 0 12px 12px 0; font-size: 0.98rem; color: var(--slate); max-width: 74ch; }
+  .note { padding: 16px 20px; border-left: 3px solid var(--teal); background: rgba(69,182,183,0.07); border-radius: 0 12px 12px 0; font-size: 0.98rem; color: var(--slate); max-width: 78ch; }
 
   /* ---------- Project carousel ---------- */
   .carousel { position: relative; }
-  .car-stage { position: relative; max-width: 980px; margin: 0 auto; }
+  .car-stage { position: relative; max-width: 1000px; margin: 0 auto; }
   .car-viewport { overflow: hidden; }
   .car-track { display: flex; transition: transform 0.5s cubic-bezier(.2,.7,.2,1); }
   .car-item { flex: 0 0 100%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 2%; }
-  .car-item img { width: auto; max-width: 100%; max-height: clamp(280px, 48vh, 520px); display: block; object-fit: contain; filter: drop-shadow(0 18px 30px rgba(14,19,42,0.16)); }
-  .car-item .name { font-weight: 700; color: var(--ink); font-size: clamp(1.2rem, 2vw, 1.6rem); margin-top: 22px; }
-  .car-item .ctx { font-size: 1rem; color: var(--slate); margin-top: 8px; max-width: 60ch; line-height: 1.5; }
-  .car-arrow { position: absolute; top: 38%; transform: translateY(-50%); z-index: 6; width: 50px; height: 50px; border-radius: 50%; border: 1px solid var(--ink); background: var(--white); color: var(--ink); font-size: 1.4rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(14,19,42,0.10); transition: background 0.2s, color 0.2s, opacity 0.2s, transform 0.15s; }
-  .car-arrow.prev { left: -20px; }
-  .car-arrow.next { right: -20px; }
+  .car-item img { width: auto; max-width: 100%; max-height: clamp(240px, 42vh, 440px); display: block; object-fit: contain; filter: drop-shadow(0 18px 30px rgba(14,19,42,0.16)); }
+  .car-item .name { font-weight: 700; color: var(--ink); font-size: clamp(1.2rem, 2vw, 1.55rem); margin-top: 18px; }
+  .hl-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 14px; }
+  .hl { display: inline-flex; align-items: center; gap: 8px; background: var(--white); border: 1px solid var(--hairline); border-radius: 999px; padding: 8px 15px 8px 12px; font-size: 0.88rem; color: var(--ink); font-weight: 600; }
+  .hl .hi { width: 17px; height: 17px; flex: none; }
+  .hi { stroke: var(--teal); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .car-arrow { position: absolute; top: 34%; transform: translateY(-50%); z-index: 6; width: 50px; height: 50px; border-radius: 50%; border: 1px solid var(--ink); background: var(--white); color: var(--ink); font-size: 1.4rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(14,19,42,0.10); transition: background 0.2s, color 0.2s, opacity 0.2s, transform 0.15s; }
+  .car-arrow.prev { left: -20px; } .car-arrow.next { right: -20px; }
   .car-arrow:active { transform: translateY(-50%) scale(0.93); }
   .car-arrow:disabled { opacity: 0.3; cursor: default; }
-  .car-dots { display: flex; gap: 9px; justify-content: center; margin-top: 22px; }
+  .car-dots { display: flex; gap: 9px; justify-content: center; margin-top: 20px; }
   .car-dots button { width: 9px; height: 9px; border-radius: 50%; border: 1px solid var(--ink); background: var(--white); cursor: pointer; padding: 0; transition: all 0.25s; }
   .car-dots button.active { background: var(--teal); transform: scale(1.35); }
 
-  /* ---------- One-off project cards ---------- */
+  /* ---------- One-off + quote ---------- */
   .ocard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .ocard { background: var(--white); border: 1px solid var(--hairline); border-radius: 14px; padding: 18px 20px; }
   .ocard .on { font-weight: 700; color: var(--ink); font-size: 1.02rem; }
   .ocard .od { font-size: 0.9rem; color: var(--slate); margin-top: 4px; line-height: 1.45; }
-
-  /* ---------- Quote screenshot card ---------- */
   .quote-shot { max-width: 720px; margin: 0 auto; background: var(--white); border: 1px solid var(--hairline); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 10px 30px rgba(14,19,42,0.06); }
   .quote-shot img { width: 100%; height: auto; display: block; border-radius: 8px; }
 
-  /* ---------- Feature split (strategy) ---------- */
+  /* ---------- Feature split ---------- */
   .feat-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
-  .feat-split.media-lg { grid-template-columns: 0.82fr 1.5fr; }
+  .feat-split.media-lg { grid-template-columns: 1.15fr 1fr; }
+  .feat-split.media-sq { grid-template-columns: 1.25fr 0.9fr; }
   .feat-split .copy p { font-size: clamp(1rem, 1.2vw, 1.16rem); line-height: 1.55; }
   .feat-split .copy h2 { margin-bottom: 18px; }
 
-  /* Screenshot / media window */
   .shot-window { position: relative; cursor: zoom-in; border-radius: 14px; overflow: hidden; border: 1px solid var(--hairline); box-shadow: 0 16px 40px rgba(14,19,42,0.16); height: clamp(300px, 56vh, 600px); background: var(--ink); display: block; }
   .shot-window img { width: 100%; display: block; object-position: top center; }
   .shot-window.scroll::after, .shot-window.linkout::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 120px; background: linear-gradient(transparent, rgba(14,19,42,0.85)); pointer-events: none; }
   .shot-window .peek-hint { position: absolute; bottom: 14px; left: 0; right: 0; z-index: 2; text-align: center; color: #fff; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.02em; pointer-events: none; }
-  /* Link-out window: only as tall as the image */
   .shot-window.linkout { height: auto; background: transparent; text-decoration: none; cursor: pointer; }
   .shot-window.linkout img { height: auto; }
-  /* Static window */
   .shot-window.static { cursor: default; height: auto; background: var(--white); }
   .shot-window.static img { height: auto; }
-  /* Placeholder window */
-  .shot-window.placeholder { cursor: default; background: rgba(69,182,183,0.05); border: 1.5px dashed var(--hairline); display: flex; align-items: center; justify-content: center; text-align: center; height: clamp(260px, 42vh, 420px); }
-  .shot-window.placeholder .ph { color: var(--slate); font-weight: 600; font-size: 1rem; padding: 24px; }
-  .shot-window.placeholder .ph small { display: block; font-weight: 400; font-size: 0.85rem; margin-top: 6px; opacity: 0.8; }
+  .shot-window.square { height: auto; aspect-ratio: 1; background: var(--white); }
+  .shot-window.square img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
-  /* ---------- Strengths ---------- */
-  .str-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .str { display: grid; grid-template-columns: 50px 1fr; gap: 16px; align-items: center; background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; padding: 14px 18px; }
-  .str .rank { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--ink); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.05rem; color: var(--ink); flex: none; }
+  /* ---------- Strengths (with blind-spot reveal) ---------- */
+  .str-list { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+  .str { display: grid; grid-template-columns: 50px 1fr; gap: 16px; align-items: start; background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; padding: 14px 18px; transition: border-color 0.4s ease; }
+  .str .rank { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--ink); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.05rem; color: var(--ink); flex: none; margin-top: 2px; transition: background 0.4s ease, color 0.4s ease; }
   .str .meta .name { font-weight: 700; color: var(--ink); font-size: 1.08rem; }
   .str .meta .domain { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); }
   .str .meta .desc { font-size: 0.9rem; color: var(--slate); margin-top: 2px; line-height: 1.4; }
-  .supporting { font-size: 1rem; color: var(--slate); max-width: 74ch; }
-  .supporting strong { color: var(--ink); }
-
-  /* ---------- Growth themes ---------- */
-  .grow-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 30px; }
-  .grow { padding-left: 26px; position: relative; }
-  .grow::before { content: ""; position: absolute; left: 0; top: 7px; width: 13px; height: 13px; border-radius: 50%; border: 1px solid var(--ink); background: var(--teal); }
-  .grow .g-name { font-weight: 700; color: var(--ink); font-size: 1.08rem; }
-  .grow .g-desc { font-size: 0.96rem; color: var(--slate); line-height: 1.5; }
+  .str .blind { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 0.5s cubic-bezier(.2,.8,.2,1), opacity 0.4s ease; }
+  .str .blind > span { overflow: hidden; display: block; font-size: 0.86rem; line-height: 1.4; color: var(--red); }
+  .str .blind .bl-tag { font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.66rem; }
+  #s2.blind-on .str { border-color: rgba(246,93,97,0.45); }
+  #s2.blind-on .str .rank { background: var(--red); color: #fff; border-color: var(--red); }
+  #s2.blind-on .str .blind { grid-template-rows: 1fr; opacity: 1; margin-top: 8px; }
+  #s2.blind-on .str:nth-child(2) .blind { transition-delay: 0.05s; }
+  #s2.blind-on .str:nth-child(3) .blind { transition-delay: 0.10s; }
+  #s2.blind-on .str:nth-child(4) .blind { transition-delay: 0.15s; }
+  #s2.blind-on .str:nth-child(5) .blind { transition-delay: 0.20s; }
+  .reveal-hint { display: inline-flex; align-items: center; gap: 8px; font-size: 0.86rem; color: var(--slate); font-weight: 600; }
+  .reveal-hint .kbd { border: 1px solid var(--hairline); border-radius: 6px; padding: 1px 8px; font-weight: 700; color: var(--ink); background: var(--white); }
+  #s2.blind-on .reveal-hint { display: none; }
+  .reveal-hint.done { color: var(--red); }
+  #s2:not(.blind-on) .reveal-hint.done { display: none; }
 
   /* ---------- Trust / commitments ---------- */
-  .commit { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; align-items: start; }
-  .commit .c { position: relative; padding: 16px 18px 16px 40px; background: var(--white); border: 1px solid var(--hairline); border-radius: 12px; font-size: 0.98rem; color: var(--slate); line-height: 1.45; }
-  .commit .c::before { content:""; position:absolute; left:16px; top:20px; width:13px; height:13px; border-radius:50%; background: var(--teal); border: 1px solid var(--ink); }
-  .commit .c strong { color: var(--ink); }
-
-  /* ---------- Toolkit callout ---------- */
-  .toolkit { display: flex; gap: 18px; align-items: flex-start; background: var(--white); border: 1px solid var(--hairline); border-left: 3px solid var(--teal); border-radius: 14px; padding: 20px 24px; max-width: 84ch; }
-  .toolkit .tk-dot { width: 30px; height: 30px; border-radius: 50%; background: var(--teal); border: 1px solid var(--ink); flex: none; margin-top: 3px; }
-  .toolkit p { font-size: 0.98rem; line-height: 1.55; }
-  .toolkit .tk-name { font-weight: 700; color: var(--ink); }
-  .btn-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 12px; font-size: 0.9rem; font-weight: 700; color: var(--white); background: var(--ink); text-decoration: none; padding: 9px 16px; border-radius: 999px; transition: opacity 0.2s; }
+  .commit { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+  .commit .c { display: flex; flex-direction: column; justify-content: center; position: relative; padding: 16px 18px 16px 42px; background: var(--white); border: 1px solid var(--hairline); border-radius: 14px; font-size: 0.96rem; color: var(--slate); line-height: 1.45; }
+  .commit .c::before { content:""; position:absolute; left:18px; top:20px; width:13px; height:13px; border-radius:50%; background: var(--teal); border: 1px solid var(--ink); }
+  .commit .c strong { color: var(--ink); display: block; margin-bottom: 3px; }
+  .commit .c.toolkit-c { grid-column: 1 / -1; border-left: 3px solid var(--teal); }
+  .commit .c.toolkit-c::before { display: none; }
+  .commit .c.toolkit-c { padding-left: 20px; }
+  .btn-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 10px; font-size: 0.86rem; font-weight: 700; color: var(--white); background: var(--ink); text-decoration: none; padding: 8px 15px; border-radius: 999px; transition: opacity 0.2s; align-self: flex-start; }
 
   /* ---------- People cards (leadership) ---------- */
-  .lcard { background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; padding: 18px 20px; display: grid; grid-template-columns: 132px 1fr; gap: 20px; align-items: stretch; }
-  .lcard .headshot { width: 132px; align-self: stretch; border-radius: 12px; overflow: hidden; background: rgba(69,182,183,0.06); border: 1px solid var(--hairline); }
-  .lcard .headshot img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .lcard { background: var(--white); border: 1px solid var(--hairline); border-radius: 18px; padding: 20px; display: grid; gap: 22px; align-items: center; }
+  .lcard.regan { grid-template-columns: 188px 1fr; }
+  .lcard.sara { grid-template-columns: 168px 1fr; }
+  .lcard .headshot { aspect-ratio: 1; border-radius: 12px; overflow: hidden; background: rgba(69,182,183,0.06); border: 1px solid var(--hairline); }
+  .lcard .headshot img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
   .lcard .lrole { color: var(--teal); font-weight: 700; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
-  .lcard .lname { font-weight: 700; color: var(--ink); font-size: 1.1rem; }
-  .lcard p { font-size: 0.94rem; line-height: 1.5; margin-top: 8px; }
+  .lcard .lname { font-weight: 700; color: var(--ink); font-size: 1.18rem; }
+  .lcard p { font-size: 0.95rem; line-height: 1.5; margin-top: 8px; }
+
+  /* ---------- Future blocks ---------- */
+  .future-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .fcard { background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; padding: 22px 22px; }
+  .fcard .fnum { width: 34px; height: 34px; border-radius: 50%; background: var(--teal); border: 1px solid var(--ink); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; margin-bottom: 12px; }
+  .fcard h3 { margin-bottom: 8px; }
+  .fcard p { font-size: 0.92rem; line-height: 1.5; }
+
+  /* ---------- Payscale ---------- */
+  .pay-wrap { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(24px, 3vw, 48px); align-items: center; }
+  .pay-table { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--hairline); border-radius: 14px; overflow: hidden; font-variant-numeric: tabular-nums; }
+  .pay-table th { background: rgba(69,182,183,0.12); color: var(--ink); font-weight: 700; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.07em; padding: 10px 16px; text-align: left; }
+  .pay-table td { padding: 8px 16px; font-size: 0.95rem; color: var(--slate); border-top: 1px solid rgba(14,19,42,0.06); }
+  .pay-table td.sal { text-align: right; font-weight: 600; color: var(--ink); }
+  .pay-table tr.now td { background: rgba(14,19,42,0.04); }
+  .pay-table tr.now td:first-child::after { content: " ← now"; color: var(--slate); font-weight: 700; font-size: 0.72rem; }
+  .pay-table tr.target td { background: rgba(69,182,183,0.16); }
+  .pay-table tr.target td.sal { color: var(--ink); }
+  .pay-table tr.target td:first-child::after { content: " ← target"; color: var(--teal); font-weight: 700; font-size: 0.72rem; }
 
   /* ---------- Asks ---------- */
-  .ask-hero { display: flex; flex-wrap: wrap; align-items: baseline; gap: 18px; }
-  .ask-hero .from { font-size: clamp(1.8rem,3vw,2.6rem); font-weight: 700; color: var(--slate); text-decoration: line-through; text-decoration-thickness: 2px; }
-  .ask-hero .arrow { font-size: clamp(1.6rem,2.6vw,2.2rem); color: var(--teal); }
-  .ask-hero .to { font-size: clamp(2.6rem,5vw,4.2rem); font-weight: 700; color: var(--ink); }
-  .ask-card { background: var(--white); border: 1px solid var(--hairline); border-radius: 18px; padding: 22px 26px; }
-  .ask-card h3 { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .ask-card { background: var(--white); border: 1px solid var(--hairline); border-radius: 18px; padding: 20px 24px; }
+  .ask-card h3 { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
   .ask-card h3 .bullet { width: 16px; height: 16px; border-radius: 50%; border: 1px solid var(--ink); flex: none; background: var(--teal); }
-  .ask-card p, .ask-card li { font-size: 0.98rem; line-height: 1.5; }
+  .ask-card p, .ask-card li { font-size: 0.96rem; line-height: 1.5; }
 
-  /* ---------- Conclusion recap chips ---------- */
+  /* ---------- Conclusion ---------- */
   .recap { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
   .recap .chip { background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; padding: 20px 22px; text-align: center; }
-  .recap .chip .big { font-weight: 700; color: var(--ink); font-size: 1.2rem; }
+  .recap .chip .big { font-weight: 700; color: var(--ink); font-size: 1.18rem; }
   .recap .chip .sub { font-size: 0.85rem; color: var(--slate); margin-top: 4px; }
 
-  /* ---------- Top bar ---------- */
+  /* ---------- Top bar / nav ---------- */
   .topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 16px 7vw; pointer-events: none; }
   .topbar .logo { pointer-events: auto; }
   .progress-label { pointer-events: auto; display: inline-flex; align-items: center; gap: 3px; font-weight: 700; font-size: 0.9rem; color: var(--slate); background: var(--white); border: 1px solid var(--hairline); padding: 6px 12px; border-radius: 999px; font-variant-numeric: tabular-nums; user-select: none; }
   .progress-label .pnav { cursor: pointer; padding: 2px 6px; border-radius: 7px; transition: color 0.2s, background 0.2s; }
   .progress-label #pPrev { color: var(--ink); }
   .progress-label .sep { opacity: 0.5; }
-
-  /* ---------- Pagination dots (desktop, right rail) ---------- */
   .dotbar { position: fixed; right: 26px; top: 50%; transform: translateY(-50%); z-index: 50; display: flex; flex-direction: column; gap: 12px; align-items: center; }
   .dotbar a { width: 11px; height: 11px; border-radius: 50%; border: 1px solid var(--ink); background: var(--white); transition: all 0.25s; cursor: pointer; }
   .dotbar a.active { background: var(--teal); transform: scale(1.35); }
-
-  /* ---------- Mobile arrow controls ---------- */
   .navarrows { position: fixed; right: 18px; bottom: 18px; z-index: 60; display: none; flex-direction: column; gap: 10px; }
   .navarrows button { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--ink); background: var(--white); color: var(--ink); font-size: 1.1rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(14,19,42,0.12); transition: opacity 0.2s; }
   .navarrows button:disabled { opacity: 0.3; }
 
-  /* ---------- Slide-to-slide entrance animations (fail-safe: content visible by default) ---------- */
-  @keyframes riseIn { from { opacity: 0; transform: translateY(34px); } }
-  @keyframes popIn  { from { opacity: 0; transform: scale(0.7); } }
-  .slide.show .inner > * { animation: riseIn 0.7s cubic-bezier(.2,.8,.2,1) both; }
-  .slide.show .inner > *:nth-child(1) { animation-delay: 0.04s; }
-  .slide.show .inner > *:nth-child(2) { animation-delay: 0.11s; }
-  .slide.show .inner > *:nth-child(3) { animation-delay: 0.18s; }
-  .slide.show .inner > *:nth-child(4) { animation-delay: 0.25s; }
-  .slide.show .inner > *:nth-child(5) { animation-delay: 0.32s; }
-  .slide.show .inner > *:nth-child(6) { animation-delay: 0.39s; }
-  .slide.show .inner > *:nth-child(7) { animation-delay: 0.46s; }
-  .slide.show .inner > *:nth-child(8) { animation-delay: 0.53s; }
-  .slide.show .decor .dot, .slide.show .decor .pill { animation: popIn 0.9s cubic-bezier(.2,.8,.2,1) 0.12s both; }
-  @media (prefers-reduced-motion: reduce) {
-    .slide.show .inner > *, .slide.show .decor .dot, .slide.show .decor .pill { animation: none; }
-  }
+  /* ---------- Entrance animations (fail-safe; trigger on settle) ---------- */
+  @keyframes riseIn { from { opacity: 0; transform: translate3d(0, 48px, 0); } }
+  @keyframes inLeft { from { opacity: 0; transform: translate3d(-60px, 0, 0); } }
+  @keyframes inRight { from { opacity: 0; transform: translate3d(60px, 0, 0); } }
+  @keyframes wipeIn { from { opacity: 0; clip-path: inset(0 100% 0 0); transform: translate3d(-14px,0,0); } to { opacity: 1; clip-path: inset(0 0 0 0); transform: none; } }
+  /* top-level blocks rise in, staggered */
+  .reveal .inner > * { animation: riseIn 0.72s cubic-bezier(.16,.84,.3,1) both; }
+  .reveal .inner > *:nth-child(1){animation-delay:.05s}
+  .reveal .inner > *:nth-child(2){animation-delay:.13s}
+  .reveal .inner > *:nth-child(3){animation-delay:.21s}
+  .reveal .inner > *:nth-child(4){animation-delay:.29s}
+  .reveal .inner > *:nth-child(5){animation-delay:.37s}
+  .reveal .inner > *:nth-child(6){animation-delay:.45s}
+  .reveal .inner > *:nth-child(7){animation-delay:.53s}
+  /* grid/flex containers: don't move the box, wipe their children instead */
+  .reveal :is(.str-list, .commit, .grid-2, .ocard-grid, .recap, .stat-row, .grow-grid, .feat-split, .future-grid, .hl-row, .pay-wrap) { animation: none; }
+  .reveal :is(.str-list, .commit, .grid-2, .ocard-grid, .recap, .stat-row, .future-grid, .pay-wrap) > * { animation: wipeIn 0.66s cubic-bezier(.2,.85,.3,1) both; }
+  .reveal :is(.str-list, .commit, .grid-2, .ocard-grid, .recap, .stat-row, .future-grid, .pay-wrap) > *:nth-child(1){animation-delay:.18s}
+  .reveal :is(.str-list, .commit, .grid-2, .ocard-grid, .recap, .stat-row, .future-grid, .pay-wrap) > *:nth-child(2){animation-delay:.27s}
+  .reveal :is(.str-list, .commit, .grid-2, .ocard-grid, .recap, .stat-row, .future-grid, .pay-wrap) > *:nth-child(3){animation-delay:.36s}
+  .reveal :is(.str-list, .commit, .grid-2, .ocard-grid, .recap, .stat-row, .future-grid, .pay-wrap) > *:nth-child(4){animation-delay:.45s}
+  .reveal :is(.str-list, .commit, .grid-2, .ocard-grid, .recap, .stat-row, .future-grid, .pay-wrap) > *:nth-child(5){animation-delay:.54s}
+  .reveal :is(.str-list, .commit, .grid-2, .ocard-grid, .recap, .stat-row, .future-grid, .pay-wrap) > *:nth-child(6){animation-delay:.63s}
+  /* feature split: copy from left, media from right */
+  .reveal .feat-split > .copy { animation: inLeft 0.75s cubic-bezier(.16,.84,.3,1) both; animation-delay: .15s; }
+  .reveal .feat-split > :not(.copy) { animation: inRight 0.75s cubic-bezier(.16,.84,.3,1) both; animation-delay: .25s; }
+  @media (prefers-reduced-motion: reduce) { .reveal * { animation: none !important; } }
 
-  /* ---------- Hover only on real pointers ---------- */
   @media (hover: hover) {
     .car-arrow:hover { background: var(--teal); color: #fff; }
     .navarrows button:hover { background: var(--teal); color: #fff; }
@@ -244,7 +255,7 @@
     .gate button:hover { opacity: 0.9; }
   }
 
-  /* ---------- Lightbox (image scroll preview) ---------- */
+  /* ---------- Lightbox ---------- */
   .lightbox { position: fixed; inset: 0; z-index: 9998; background: rgba(14,19,42,0.9); display: flex; align-items: center; justify-content: center; padding: 40px 20px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
   .lightbox.open { opacity: 1; pointer-events: auto; }
   .lightbox .frame { position: relative; width: min(920px, 92vw); height: min(86vh, 940px); border-radius: 14px; overflow: hidden; box-shadow: 0 30px 90px rgba(0,0,0,0.55); background: var(--ink); }
@@ -256,55 +267,44 @@
   /* ---------- Responsive ---------- */
   @media (max-width: 1600px) { .decor { display: none; } }
   @media (max-width: 1100px) {
-    .grid-2, .feat-split, .feat-split.media-lg, .commit, .grow-grid, .str-list, .recap, .ocard-grid { grid-template-columns: 1fr; }
+    .grid-2, .feat-split, .feat-split.media-lg, .feat-split.media-sq, .commit, .str-list, .recap, .ocard-grid, .future-grid, .pay-wrap { grid-template-columns: 1fr; }
+    .commit .c.toolkit-c { grid-column: auto; }
   }
   @media (max-width: 1000px), (max-height: 760px) { .deck { scroll-snap-type: y proximity; } }
-
   @media (max-width: 760px) {
-    .dotbar { display: none; }
-    .navarrows { display: flex; }
+    .dotbar { display: none; } .navarrows { display: flex; }
     .deck { scroll-snap-type: y proximity; }
-    .slide { padding: 62px 6vw 70px; }
+    .slide { padding: 64px 6vw 72px; }
     .logo img { height: 34px; }
-    h1 { font-size: clamp(1.6rem, 6.6vw, 2.05rem); line-height: 1.1; }
-    h2 { font-size: clamp(1.4rem, 5.6vw, 1.75rem); }
-    p, li { font-size: 0.9rem; }
-    .lead { font-size: 0.9rem; line-height: 1.4; }
-    .stack > * + * { margin-top: 11px; }
+    h1 { font-size: clamp(1.7rem, 7vw, 2.1rem); line-height: 1.1; }
+    h2 { font-size: clamp(1.45rem, 5.8vw, 1.8rem); }
+    p, li { font-size: 0.92rem; }
+    .lead { font-size: 0.95rem; line-height: 1.45; }
+    .stack > * + * { margin-top: 13px; }
     .cover-name { font-size: clamp(2.4rem, 13vw, 3.2rem); }
     .cover-role { font-size: 1.1rem; }
-    .commit { grid-template-columns: 1fr; gap: 8px; }
-    .commit .c { padding: 9px 12px 9px 32px; font-size: 0.84rem; line-height: 1.38; }
-    .commit .c::before { top: 14px; left: 12px; width: 10px; height: 10px; }
-    .toolkit { padding: 11px 14px; gap: 10px; }
-    .toolkit p { font-size: 0.82rem; line-height: 1.4; }
-    .toolkit .tk-dot { width: 20px; height: 20px; }
-    .btn-link { margin-top: 8px; padding: 7px 13px; font-size: 0.82rem; }
-    .str-list { gap: 9px; }
-    .str { padding: 10px 12px; grid-template-columns: 40px 1fr; gap: 12px; }
-    .str .rank { width: 36px; height: 36px; font-size: 0.95rem; }
-    .str .meta .desc { font-size: 0.84rem; }
-    .grow-grid { gap: 12px; }
-    .grow .g-desc { font-size: 0.88rem; }
-    .stat { min-width: 100%; padding: 16px 20px; }
-    .rev-table th, .rev-table td { padding: 9px 11px; font-size: 0.84rem; }
-    .note { font-size: 0.9rem; padding: 13px 16px; }
-    .ocard-grid { gap: 10px; }
-    .ocard { padding: 13px 16px; }
-    .quote-shot { padding: 10px 12px; }
+    .commit { grid-template-columns: 1fr; gap: 9px; }
+    .commit .c { padding: 11px 14px 11px 38px; font-size: 0.88rem; }
+    .commit .c::before { top: 15px; left: 15px; }
+    .str-list { gap: 8px; }
+    .str { padding: 11px 13px; grid-template-columns: 38px 1fr; gap: 11px; }
+    .str .rank { width: 34px; height: 34px; font-size: 0.9rem; }
+    .str .meta .desc { font-size: 0.82rem; }
+    .str .blind > span { font-size: 0.8rem; }
+    .stat { min-width: 100%; padding: 16px 18px; }
+    .rev-table th, .rev-table td, .pay-table td, .pay-table th { padding: 8px 11px; font-size: 0.82rem; }
+    .ocard-grid { gap: 9px; } .ocard { padding: 13px 15px; }
+    .future-grid { gap: 10px; } .fcard { padding: 16px 18px; }
     .car-arrow { width: 38px; height: 38px; font-size: 1.1rem; }
     .car-arrow.prev { left: -4px; } .car-arrow.next { right: -4px; }
-    .car-item img { max-height: 32vh; }
-    .car-item .name { margin-top: 14px; }
-    .car-item .ctx { font-size: 0.9rem; }
-    .shot-window { height: clamp(200px, 36vh, 340px); }
-    .lcard { grid-template-columns: 92px 1fr; gap: 14px; padding: 14px; }
-    .lcard .headshot { width: 92px; }
-    .lcard p { font-size: 0.88rem; margin-top: 6px; }
-    .ask-card { padding: 16px 18px; }
-    .ask-card p { font-size: 0.92rem; }
-    .recap { gap: 10px; }
-    .recap .chip { padding: 14px 16px; }
+    .car-item img { max-height: 30vh; }
+    .hl { font-size: 0.8rem; padding: 6px 12px 6px 10px; }
+    .shot-window { height: clamp(200px, 38vh, 340px); }
+    .lcard.regan, .lcard.sara { grid-template-columns: 96px 1fr; gap: 14px; padding: 14px; }
+    .lcard p { font-size: 0.86rem; margin-top: 6px; }
+    .ask-card { padding: 16px 18px; } .ask-card p { font-size: 0.9rem; }
+    .recap { gap: 10px; } .recap .chip { padding: 14px 16px; }
+    .quote-shot { padding: 10px 12px; }
   }
   @media (max-width: 600px) { .topbar { padding: 12px 6vw; } .progress-label { font-size: 0.82rem; } }
 
@@ -329,6 +329,25 @@
 </head>
 <body class="locked">
 
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0Z"/><path d="M17 5h3v2a3 3 0 0 1-3 3"/><path d="M7 5H4v2a3 3 0 0 0 3 3"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4 2.6-2.6Z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 8 11 8 11s8-6 8-11V5l-8-3Z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6Z"/></symbol>
+  <symbol id="i-calc" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 6h6"/><path d="M9 11h.01M12 11h.01M15 11h.01M9 15h.01M12 15h.01M15 15h.01"/></symbol>
+  <symbol id="i-app" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M7 6.5h.01"/></symbol>
+  <symbol id="i-food" viewBox="0 0 24 24"><path d="M6 2v7a2 2 0 0 0 2 2 2 2 0 0 0 2-2V2"/><path d="M8 11v11"/><path d="M16 2c-1.5 0-3 1.6-3 4v5h3"/><path d="M16 2v20"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .6-4.5 4 1.3 5.9L12 16.9 6.6 19.1l1.3-5.9-4.5-4 6-.6L12 3Z"/></symbol>
+  <symbol id="i-palette" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="8.5" cy="9.5" r="1"/><circle cx="15.5" cy="9.5" r="1"/><circle cx="9.5" cy="15.5" r="1"/></symbol>
+</svg>
+
 <!-- Password gate -->
 <div class="gate" id="gate">
   <div class="gate-card">
@@ -345,20 +364,12 @@
 
 <!-- Top bar -->
 <div class="topbar">
-  <a class="logo" id="homeLogo" href="#s0" aria-label="TDC Marketing, go to start">
-    <img src="assets/tdc-logo.webp" alt="TDC Marketing">
-  </a>
-  <div class="progress-label" id="plabel" aria-label="Slide navigation: left number goes back, right number goes forward">
-    <span class="pnav" id="pPrev" title="Previous slide">01</span>
-    <span class="sep">/</span>
-    <span class="pnav" id="pNext" title="Next slide">15</span>
+  <a class="logo" id="homeLogo" href="#s0" aria-label="TDC Marketing, go to start"><img src="assets/tdc-logo.webp" alt="TDC Marketing"></a>
+  <div class="progress-label" id="plabel" aria-label="Slide navigation">
+    <span class="pnav" id="pPrev" title="Previous">01</span><span class="sep">/</span><span class="pnav" id="pNext" title="Next">15</span>
   </div>
 </div>
-
-<!-- Pagination dots (desktop, right rail) -->
 <nav class="dotbar" id="dotbar" aria-label="Slide dots"></nav>
-
-<!-- Mobile arrow controls -->
 <div class="navarrows">
   <button id="navPrev" aria-label="Previous slide" title="Previous slide">&#8593;</button>
   <button id="navNext" aria-label="Next slide" title="Next slide">&#8595;</button>
@@ -378,77 +389,49 @@
     </div>
   </section>
 
-  <!-- 1 · ADDRESSING IT DIRECTLY -->
+  <!-- 1 · ADDRESSING -->
   <section class="slide" id="s1">
-    <div class="decor">
-      <span class="pill l" style="width:520px;background:#f65d61;top:16%"></span>
-      <span class="dot" style="width:70px;height:70px;background:#ff9800;bottom:18%;right:11%"></span>
-    </div>
+    <div class="decor"><span class="pill l" style="width:520px;background:#f65d61;top:16%"></span><span class="dot" style="width:70px;height:70px;background:#ff9800;bottom:18%;right:11%"></span></div>
     <div class="inner stack">
       <span class="eyebrow"><span class="tick"></span>Starting with honesty</span>
       <h1>Addressing it directly.</h1>
-      <p class="lead">I know I have real work to do on how I show up, specifically my <strong>attitude and mood under pressure</strong>, and how I respond to <strong>negative feedback and stressful situations</strong>. I want to acknowledge and own my mistakes. Here is my plan moving forward to grow, learn, and rebuild trust with the team:</p>
+      <p class="lead">I know I have real work to do on how I show up, specifically my <strong>attitude and mood under pressure</strong>, and how I respond to <strong>negative feedback and stressful situations</strong>. I want to acknowledge and own my mistakes. Here is my plan to grow, learn, and rebuild trust with the team:</p>
       <div class="commit">
         <div class="c"><strong>Pause before I react.</strong> Stop, assess, then respond instead of responding out of stress.</div>
-        <div class="c"><strong>Lead by example.</strong> Everyone has good days and will have bad days. When I am having a tough day, I want my focus to be on keeping my reactions and attitude from affecting the team, and on improving how I respond so I can help others stay out of that headspace too.</div>
         <div class="c"><strong>Communicate early when I'm stretched.</strong> Flag pressure before it shows up in my tone.</div>
         <div class="c"><strong>Rebuild trust over time.</strong> Consistency week over week is the only proof that counts.</div>
-      </div>
-      <div class="toolkit">
-        <span class="tk-dot"></span>
-        <div>
-          <p><span class="tk-name">My Journal &amp; Response Toolkit.</span> Nick set up a dedicated space in Notion for me to journal my thoughts and reactions, and build better responses to stress over time. This is how I am going to hold myself accountable to the commitments above.</p>
+        <div class="c"><strong>Lead by example.</strong> Everyone has good days and bad days. When I'm having a tough one, my focus is on keeping my reactions and attitude from affecting the team, and on improving how I respond so I can help others stay out of that headspace too.</div>
+        <div class="c toolkit-c"><strong>My Journal &amp; Response Toolkit.</strong> Nick set up a dedicated space in Notion for me to journal my thoughts and reactions and build better responses to stress over time. It's how I'm holding myself accountable to the commitments above.
           <a class="btn-link" href="https://app.notion.com/p/tdcmarketing/Noah-Mills-Journal-Response-Toolkit-376b6a85930780218154f190c2aaec23?source=copy_link" target="_blank" rel="noopener">Open the Toolkit &#8599;</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 2 · CLIFTONSTRENGTHS TOP 5 -->
+  <!-- 2 · CLIFTONSTRENGTHS (with blind-spot reveal) -->
   <section class="slide" id="s2">
-    <div class="decor">
-      <span class="dot" style="width:60px;height:60px;background:#ff9800;top:12%;right:8%"></span>
-      <span class="pill r" style="width:340px;background:#eed229;bottom:10%"></span>
-    </div>
+    <div class="decor"><span class="dot" style="width:60px;height:60px;background:#ff9800;top:12%;right:8%"></span><span class="pill r" style="width:340px;background:#eed229;bottom:10%"></span></div>
     <div class="inner stack">
       <span class="eyebrow"><span class="tick"></span>CliftonStrengths</span>
       <h2>This is how I'm <span class="accent">wired</span>.</h2>
       <div class="str-list">
-        <div class="str"><div class="rank">1</div><div class="meta"><span class="domain">Strategic Thinking</span><div class="name">Futuristic</div><div class="desc">I see where things can go before others do, and build toward it.</div></div></div>
-        <div class="str"><div class="rank">2</div><div class="meta"><span class="domain">Relationship Building</span><div class="name">Relator</div><div class="desc">Deep, real trust with clients and teammates, not surface level.</div></div></div>
-        <div class="str"><div class="rank">3</div><div class="meta"><span class="domain">Influencing</span><div class="name">Competition</div><div class="desc">I set a high bar and don't let up. I want to win for TDC.</div></div></div>
-        <div class="str"><div class="rank">4</div><div class="meta"><span class="domain">Executing</span><div class="name">Restorative</div><div class="desc">Drawn to broken things, like messy handoffs, failing servers, and broken forms. I fix them.</div></div></div>
-        <div class="str"><div class="rank">5</div><div class="meta"><span class="domain">Strategic Thinking</span><div class="name">Strategic</div><div class="desc">I spot patterns, find the best path, and execute.</div></div></div>
+        <div class="str"><div class="rank">1</div><div class="meta"><span class="domain">Strategic Thinking</span><div class="name">Futuristic</div><div class="desc">I see where things can go before others do, and build toward it.</div><div class="blind"><span><span class="bl-tag">Blind spot &nbsp;</span>I can lock onto the future and lose sight of present realities and what has to happen right now.</span></div></div></div>
+        <div class="str"><div class="rank">2</div><div class="meta"><span class="domain">Relationship Building</span><div class="name">Relator</div><div class="desc">Deep, real trust with clients and teammates, not surface level.</div><div class="blind"><span><span class="bl-tag">Blind spot &nbsp;</span>I invest deeply in a few people, which can read as exclusive or slow to let new folks in.</span></div></div></div>
+        <div class="str"><div class="rank">3</div><div class="meta"><span class="domain">Influencing</span><div class="name">Competition</div><div class="desc">I set a high bar and don't let up. I want to win for TDC.</div><div class="blind"><span><span class="bl-tag">Blind spot &nbsp;</span>A loss can hit me hard, and comparison can pull my focus off the team's shared win.</span></div></div></div>
+        <div class="str"><div class="rank">4</div><div class="meta"><span class="domain">Executing</span><div class="name">Restorative</div><div class="desc">Drawn to broken things, like messy handoffs, failing servers, and broken forms. I fix them.</div><div class="blind"><span><span class="bl-tag">Blind spot &nbsp;</span>I'm pulled toward what's broken, so I can dwell on problems and forget to celebrate what's working.</span></div></div></div>
+        <div class="str"><div class="rank">5</div><div class="meta"><span class="domain">Strategic Thinking</span><div class="name">Strategic</div><div class="desc">I spot patterns, find the best path, and execute.</div><div class="blind"><span><span class="bl-tag">Blind spot &nbsp;</span>I see the path fast and jump ahead, which can leave others behind or impatient with process.</span></div></div></div>
       </div>
-      <p class="supporting"><strong>6&ndash;10:</strong> Achiever &middot; Activator &middot; Individualization &middot; Discipline &middot; Deliberative.</p>
+      <p class="supporting" style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+        <span style="color:var(--slate)"><strong>6&ndash;10:</strong> Achiever &middot; Activator &middot; Individualization &middot; Discipline &middot; Deliberative.</span>
+        <span class="reveal-hint"><span class="kbd">&rarr;</span> Press next to reveal the blind spots I stay aware of</span>
+        <span class="reveal-hint done">These aren't weaknesses to fix, they're blind spots I keep in view so I don't get caught off guard.</span>
+      </p>
     </div>
   </section>
 
-  <!-- 3 · LOWER THEMES / GROWTH -->
+  <!-- 3 · REVENUE (mine) -->
   <section class="slide" id="s3">
-    <div class="decor">
-      <span class="pill l" style="width:440px;background:#c46fe2;top:14%"></span>
-      <span class="dot" style="width:54px;height:54px;background:#45b6b7;bottom:16%;right:9%"></span>
-    </div>
-    <div class="inner stack">
-      <span class="eyebrow"><span class="tick"></span>Growing into the full profile</span>
-      <h2>Knowing where I have room to grow.</h2>
-      <p class="lead">My lower CliftonStrengths themes are the ones I am most mindful of. They were flagged as areas to be aware of, and here is how I am approaching each.</p>
-      <div class="grow-grid">
-        <div class="grow"><div class="g-name">Harmony</div><div class="g-desc">I am comfortable with healthy debate and won't smooth things over just to keep the peace. I'm working on reading the room and choosing the moments when consensus matters most.</div></div>
-        <div class="grow"><div class="g-name">Includer</div><div class="g-desc">Pulling everyone into the process doesn't always come naturally to me. I am being intentional about bringing teammates in earlier and more often.</div></div>
-        <div class="grow"><div class="g-name">Woo</div><div class="g-desc">Winning over a room of new people is not my instinct. I build trust deeply with a few rather than quickly with many, and I'm aware of when a situation calls for more outreach.</div></div>
-        <div class="grow"><div class="g-name">Connectedness</div><div class="g-desc">I am practical and focused by default. I'm working on stepping back to see how the pieces connect to the bigger picture for the team and our clients.</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4 · REVENUE -->
-  <section class="slide" id="s4">
-    <div class="decor">
-      <span class="dot" style="width:92px;height:92px;background:#00a56c;top:13%;right:8%"></span>
-      <span class="pill r" style="width:480px;background:#c46fe2;bottom:14%"></span>
-    </div>
+    <div class="decor"><span class="dot" style="width:92px;height:92px;background:#00a56c;top:13%;right:8%"></span><span class="pill r" style="width:480px;background:#c46fe2;bottom:14%"></span></div>
     <div class="inner stack">
       <span class="eyebrow"><span class="tick"></span>Revenue &amp; value</span>
       <h2>$85,370 in billed web work this year.</h2>
@@ -468,30 +451,126 @@
     </div>
   </section>
 
-  <!-- 5 · PROJECTS CAROUSEL -->
-  <section class="slide" id="s5">
-    <div class="decor">
-      <span class="pill l" style="width:420px;background:#eed229;top:10%"></span>
+  <!-- 4 · LEADERSHIP (Regan & Sara) -->
+  <section class="slide" id="s4">
+    <div class="decor"><span class="pill l" style="width:500px;background:#f65d61;top:18%"></span><span class="dot" style="width:48px;height:48px;background:#bddd75;bottom:18%;right:10%"></span></div>
+    <div class="inner stack">
+      <span class="eyebrow"><span class="tick"></span>Leadership &amp; supervision</span>
+      <h2>Developing the people who do the work.</h2>
+      <p class="lead">Supervising Regan and Sara was something I asked for, and I want to thank Mike and Megan for the opportunity. Stepping into leadership has genuinely energized me. I check in with them daily on workload and how they're doing, with formal one-on-ones every two weeks.</p>
+      <div class="lcard regan">
+        <div class="headshot"><img src="assets/regan.webp" alt="Regan McKinnon"></div>
+        <div>
+          <div class="lrole">Marketing Specialist</div>
+          <div class="lname">Regan</div>
+          <p>Web isn't even in her title, but she's all in. I'm training her to handle updates, improvements, and new elements across her Blue team's client projects, like dynamic summary blocks for PWD Home and a custom vertical timeline for the Waynesboro Redevelopment and Housing Authority.</p>
+        </div>
+      </div>
+      <div class="lcard sara">
+        <div class="headshot"><img src="assets/sara.webp" alt="Sara Wharff"></div>
+        <div>
+          <div class="lrole">Marketing Design Specialist</div>
+          <div class="lname">Sara</div>
+          <p>I'm bringing her into the North River website build to understudy how I plan a site from the ground up and to collaborate with me directly on the design.</p>
+        </div>
+      </div>
+      <p class="supporting">Beyond the two of them, I help Kat and other specialists whenever their web projects need training or my expertise. Teaching re-energizes me, and seeing the team get genuinely excited about web is one of the most rewarding parts of my week.</p>
     </div>
+  </section>
+
+  <!-- 5 · REGAN & SARA REVENUE -->
+  <section class="slide" id="s5">
+    <div class="decor"><span class="dot" style="width:74px;height:74px;background:#5f66d7;top:14%;right:8%"></span><span class="pill l" style="width:420px;background:#00a56c;bottom:14%"></span></div>
+    <div class="inner stack">
+      <span class="eyebrow"><span class="tick"></span>The impact of that supervision</span>
+      <h2>Already generating web revenue for TDC.</h2>
+      <p class="lead">In just a few months of supervision, Regan and Sara are already contributing real web hours and revenue. This is web growing as a department, and it's only the beginning.</p>
+      <div class="grid-2">
+        <div>
+          <table class="rev-table">
+            <thead><tr><th>Regan &middot; since Apr 1</th><th>Hours</th></tr></thead>
+            <tbody>
+              <tr><td>Web — Dev + Design</td><td class="num">9.25</td></tr>
+              <tr><td>Web — New Build</td><td class="num">7.00</td></tr>
+              <tr><td>Web — Publication</td><td class="num">31.50</td></tr>
+              <tr class="total"><td>Total &middot; $6,685 generated</td><td class="num">47.75</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <table class="rev-table">
+            <thead><tr><th>Sara &middot; ~2.5 months</th><th>Hours</th></tr></thead>
+            <tbody>
+              <tr><td>Web — Dev + Design</td><td class="num">47.25</td></tr>
+              <tr><td>Web — New Build</td><td class="num">7.00</td></tr>
+              <tr><td>Web — Publication</td><td class="num">4.00</td></tr>
+              <tr class="total"><td>Total &middot; $8,155 generated</td><td class="num">58.25</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="note">Together that's <strong>106 web hours and roughly $14,840</strong> in revenue, in only their first few months. The more I train and build up the team, the more web grows and the more it earns for TDC.</div>
+    </div>
+  </section>
+
+  <!-- 6 · PROJECTS (reordered + icon highlights) -->
+  <section class="slide" id="s6">
+    <div class="decor"><span class="pill l" style="width:420px;background:#eed229;top:10%"></span></div>
     <div class="inner stack">
       <span class="eyebrow"><span class="tick"></span>Project highlights</span>
-      <h2>A few of my favorite builds this year.</h2>
+      <h2>A few of my favorite builds in the past year.</h2>
       <div class="carousel" id="projCarousel">
         <div class="car-stage">
           <div class="car-viewport">
             <div class="car-track" id="carTrack">
-              <figure class="car-item"><img src="assets/first-airforce-one-slider-1.png" alt="First Air Force One website">
-                <figcaption><div class="name">First Air Force One</div><div class="ctx">New design-to-code process. Custom reCAPTCHA built from scratch when Bloomerang's failed.</div></figcaption></figure>
               <figure class="car-item"><img src="assets/kdb-slider-1.png" alt="Kent Design Build website">
-                <figcaption><div class="name">Kent Design Build</div><div class="ctx">Solo build scoped for two to three people. Client pivoted three times, changed POC, delayed copy. Delivered.</div></figcaption></figure>
-              <figure class="car-item"><img src="assets/campus-movers-slider-1.png" alt="Campus Movers website">
-                <figcaption><div class="name">Campus Movers</div><div class="ctx">Found, hired, and integrated an offshore dev, a first for TDC. Custom advanced build.</div></figcaption></figure>
+                <div class="name">Kent Design Build</div>
+                <div class="hl-row">
+                  <span class="hl"><svg class="hi"><use href="#i-layers"/></svg>100+ pages, built solo</span>
+                  <span class="hl"><svg class="hi"><use href="#i-refresh"/></svg>Delivered through multiple pivots</span>
+                  <span class="hl"><svg class="hi"><use href="#i-trophy"/></svg>Won the work with my pitch</span>
+                </div>
+              </figure>
               <figure class="car-item"><img src="assets/pwd-home-slider-1.png" alt="PWD Home website">
-                <figcaption><div class="name">PWD Home</div><div class="ctx">Build plus ongoing support. High-quality delivery.</div></figcaption></figure>
+                <div class="name">PWD Home</div>
+                <div class="hl-row">
+                  <span class="hl"><svg class="hi"><use href="#i-wrench"/></svg>Easy to maintain &amp; grow</span>
+                  <span class="hl"><svg class="hi"><use href="#i-menu"/></svg>Custom mega menus</span>
+                  <span class="hl"><svg class="hi"><use href="#i-grid"/></svg>Custom summary blocks</span>
+                </div>
+              </figure>
+              <figure class="car-item"><img src="assets/first-airforce-one-slider-1.png" alt="First Air Force One website">
+                <div class="name">First Air Force One</div>
+                <div class="hl-row">
+                  <span class="hl"><svg class="hi"><use href="#i-shield"/></svg>Custom reCAPTCHA, engineered</span>
+                  <span class="hl"><svg class="hi"><use href="#i-clock"/></svg>Custom timeline history page</span>
+                  <span class="hl"><svg class="hi"><use href="#i-code"/></svg>Our first design-to-code site</span>
+                </div>
+              </figure>
+              <figure class="car-item"><img src="assets/campus-movers-slider-1.png" alt="Campus Movers website">
+                <div class="name">Campus Movers</div>
+                <div class="hl-row">
+                  <span class="hl"><svg class="hi"><use href="#i-sparkle"/></svg>Built from the ground up</span>
+                  <span class="hl"><svg class="hi"><use href="#i-calc"/></svg>Custom storage calculator</span>
+                  <span class="hl"><svg class="hi"><use href="#i-app"/></svg>Custom web app, I led the offshore dev</span>
+                </div>
+              </figure>
               <figure class="car-item"><img src="assets/hanks-slider-1.png" alt="Hank's Grille website">
-                <figcaption><div class="name">Hank's Grille</div><div class="ctx">Redesign. Clean, on-brand execution.</div></figcaption></figure>
+                <div class="name">Hank's Grille</div>
+                <div class="hl-row">
+                  <span class="hl"><svg class="hi"><use href="#i-food"/></svg>Full menu redesign</span>
+                  <span class="hl"><svg class="hi"><use href="#i-star"/></svg>My first food website</span>
+                  <span class="hl"><svg class="hi"><use href="#i-palette"/></svg>Clean, on-brand execution</span>
+                </div>
+              </figure>
               <figure class="car-item"><img src="assets/tdc-slider-1.png" alt="TDC Marketing website">
-                <figcaption><div class="name">TDC Marketing</div><div class="ctx">Our own agency site. High visibility, high stakes.</div></figcaption></figure>
+                <div class="name">TDC Marketing</div>
+                <div class="hl-row">
+                  <span class="hl"><svg class="hi"><use href="#i-sparkle"/></svg>Custom rebrand elements</span>
+                  <span class="hl"><svg class="hi"><use href="#i-code"/></svg>Our 2nd-ever TDC site</span>
+                  <span class="hl"><svg class="hi"><use href="#i-star"/></svg>Part of TDC's story</span>
+                </div>
+              </figure>
             </div>
           </div>
           <button class="car-arrow prev" id="carPrev" aria-label="Previous project">&#8249;</button>
@@ -502,43 +581,36 @@
     </div>
   </section>
 
-  <!-- 5b · ONE-OFF WEB PROJECTS -->
-  <section class="slide" id="s5b">
-    <div class="decor">
-      <span class="dot" style="width:74px;height:74px;background:#5f66d7;top:14%;right:8%"></span>
-      <span class="pill l" style="width:420px;background:#00a56c;bottom:14%"></span>
-    </div>
+  <!-- 7 · UNIQUE SKILL (one-off, reframed) -->
+  <section class="slide" id="s7">
+    <div class="decor"><span class="dot" style="width:74px;height:74px;background:#5f66d7;top:14%;right:8%"></span><span class="pill l" style="width:420px;background:#00a56c;bottom:14%"></span></div>
     <div class="inner stack">
-      <span class="eyebrow"><span class="tick"></span>One-off web projects</span>
-      <h2>Independent builds that bring in new business.</h2>
-      <p class="lead">Some of my favorite wins have been standalone web projects I took on start to finish, on my own. They make the company money and open the door to brand new client relationships, and I want to lean into more of them.</p>
+      <span class="eyebrow"><span class="tick"></span>A unique skill I bring</span>
+      <h2>Taking a site from zero to launch, on my own.</h2>
+      <p class="lead">I can take a website from a client, whether it's a migration or a brand new build, and carry it all the way from the first conversation to a phenomenal finished product. These have been some of the coolest opportunities I've had, they've brought new business and revenue to TDC, and I'm proud of how I got to represent TDC entirely on my own.</p>
       <div class="ocard-grid">
         <div class="ocard"><div class="on">VA Golf Course Reviews</div><div class="od">Brought in, managed, and delivered 100% on my own.</div></div>
         <div class="ocard"><div class="on">Weiler Orthodontics</div><div class="od">Server fix plus a full WordPress to Squarespace migration.</div></div>
-        <div class="ocard"><div class="on">Harrisonburg Economic Development</div><div class="od">A major new client I'm building independently right now.</div></div>
+        <div class="ocard"><div class="on">Harrisonburg Economic Development</div><div class="od">A brand new build I'm leading independently right now.</div></div>
       </div>
       <div class="quote-shot">
         <img src="assets/mike-hed-1.png" alt="Mike Miriello: outstanding job today with HED. Your methodology of giving them 3 choices and getting feedback was perfect. Super well done.">
         <img src="assets/mike-hed-2.png" alt="Mike Miriello: You set the bar for how that sprint should be done. You should be proud.">
       </div>
-      <p class="supporting" style="max-width:none;text-align:center;font-size:0.98rem">This is where I can create real new revenue for TDC, and it's exactly the kind of work I want more of.</p>
     </div>
   </section>
 
-  <!-- 6 · WEB STRATEGY · CODE COMPENDIUM -->
-  <section class="slide" id="s6">
-    <div class="decor">
-      <span class="dot" style="width:64px;height:64px;background:#5f66d7;top:16%;right:7%"></span>
-      <span class="pill r" style="width:380px;background:#45b6b7;bottom:12%"></span>
-    </div>
+  <!-- 8 · WEB STRATEGY 1/3 · CODE COMPENDIUM -->
+  <section class="slide" id="s8">
+    <div class="decor"><span class="dot" style="width:64px;height:64px;background:#5f66d7;top:16%;right:7%"></span><span class="pill r" style="width:380px;background:#45b6b7;bottom:12%"></span></div>
     <div class="inner stack">
       <span class="eyebrow"><span class="tick"></span>Web strategy contributions &middot; 1 of 3</span>
       <div class="feat-split">
         <div class="copy">
           <span class="tag">Built on my own initiative</span>
           <h2>The Code Compendium</h2>
-          <p>TDC's central resource for every plugin, CSS snippet, JS solution, and code block. It includes a browsable, ready-to-use code library, brandable templates with built-in AI prompts, a plugin library with credentials and licensing, and a client code archive organized by team.</p>
-          <p style="margin-top:14px">It doubles as a training resource. Teammates can learn how code works and how to adapt it for client sites, and I'm using it right now to train Regan and Sara.</p>
+          <p>TDC's central resource for every plugin, CSS snippet, JS solution, and code block. A browsable, ready-to-use code library, brandable templates with built-in AI prompts, a plugin library with credentials, and a client code archive organized by team.</p>
+          <p style="margin-top:14px">It also solved a real problem: I can't train everyone every second of every day, and teams have different schedules and project demands. The Compendium lets me train teammates without sitting beside them. The instructions, the AI prompts, and the detail I put into the library mean Regan, Sara, and any specialist, designer, or strategist can learn what I've been building across our sites, in their own way and at their own pace, and start building amazing elements with confidence.</p>
         </div>
         <div class="shot-window scroll" id="ccShot" role="button" tabindex="0" aria-label="Open the Code Compendium preview">
           <img src="assets/code-compendium.png" alt="The Code Compendium resource">
@@ -548,12 +620,9 @@
     </div>
   </section>
 
-  <!-- 7 · WEB STRATEGY · PORTFOLIO PLUGIN -->
-  <section class="slide" id="s7">
-    <div class="decor">
-      <span class="pill l" style="width:460px;background:#c46fe2;top:18%"></span>
-      <span class="dot" style="width:48px;height:48px;background:#bddd75;bottom:16%;right:10%"></span>
-    </div>
+  <!-- 9 · WEB STRATEGY 2/3 · PLUGIN -->
+  <section class="slide" id="s9">
+    <div class="decor"><span class="pill l" style="width:460px;background:#c46fe2;top:18%"></span><span class="dot" style="width:48px;height:48px;background:#bddd75;bottom:16%;right:10%"></span></div>
     <div class="inner stack">
       <span class="eyebrow"><span class="tick"></span>Web strategy contributions &middot; 2 of 3</span>
       <div class="feat-split">
@@ -571,132 +640,120 @@
     </div>
   </section>
 
-  <!-- 8 · WEB STRATEGY · BUILD LIFECYCLE -->
-  <section class="slide" id="s8">
-    <div class="decor">
-      <span class="dot" style="width:80px;height:80px;background:#00a56c;top:14%;right:8%"></span>
-      <span class="pill r" style="width:400px;background:#eed229;bottom:14%"></span>
-    </div>
+  <!-- 10 · WEB STRATEGY 3/3 · LIFECYCLE -->
+  <section class="slide" id="s10">
+    <div class="decor"><span class="dot" style="width:80px;height:80px;background:#00a56c;top:14%;right:8%"></span><span class="pill r" style="width:400px;background:#eed229;bottom:14%"></span></div>
     <div class="inner stack">
       <span class="eyebrow"><span class="tick"></span>Web strategy contributions &middot; 3 of 3</span>
-      <div class="feat-split media-lg">
+      <div class="feat-split media-sq">
         <div class="copy">
           <span class="tag">A process redesign</span>
-          <h2>The Web Build Lifecycle</h2>
+          <h2>The&nbsp;Web&nbsp;Build&nbsp;Lifecycle</h2>
           <p>I replaced our old 3-milestone process with a multi-milestone, sprint-based system. It adds cross-functional collaboration between Strategy, WDT, and Content, and gives leadership real-time visibility into web workload.</p>
           <p style="margin-top:14px">In 2026 I merged sprint cards with monthly web update cards, so everything tracks in one place. It's one of the most significant contributions I've made to the team.</p>
         </div>
-        <div class="shot-window static">
-          <img src="assets/web-build-lifecycle.png" alt="Proposed web build structure for 2026">
-        </div>
+        <div class="shot-window square"><img src="assets/web-build-lifecycle.png" alt="Proposed web build structure for 2026"></div>
       </div>
-      <p class="supporting" style="margin-top:clamp(24px,4vh,52px)">These three initiatives, the Compendium, the plugin, and this lifecycle, are the core of my case. I'm not just billing hours, I'm building the systems the whole company can rely on to grow.</p>
     </div>
   </section>
 
-  <!-- 9 · LEADERSHIP -->
-  <section class="slide" id="s9">
-    <div class="decor">
-      <span class="pill l" style="width:500px;background:#f65d61;top:20%"></span>
-      <span class="dot" style="width:48px;height:48px;background:#bddd75;bottom:18%;right:10%"></span>
-    </div>
+  <!-- 11 · FIVE YEARS FROM NOW -->
+  <section class="slide" id="s11">
+    <div class="decor"><span class="dot" style="width:84px;height:84px;background:#45b6b7;top:14%;right:9%"></span><span class="pill l" style="width:520px;background:#bddd75;bottom:16%"></span></div>
     <div class="inner stack">
-      <span class="eyebrow"><span class="tick"></span>Leadership &amp; supervision</span>
-      <h2>Developing the people who do the work.</h2>
-      <p class="lead">I directly supervise Regan and Sara. I check in daily on workload and how they're really doing, with formal one-on-ones every two weeks.</p>
-      <div class="grid-2">
-        <div class="lcard">
-          <div class="headshot"><img src="assets/regan.webp" alt="Regan McKinnon"></div>
-          <div>
-            <div class="lrole">Marketing Specialist</div>
-            <div class="lname">Regan</div>
-            <p>Web isn't even in her title, but she's all in. I'm training her to handle updates, improvements, and new elements across her Blue team's client projects, like dynamic summary blocks for PWD Home and a custom vertical timeline for the Waynesboro Redevelopment and Housing Authority.</p>
-          </div>
+      <span class="eyebrow"><span class="tick"></span>Five years from now</span>
+      <h2>Where these systems take us.</h2>
+      <div class="future-grid">
+        <div class="fcard">
+          <div class="fnum">1</div>
+          <h3>The Code Compendium</h3>
+          <p>The whole team is fluent in it. My coding knowledge and how to prompt AI to customize code blocks and templates becomes core to how we work. With multiple people trained and confident, we 10x the advanced web projects and features we can build and recommend.</p>
         </div>
-        <div class="lcard">
-          <div class="headshot"><img src="assets/sara.webp" alt="Sara Wharff"></div>
-          <div>
-            <div class="lrole">Marketing Design Specialist</div>
-            <div class="lname">Sara</div>
-            <p>I'm bringing her into the North River website build to understudy how I plan a site from the ground up, and to collaborate with me directly on the design.</p>
-          </div>
+        <div class="fcard">
+          <div class="fnum">2</div>
+          <h3>Our own plugins</h3>
+          <p>I keep building in-house plugins that make us faster and our client sites more efficient, until we're no longer paying for third-party subscriptions. We develop and maintain our own code across every site.</p>
+        </div>
+        <div class="fcard">
+          <div class="fnum">3</div>
+          <h3>The web build lifecycle</h3>
+          <p>I'm writing the official SOP for how we plan web sprints, finalizing it with Tyler. I presented it to the Constructive Committee this morning. In five years the whole team approaches web with a confident, well-structured process that aligns Content, Web, and Strategy and gets clients on board.</p>
         </div>
       </div>
-      <p class="supporting">Beyond the two of them, I jump in to help Kat and other marketing specialists whenever their web projects call for training or my expertise. It's the part of this role I most want to grow. Teaching re-energizes me, and seeing the team get excited about web makes it worth it.</p>
+      <p class="supporting">These compound. The more I build them out, the bigger the impact, for our output, our process, and our revenue.</p>
     </div>
   </section>
 
-  <!-- 10 · ASK: COMPENSATION -->
-  <section class="slide" id="s10">
-    <div class="decor">
-      <span class="dot" style="width:96px;height:96px;background:#00a56c;top:12%;right:7%"></span>
-      <span class="pill r" style="width:420px;background:#5f66d7;bottom:14%"></span>
-    </div>
+  <!-- 12 · ASK · COMPENSATION (payscale) -->
+  <section class="slide" id="s12">
+    <div class="decor"><span class="dot" style="width:96px;height:96px;background:#00a56c;top:12%;right:7%"></span><span class="pill r" style="width:420px;background:#5f66d7;bottom:14%"></span></div>
     <div class="inner stack">
       <span class="eyebrow"><span class="tick"></span>The ask &middot; compensation</span>
-      <div class="ask-hero">
-        <span class="from">$54,000</span><span class="arrow">&rarr;</span><span class="to">$64,000</span>
+      <h2>Move me five years along my payscale.</h2>
+      <div class="pay-wrap">
+        <table class="pay-table">
+          <thead><tr><th>Experience</th><th style="text-align:right">Salary</th></tr></thead>
+          <tbody>
+            <tr class="now"><td>0 years</td><td class="sal">$54,000</td></tr>
+            <tr><td>1 year</td><td class="sal">$55,350</td></tr>
+            <tr><td>2 years</td><td class="sal">$56,734</td></tr>
+            <tr><td>3 years</td><td class="sal">$58,152</td></tr>
+            <tr><td>4 years</td><td class="sal">$59,606</td></tr>
+            <tr class="target"><td>5 years</td><td class="sal">$61,096</td></tr>
+            <tr><td>6 years</td><td class="sal">$62,623</td></tr>
+            <tr><td>7 years</td><td class="sal">$64,189</td></tr>
+          </tbody>
+        </table>
+        <div>
+          <p class="lead" style="font-size:1.15rem">I'm not asking for a flat jump. I'd like to be moved <strong>five years forward</strong> on the Web Strategist payscale, to <strong>$61,096</strong>. That's where I'd like to be, and I'd love the opportunity to grow into it over time.</p>
+          <ul class="clean" style="margin-top:16px">
+            <li>I'm the only person at TDC who can take a high-level web project from concept to launch entirely on my own.</li>
+            <li>I've built the systems the whole company runs on: the Code Compendium, our first custom plugin, and a redesigned web build lifecycle.</li>
+            <li>These compound. My focus is training the team and building systems that 10x our web output and revenue over the next five years.</li>
+          </ul>
+        </div>
       </div>
-      <ul class="clean" style="max-width:78ch">
-        <li>I am the only person at TDC who can take a high-level web project from concept to launch completely on my own, with no one else building any part of it for me.</li>
-        <li>Beyond my own builds, I'm creating the systems that help all of TDC grow, not only the publication team. I train teammates directly and support others I'm not responsible for, all to raise our web performance as a company.</li>
-        <li>I'm leading the web build for <strong>Harrisonburg Economic Development</strong>, a major new client, fully independently, with Mike and Miguel supporting the marketing strategy side to bring them on board.</li>
-      </ul>
     </div>
   </section>
 
-  <!-- 11 · ASK: STRUCTURE & ROLE -->
-  <section class="slide" id="s11">
-    <div class="decor">
-      <span class="pill l" style="width:480px;background:#45b6b7;top:16%"></span>
-      <span class="dot" style="width:40px;height:40px;background:#eed229;bottom:20%;right:12%"></span>
-    </div>
+  <!-- 13 · ASK · ROLE & GROWTH -->
+  <section class="slide" id="s13">
+    <div class="decor"><span class="pill l" style="width:480px;background:#45b6b7;top:16%"></span><span class="dot" style="width:40px;height:40px;background:#eed229;bottom:20%;right:12%"></span></div>
     <div class="inner stack">
-      <span class="eyebrow"><span class="tick"></span>The ask &middot; structure &amp; role</span>
-      <h2>The space and structure to lead.</h2>
-      <div class="ask-card">
-        <h3><span class="bullet"></span>Shared office space</h3>
-        <p>Proximity to other strategists makes collaboration easier and supports the leadership and client work I'm doing. A functional ask, not a perk.</p>
+      <span class="eyebrow"><span class="tick"></span>The ask &middot; role &amp; growth</span>
+      <h2>I want to grow into a bigger role.</h2>
+      <div class="grid-2">
+        <div class="ask-card">
+          <h3><span class="bullet"></span>A seat in bigger conversations</h3>
+          <p>I want to be a major player here. I'd love to sit in on marketing strategy stand-ups, learn the ins and outs of how the company runs, and soak up strategy from the people around me, design from Cat and Kristen, marketing strategy from Nick, Miguel, Mike, Tyler, and Christine.</p>
+        </div>
+        <div class="ask-card">
+          <h3><span class="bullet"></span>Shared office with the strategists</h3>
+          <p>Right now I'm still treated as a specialist, partly because of where I sit. A shared office with other strategists puts me in the room for the strategy work instead of adjacent to it.</p>
+        </div>
+        <div class="ask-card">
+          <h3><span class="bullet"></span>Transition off publication work</h3>
+          <p>I'm doing the work of two roles. By training the marketing specialists, plus Regan and Sara, to own web publication, email especially, I free up the time to do real web strategy.</p>
+        </div>
+        <div class="ask-card">
+          <h3><span class="bullet"></span>Define and grow web strategy</h3>
+          <p>I'm the only web strategist at TDC and the furthest into web we've ever gone. I want to define what great web strategy looks like, support every team more directly, and pitch ideas that 10x our web revenue over time.</p>
+        </div>
       </div>
-      <div class="ask-card">
-        <h3><span class="bullet"></span>Transition off publication work</h3>
-        <p>Train Regan, Sara, and other marketing specialists to own publication updates and routine maintenance, so my time can go where it creates the most value: high-level web builds, bringing in new clients, and helping all teams with their web strategy.</p>
-      </div>
-      <div class="ask-card">
-        <h3><span class="bullet"></span>Support all teams in their web strategy</h3>
-        <p>I'm not looking to rotate onto every team at will, which would be a structural headache. Instead, I want to support teams more than I have: helping plan builds, jumping in on code, and training members so they feel confident in their projects. Specifically, I want to find more time to support Blue and Red on their web initiatives.</p>
-      </div>
+      <p class="supporting">This won't happen overnight. I'd like the space and the opportunity to grow into it over the next several years.</p>
     </div>
   </section>
 
-  <!-- 12 · COMMITMENTS -->
-  <section class="slide" id="s12">
-    <div class="decor">
-      <span class="dot" style="width:84px;height:84px;background:#45b6b7;top:14%;right:9%"></span>
-      <span class="pill r" style="width:520px;background:#bddd75;bottom:16%"></span>
-    </div>
-    <div class="inner stack">
-      <span class="eyebrow"><span class="tick"></span>What I'm committing to</span>
-      <h2>Where I'm taking this over the next 12 months.</h2>
-      <ul class="clean">
-        <li>Lean into one-off web projects that build new client relationships and can bring new <strong>full-stack clients</strong> into the company.</li>
-        <li>Keep delivering high-quality builds and bringing in new clients independently.</li>
-        <li>Fully train the team on the Compendium and publication workflows.</li>
-        <li>Show up steady and rebuild trust through consistency.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 13 · CONCLUSION -->
-  <section class="slide" id="s13" style="text-align:center">
-    <div class="inner stack" style="max-width:860px;margin:0 auto">
+  <!-- 14 · CONCLUSION -->
+  <section class="slide" id="s14" style="text-align:center">
+    <div class="inner stack" style="max-width:880px;margin:0 auto">
       <span class="eyebrow" style="margin:0 auto"><span class="tick"></span>Thank you</span>
       <h1>Thank you.</h1>
       <p class="lead" style="margin-left:auto;margin-right:auto">I appreciate you taking the time, and the chance to keep growing here.<br>Here is a recap of what I'm asking for:</p>
       <div class="recap">
-        <div class="chip"><div class="big">$64,000</div><div class="sub">Salary</div></div>
-        <div class="chip"><div class="big">Shared office</div><div class="sub">Space to lead &amp; collaborate</div></div>
-        <div class="chip"><div class="big">Strategist scope</div><div class="sub">Room to lead at a true level</div></div>
+        <div class="chip"><div class="big">$61,096</div><div class="sub">Five years along my payscale, to grow into over time</div></div>
+        <div class="chip"><div class="big">Shared office</div><div class="sub">In the room with the strategists</div></div>
+        <div class="chip"><div class="big">Into web strategy</div><div class="sub">Off publication, into a bigger role</div></div>
       </div>
       <p class="lead" style="margin-left:auto;margin-right:auto">Now I'd love to open it up: questions, reflections, and where we go from here.</p>
     </div>
@@ -762,7 +819,7 @@
       }
       return H.map(x => ('00000000' + (x >>> 0).toString(16)).slice(-8)).join('');
     }
-    function unlock() { gate.classList.add('hide'); document.body.classList.remove('locked'); setTimeout(() => gate.remove(), 600); if (window.__deckReady) updateActive(); }
+    function unlock() { gate.classList.add('hide'); document.body.classList.remove('locked'); setTimeout(() => gate.remove(), 600); if (window.__deckReady) { updateActive(); revealSlide(current()); } }
     if (sessionStorage.getItem(KEY) === '1') { unlock(); return; }
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -771,7 +828,7 @@
     });
   })();
 
-  /* ---------- Deck navigation ---------- */
+  /* ---------- Deck ---------- */
   const slides = Array.from(document.querySelectorAll('.slide'));
   const deck = document.getElementById('deck');
   const dotbar = document.getElementById('dotbar');
@@ -781,7 +838,8 @@
   const navPrev = document.getElementById('navPrev');
   const navNext = document.getElementById('navNext');
   const lightbox = document.getElementById('lightbox');
-  const projSlide = document.getElementById('s5');
+  const projSlide = document.getElementById('s6');
+  const strSlide = document.getElementById('s2');
 
   pNext.textContent = String(total).padStart(2, '0');
 
@@ -800,62 +858,73 @@
     return idx;
   }
 
-  let activeIdx = -1;
+  let activeIdx = -1, revealIdx = -1;
   function updateActive() {
     const i = current();
     if (i !== activeIdx) {
       activeIdx = i;
-      slides.forEach((s, j) => s.classList.toggle('show', j === i));
       dots.forEach((d, j) => d.classList.toggle('active', j === i));
       pPrev.textContent = String(i + 1).padStart(2, '0');
       navPrev.disabled = (i === 0);
       navNext.disabled = (i === total - 1);
+      if (slides[i] !== strSlide) strSlide.classList.remove('blind-on'); // reset blind-spots when leaving
     }
   }
+  function revealSlide(i) {
+    if (i === revealIdx) return;
+    revealIdx = i;
+    slides.forEach((s, j) => { if (j !== i) s.classList.remove('reveal'); });
+    const s = slides[i];
+    s.classList.remove('reveal'); void s.offsetWidth; s.classList.add('reveal');
+  }
 
-  /* Controlled smooth scroll (reliable across browsers incl. iOS; snap can't fight it) */
-  let animating = false, navTimer = null;
+  let navTimer = null;
   function animateScroll(target, dur) {
-    dur = dur || 620;
+    dur = dur || 600;
     const start = deck.scrollTop, dist = target - start, t0 = performance.now();
-    animating = true;
     deck.style.scrollSnapType = 'none';
     function step(now) {
       const t = Math.min(1, (now - t0) / dur);
-      const e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; // easeInOutCubic
+      const e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
       deck.scrollTop = start + dist * e;
       updateActive();
       if (t < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
-    // Guaranteed landing (covers any environment where rAF is throttled, e.g. backgrounded iOS Safari)
     clearTimeout(navTimer);
-    navTimer = setTimeout(function () {
-      deck.scrollTop = target;
-      animating = false;
-      deck.style.scrollSnapType = '';
-      updateActive();
-    }, dur + 180);
+    navTimer = setTimeout(function () { deck.scrollTop = target; deck.style.scrollSnapType = ''; updateActive(); revealSlide(current()); }, dur + 180);
   }
-  function goTo(n) {
-    n = Math.max(0, Math.min(total - 1, n));
-    animateScroll(slides[n].offsetTop);
+  function goTo(n) { n = Math.max(0, Math.min(total - 1, n)); animateScroll(slides[n].offsetTop); }
+
+  /* next/prev with special handling for strengths (blind-spots) and projects (carousel) */
+  function goNext() {
+    const i = current();
+    if (slides[i] === strSlide && !strSlide.classList.contains('blind-on')) { strSlide.classList.add('blind-on'); return; }
+    if (slides[i] === projSlide && carIndex < carItems - 1) { carGo(carIndex + 1); return; }
+    goTo(i + 1);
+  }
+  function goPrev() {
+    const i = current();
+    if (slides[i] === strSlide && strSlide.classList.contains('blind-on')) { strSlide.classList.remove('blind-on'); return; }
+    if (slides[i] === projSlide && carIndex > 0) { carGo(carIndex - 1); return; }
+    goTo(i - 1);
   }
 
-  let ticking = false;
+  let ticking = false, settleTimer = null;
   deck.addEventListener('scroll', () => {
-    if (animating) return;
     if (!ticking) { ticking = true; requestAnimationFrame(() => { updateActive(); ticking = false; }); }
+    clearTimeout(settleTimer);
+    settleTimer = setTimeout(() => { updateActive(); revealSlide(current()); }, 110);
   }, { passive: true });
-  window.addEventListener('resize', () => { updateActive(); });
+  window.addEventListener('resize', updateActive);
 
-  navPrev.addEventListener('click', () => goTo(current() - 1));
-  navNext.addEventListener('click', () => goTo(current() + 1));
-  pPrev.addEventListener('click', () => goTo(current() - 1));
-  pNext.addEventListener('click', () => goTo(current() + 1));
+  navPrev.addEventListener('click', goPrev);
+  navNext.addEventListener('click', goNext);
+  pPrev.addEventListener('click', goPrev);
+  pNext.addEventListener('click', goNext);
   document.getElementById('homeLogo').addEventListener('click', (e) => { e.preventDefault(); goTo(0); });
 
-  /* ---------- Projects carousel ---------- */
+  /* ---------- Carousel ---------- */
   const carTrack = document.getElementById('carTrack');
   const carItems = carTrack ? carTrack.children.length : 0;
   const carPrevBtn = document.getElementById('carPrev');
@@ -884,28 +953,20 @@
     let sx = null;
     const vp = carTrack.parentElement;
     vp.addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; }, { passive: true });
-    vp.addEventListener('touchend', (e) => {
-      if (sx === null) return;
-      const dx = e.changedTouches[0].clientX - sx;
-      if (Math.abs(dx) > 45) { dx < 0 ? carGo(carIndex + 1) : carGo(carIndex - 1); }
-      sx = null;
-    }, { passive: true });
+    vp.addEventListener('touchend', (e) => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 45) { dx < 0 ? carGo(carIndex + 1) : carGo(carIndex - 1); } sx = null; }, { passive: true });
   }
 
   /* ---------- Keyboard ---------- */
   document.addEventListener('keydown', (e) => {
     if (document.body.classList.contains('locked')) return;
     if (lightbox.classList.contains('open')) { if (e.key === 'Escape') closeLightbox(); return; }
-    const onProjects = slides[current()] === projSlide;
-    if (['ArrowDown','PageDown',' '].includes(e.key)) { e.preventDefault(); goTo(current() + 1); }
-    else if (['ArrowUp','PageUp'].includes(e.key)) { e.preventDefault(); goTo(current() - 1); }
-    else if (e.key === 'ArrowRight') { e.preventDefault(); if (onProjects && carIndex < carItems - 1) carGo(carIndex + 1); else goTo(current() + 1); }
-    else if (e.key === 'ArrowLeft') { e.preventDefault(); if (onProjects && carIndex > 0) carGo(carIndex - 1); else goTo(current() - 1); }
+    if (['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)) { e.preventDefault(); goNext(); }
+    else if (['ArrowUp','ArrowLeft','PageUp'].includes(e.key)) { e.preventDefault(); goPrev(); }
     else if (e.key === 'Home') { goTo(0); }
     else if (e.key === 'End') { goTo(total - 1); }
   });
 
-  /* ---------- Lightbox (image scroll preview) ---------- */
+  /* ---------- Lightbox ---------- */
   const lbScroller = document.getElementById('lbScroller');
   const lbImg = document.getElementById('lbImg');
   const lbClose = document.getElementById('lbClose');
@@ -916,34 +977,19 @@
       const max = lbScroller.scrollHeight - lbScroller.clientHeight;
       if (max <= 4) return;
       const duration = Math.min(28000, Math.max(9000, max * 7));
-      const from = lbScroller.scrollTop;
-      const start = performance.now();
-      const step = (now) => {
-        if (lbUserTook) return;
-        const t = Math.min(1, (now - start) / duration);
-        const eased = t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2, 2)/2;
-        lbScroller.scrollTop = from + (max - from) * eased;
-        if (t < 1) lbRAF = requestAnimationFrame(step);
-      };
+      const from = lbScroller.scrollTop, start = performance.now();
+      const step = (now) => { if (lbUserTook) return; const t = Math.min(1, (now - start) / duration); const eased = t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2, 2)/2; lbScroller.scrollTop = from + (max - from) * eased; if (t < 1) lbRAF = requestAnimationFrame(step); };
       lbRAF = requestAnimationFrame(step);
     };
     setTimeout(run, 550);
   }
   function openImage(src, alt) {
-    lbUserTook = false;
-    lightbox.classList.add('open');
-    lightbox.setAttribute('aria-hidden', 'false');
+    lbUserTook = false; lightbox.classList.add('open'); lightbox.setAttribute('aria-hidden', 'false');
     lbImg.src = src; lbImg.alt = alt || ''; lbScroller.scrollTop = 0;
     if (lbImg.complete) startAutoScroll(); else lbImg.onload = startAutoScroll;
   }
-  function closeLightbox() {
-    lightbox.classList.remove('open');
-    lightbox.setAttribute('aria-hidden', 'true');
-    cancelAnimationFrame(lbRAF); lbUserTook = true;
-  }
-  ['wheel','touchstart','pointerdown','keydown'].forEach(evt =>
-    lbScroller.addEventListener(evt, () => { lbUserTook = true; cancelAnimationFrame(lbRAF); }, { passive: true })
-  );
+  function closeLightbox() { lightbox.classList.remove('open'); lightbox.setAttribute('aria-hidden', 'true'); cancelAnimationFrame(lbRAF); lbUserTook = true; }
+  ['wheel','touchstart','pointerdown','keydown'].forEach(evt => lbScroller.addEventListener(evt, () => { lbUserTook = true; cancelAnimationFrame(lbRAF); }, { passive: true }));
   lbClose.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
   const ccShot = document.getElementById('ccShot');
@@ -953,9 +999,10 @@
     ccShot.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
   }
 
-  /* initial active state */
+  /* ---------- Init ---------- */
   window.__deckReady = true;
   updateActive();
+  revealSlide(0);
 </script>
 </body>
 </html>
