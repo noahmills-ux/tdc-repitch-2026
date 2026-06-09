@@ -72,7 +72,7 @@
   /* ---------- Stat cards / tables ---------- */
   .stat-row { display: flex; flex-wrap: wrap; gap: 18px; }
   .stat { background: var(--white); border: 1px solid var(--hairline); border-radius: 18px; padding: 22px 26px; min-width: 200px; }
-  .stat-num { font-size: clamp(2rem, 3.4vw, 2.9rem); color: var(--ink); line-height: 1; }
+  .stat-num { font-size: clamp(1.5rem, 2.4vw, 2.1rem); color: var(--ink); line-height: 1; }
   .stat-label { font-size: 0.92rem; color: var(--slate); margin-top: 8px; }
 
   .rev-table { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; overflow: hidden; }
@@ -157,7 +157,7 @@
   #s2:not(.blind-on) .reveal-hint.done { display: none; }
 
   /* ---------- Trust / commitments ---------- */
-  .commit { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+  .commit { display: grid; grid-template-columns: 1fr; gap: 12px; }
   .commit .c { display: flex; flex-direction: column; justify-content: center; position: relative; padding: 16px 18px 16px 42px; background: var(--white); border: 1px solid var(--hairline); border-radius: 14px; font-size: 0.96rem; color: var(--slate); line-height: 1.45; }
   .commit .c::before { content:""; position:absolute; left:18px; top:20px; width:13px; height:13px; border-radius:50%; background: var(--teal); border: 1px solid var(--ink); }
   .commit .c strong { color: var(--ink); display: block; margin-bottom: 3px; }
@@ -196,9 +196,12 @@
 
   /* ---------- Asks ---------- */
   .ask-card { background: var(--white); border: 1px solid var(--hairline); border-radius: 18px; padding: 20px 24px; }
-  .ask-card h3 { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
-  .ask-card h3 .bullet { width: 16px; height: 16px; border-radius: 50%; border: 1px solid var(--ink); flex: none; background: var(--teal); }
-  .ask-card p, .ask-card li { font-size: 0.96rem; line-height: 1.5; }
+  .ask-card h3 { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 1.02rem; flex-wrap: wrap; }
+  .ask-card h3 .bullet { width: 15px; height: 15px; border-radius: 50%; border: 1px solid var(--ink); flex: none; background: var(--teal); }
+  .ask-card p { font-size: 0.96rem; line-height: 1.5; }
+  .ask-card ul.clean { margin-top: 10px; }
+  .ask-card ul.clean li { font-size: 0.86rem; line-height: 1.4; margin-bottom: 8px; padding-left: 24px; }
+  .ask-card ul.clean li::before { width: 10px; height: 10px; top: 6px; }
 
   /* ---------- Conclusion ---------- */
   .recap { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
@@ -258,6 +261,11 @@
   /* feature split: copy from left, media from right */
   .reveal .feat-split > .copy { animation: inLeft 1.05s cubic-bezier(.16,.84,.3,1) both; animation-delay: .18s; }
   .reveal .feat-split > :not(.copy) { animation: inRight 1.05s cubic-bezier(.16,.84,.3,1) both; animation-delay: .3s; }
+  /* one-off slide: cards in from left, quotes from right, connector fades in */
+  @keyframes fadeIn { from { opacity: 0; } }
+  .reveal .oneoff-cards { animation: inLeft 1.05s cubic-bezier(.16,.84,.3,1) both; animation-delay: .2s; }
+  .reveal .oneoff-quote { animation: inRight 1.05s cubic-bezier(.16,.84,.3,1) both; animation-delay: .34s; }
+  .reveal .oneoff-curve { animation: fadeIn 1s ease both; animation-delay: .6s; }
   /* decor: slide in from the edge it bleeds off; dots pop in */
   .reveal .decor .pill.l { animation: pillFromLeft 1.1s cubic-bezier(.16,.84,.3,1) both; animation-delay: .3s; }
   .reveal .decor .pill.r { animation: pillFromRight 1.1s cubic-bezier(.16,.84,.3,1) both; animation-delay: .3s; }
@@ -489,7 +497,7 @@
         <div>
           <div class="lrole">Marketing Specialist</div>
           <div class="lname">Regan</div>
-          <p>Web isn't even in her title, but she's all in. I'm training her to handle updates, improvements, and new elements across her Blue team's client projects, like dynamic summary blocks for PWD Home and a custom vertical timeline for the Waynesboro Redevelopment and Housing Authority.</p>
+          <p>I've been training her and working alongside her on web for her Blue team's client projects, from updates and improvements to new elements like dynamic summary blocks for PWD Home and a custom vertical timeline for the Waynesboro Redevelopment and Housing Authority.</p>
         </div>
       </div>
       <div class="lcard sara">
@@ -497,7 +505,7 @@
         <div>
           <div class="lrole">Marketing Design Specialist</div>
           <div class="lname">Sara</div>
-          <p>I'm bringing her into the North River website build to understudy how I plan a site from the ground up and to collaborate with me directly on the design.</p>
+          <p>I've been training her and working alongside her on web for her color team's projects, and I'm bringing her into the North River build to shadow how I plan a site from the ground up and learn the process directly.</p>
         </div>
       </div>
       <p class="supporting">Beyond the two of them, I help Kat and other specialists whenever their web projects need training or my expertise. Teaching re-energizes me, and seeing the team get genuinely excited about web is one of the most rewarding parts of my week.</p>
@@ -646,6 +654,7 @@
           <h2>The Code Compendium</h2>
           <p>TDC's central resource for every plugin, CSS snippet, JS solution, and code block. A browsable, ready-to-use code library, brandable templates with built-in AI prompts, a plugin library with credentials, and a client code archive organized by team.</p>
           <p style="margin-top:14px">It also solved a real problem: I can't train everyone every second of every day, and teams have different schedules and project demands. The Compendium lets me train teammates without sitting beside them. The instructions, the AI prompts, and the detail I put into the library mean Regan, Sara, and any specialist, designer, or strategist can learn what I've been building across our sites, in their own way and at their own pace, and start building amazing elements with confidence.</p>
+          <a class="btn-link" href="https://www.notion.so/tdcmarketing/The-Code-Compendium-30ae02656c5d4fd380796dcff63a6cb7?source=copy_link" target="_blank" rel="noopener">Open the Code Compendium &#8599;</a>
         </div>
         <div class="shot-window scroll" id="ccShot" role="button" tabindex="0" aria-label="Open the Code Compendium preview">
           <img src="assets/code-compendium.png" alt="The Code Compendium resource">
@@ -791,8 +800,8 @@
       <p class="lead" style="margin-left:auto;margin-right:auto">I appreciate you taking the time, and the chance to keep growing here.<br>Here is a recap of what I'm asking for:</p>
       <div class="recap">
         <div class="chip"><div class="big">$61,096</div><div class="sub">Five years along my payscale, to grow into over time</div></div>
-        <div class="chip"><div class="big">Shared office</div><div class="sub">In the room with the strategists</div></div>
-        <div class="chip"><div class="big">Into web strategy</div><div class="sub">Off publication, into a bigger role</div></div>
+        <div class="chip"><div class="big">Shared office</div><div class="sub">Move into Miguel &amp; Kayla's office.</div></div>
+        <div class="chip"><div class="big">Expand TDC's Web Strategy</div><div class="sub">Off publication, growing web into a bigger part of what we do.</div></div>
       </div>
       <p class="lead" style="margin-left:auto;margin-right:auto">Now I'd love to open it up: questions, reflections, and where we go from here.</p>
     </div>
