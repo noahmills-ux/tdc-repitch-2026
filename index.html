@@ -11,7 +11,7 @@
     --red: #f65d61; --orange: #ff9800; --blue: #5f66d7; --green: #00a56c;
     --hairline: rgba(14, 19, 42, 0.12);
     --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    --grid-bg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cg fill='none' stroke='%230e132a' stroke-opacity='0.07' stroke-width='1.3' stroke-dasharray='3 5'%3E%3Cpath d='M0 0H56'/%3E%3Cpath d='M0 0V56'/%3E%3C/g%3E%3C/svg%3E");
+    --grid-bg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cg fill='none' stroke='%230e132a' stroke-opacity='0.1' stroke-width='1.3' stroke-dasharray='3 5'%3E%3Cpath d='M0 0H56'/%3E%3Cpath d='M0 0V56'/%3E%3C/g%3E%3C/svg%3E");
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -91,6 +91,7 @@
   .car-viewport { overflow: hidden; }
   .car-track { display: flex; transition: transform 0.5s cubic-bezier(.2,.7,.2,1); }
   .car-item { flex: 0 0 100%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 2%; }
+  .car-link { display: inline-block; line-height: 0; cursor: pointer; transition: transform 0.25s ease; }
   .car-item img { width: auto; max-width: 100%; max-height: clamp(240px, 42vh, 440px); display: block; object-fit: contain; filter: drop-shadow(0 18px 30px rgba(14,19,42,0.16)); }
   .car-item .name { font-weight: 700; color: var(--ink); font-size: clamp(1.2rem, 2vw, 1.55rem); margin-top: 18px; }
   .hl-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 14px; }
@@ -204,10 +205,10 @@
   .ask-card ul.clean li::before { width: 10px; height: 10px; top: 6px; }
 
   /* ---------- Conclusion ---------- */
-  .recap { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-  .recap .chip { background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; padding: 20px 22px; text-align: center; }
-  .recap .chip .big { font-weight: 700; color: var(--ink); font-size: 1.18rem; }
-  .recap .chip .sub { font-size: 0.85rem; color: var(--slate); margin-top: 4px; }
+  .recap { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; align-items: stretch; }
+  .recap .chip { background: var(--white); border: 1px solid var(--hairline); border-radius: 16px; padding: 18px 18px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
+  .recap .chip .big { font-weight: 700; color: var(--ink); font-size: 1.02rem; line-height: 1.2; }
+  .recap .chip .sub { font-size: 0.82rem; color: var(--slate); line-height: 1.35; }
 
   /* ---------- Top bar / nav ---------- */
   .topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 16px 7vw; pointer-events: none; }
@@ -285,6 +286,7 @@
     .progress-label .pnav:hover { color: var(--teal); background: rgba(69,182,183,0.12); }
     .btn-link:hover { opacity: 0.88; }
     .shot-window.scroll:hover, .shot-window.linkout:hover { box-shadow: 0 22px 52px rgba(14,19,42,0.24); }
+    .car-link:hover { transform: translateY(-6px); }
     .gate button:hover { opacity: 0.9; }
   }
 
@@ -449,11 +451,11 @@
       <span class="eyebrow"><span class="tick"></span>CliftonStrengths</span>
       <h2>This is how I'm <span class="accent">wired</span>.</h2>
       <div class="str-list">
-        <div class="str"><div class="rank">1</div><div class="meta"><span class="domain">Strategic Thinking</span><div class="name">Futuristic</div><div class="desc">I see where things can go before others do, and build toward it.</div><div class="blind"><span><span class="bl-tag">Blind spot &nbsp;</span>I can lock onto the future and lose sight of present realities and what has to happen right now.</span></div></div></div>
-        <div class="str"><div class="rank">2</div><div class="meta"><span class="domain">Relationship Building</span><div class="name">Relator</div><div class="desc">Deep, real trust with clients and teammates, not surface level.</div><div class="blind"><span><span class="bl-tag">Blind spot &nbsp;</span>I invest deeply in a few people, which can read as exclusive or slow to let new folks in.</span></div></div></div>
-        <div class="str"><div class="rank">3</div><div class="meta"><span class="domain">Influencing</span><div class="name">Competition</div><div class="desc">I set a high bar and don't let up. I want to win for TDC.</div><div class="blind"><span><span class="bl-tag">Blind spot &nbsp;</span>A loss can hit me hard, and comparison can pull my focus off the team's shared win.</span></div></div></div>
-        <div class="str"><div class="rank">4</div><div class="meta"><span class="domain">Executing</span><div class="name">Restorative</div><div class="desc">Drawn to broken things, like messy handoffs, failing servers, and broken forms. I fix them.</div><div class="blind"><span><span class="bl-tag">Blind spot &nbsp;</span>I'm pulled toward what's broken, so I can dwell on problems and forget to celebrate what's working.</span></div></div></div>
-        <div class="str"><div class="rank">5</div><div class="meta"><span class="domain">Strategic Thinking</span><div class="name">Strategic</div><div class="desc">I spot patterns, find the best path, and execute.</div><div class="blind"><span><span class="bl-tag">Blind spot &nbsp;</span>I see the path fast and jump ahead, which can leave others behind or impatient with process.</span></div></div></div>
+        <div class="str"><div class="rank">1</div><div class="meta"><span class="domain">Strategic Thinking</span><div class="name">Futuristic</div><div class="desc">I see where things can go before others do, and build toward it.</div><div class="blind"><span><span class="bl-tag">Blind spot &nbsp;</span>Living in the future, I can struggle to enjoy the present, and others may dismiss a vision they can't see yet. I still have to address today's real issues to get there.</span></div></div></div>
+        <div class="str"><div class="rank">2</div><div class="meta"><span class="domain">Relationship Building</span><div class="name">Relator</div><div class="desc">Deep, real trust with clients and teammates, not surface level.</div><div class="blind"><span><span class="bl-tag">Blind spot &nbsp;</span>Because trust has to be earned with me over time, I can seem hard to get to know, and staying close to my inner circle can come across as exclusive.</span></div></div></div>
+        <div class="str"><div class="rank">3</div><div class="meta"><span class="domain">Influencing</span><div class="name">Competition</div><div class="desc">I set a high bar and don't let up. I want to win for TDC.</div><div class="blind"><span><span class="bl-tag">Blind spot &nbsp;</span>My competitive spirit can get in the way of relationships, since not everyone shares my drive and constant comparison can sting. Winning at all costs isn't really winning.</span></div></div></div>
+        <div class="str"><div class="rank">4</div><div class="meta"><span class="domain">Executing</span><div class="name">Restorative</div><div class="desc">Drawn to broken things, like messy handoffs, failing servers, and broken forms. I fix them.</div><div class="blind"><span><span class="bl-tag">Blind spot &nbsp;</span>Others can feel like all I see are their flaws, when they also need praise for their wins. I rush to fix things, so I'm learning to give people space to solve their own problems.</span></div></div></div>
+        <div class="str"><div class="rank">5</div><div class="meta"><span class="domain">Strategic Thinking</span><div class="name">Strategic</div><div class="desc">I spot patterns, find the best path, and execute.</div><div class="blind"><span><span class="bl-tag">Blind spot &nbsp;</span>My strategic read can land as criticism, so I note what's already working. And because I evaluate paths so fast, I sometimes have to backtrack and explain how I got there.</span></div></div></div>
       </div>
       <p class="supporting" style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
         <span style="color:var(--slate)"><strong>6&ndash;10:</strong> Achiever &middot; Activator &middot; Individualization &middot; Discipline &middot; Deliberative.</span>
@@ -518,7 +520,7 @@
     <div class="inner stack">
       <span class="eyebrow"><span class="tick"></span>The impact of that supervision</span>
       <h2>Already generating web revenue for TDC.</h2>
-      <p class="lead">In just a few months of supervision, Regan and Sara are already contributing real web hours and revenue. This is web growing as a department, and it's only the beginning.</p>
+      <p class="lead">In just a few months of supervision, Regan and Sara are already contributing real web hours and revenue. This showcases the growth of our team's web expertise and output, and it's only the beginning.</p>
       <div class="grid-2">
         <div>
           <table class="rev-table">
@@ -557,15 +559,15 @@
         <div class="car-stage">
           <div class="car-viewport">
             <div class="car-track" id="carTrack">
-              <figure class="car-item"><img src="assets/kdb-slider-1.png" alt="Kent Design Build website">
+              <figure class="car-item"><a class="car-link" href="https://www.kentdesignbuild.com/" target="_blank" rel="noopener"><img src="assets/kdb-slider-1.png" alt="Kent Design Build website"></a>
                 <div class="name">Kent Design Build</div>
                 <div class="hl-row">
+                  <span class="hl"><svg class="hi"><use href="#i-trophy"/></svg>Won the work with my pitch</span>
                   <span class="hl"><svg class="hi"><use href="#i-layers"/></svg>100+ pages, built solo</span>
                   <span class="hl"><svg class="hi"><use href="#i-refresh"/></svg>Delivered through multiple pivots</span>
-                  <span class="hl"><svg class="hi"><use href="#i-trophy"/></svg>Won the work with my pitch</span>
                 </div>
               </figure>
-              <figure class="car-item"><img src="assets/pwd-home-slider-1.png" alt="PWD Home website">
+              <figure class="car-item"><a class="car-link" href="https://www.pwdhome.com/" target="_blank" rel="noopener"><img src="assets/pwd-home-slider-1.png" alt="PWD Home website"></a>
                 <div class="name">PWD Home</div>
                 <div class="hl-row">
                   <span class="hl"><svg class="hi"><use href="#i-wrench"/></svg>Easy to maintain &amp; grow</span>
@@ -573,7 +575,7 @@
                   <span class="hl"><svg class="hi"><use href="#i-grid"/></svg>Custom summary blocks</span>
                 </div>
               </figure>
-              <figure class="car-item"><img src="assets/first-airforce-one-slider-1.png" alt="First Air Force One website">
+              <figure class="car-item"><a class="car-link" href="https://www.firstairforceone.org/the-story" target="_blank" rel="noopener"><img src="assets/first-airforce-one-slider-1.png" alt="First Air Force One website"></a>
                 <div class="name">First Air Force One</div>
                 <div class="hl-row">
                   <span class="hl"><svg class="hi"><use href="#i-shield"/></svg>Custom reCAPTCHA, engineered</span>
@@ -581,7 +583,7 @@
                   <span class="hl"><svg class="hi"><use href="#i-code"/></svg>Our first design-to-code site</span>
                 </div>
               </figure>
-              <figure class="car-item"><img src="assets/campus-movers-slider-1.png" alt="Campus Movers website">
+              <figure class="car-item"><a class="car-link" href="https://www.campus-movers.com/" target="_blank" rel="noopener"><img src="assets/campus-movers-slider-1.png" alt="Campus Movers website"></a>
                 <div class="name">Campus Movers</div>
                 <div class="hl-row">
                   <span class="hl"><svg class="hi"><use href="#i-sparkle"/></svg>Built from the ground up</span>
@@ -589,7 +591,7 @@
                   <span class="hl"><svg class="hi"><use href="#i-app"/></svg>Custom web app, I led the offshore dev</span>
                 </div>
               </figure>
-              <figure class="car-item"><img src="assets/hanks-slider-1.png" alt="Hank's Grille website">
+              <figure class="car-item"><a class="car-link" href="https://www.hanksgrilleandcatering.com/" target="_blank" rel="noopener"><img src="assets/hanks-slider-1.png" alt="Hank's Grille website"></a>
                 <div class="name">Hank's Grille</div>
                 <div class="hl-row">
                   <span class="hl"><svg class="hi"><use href="#i-food"/></svg>Full menu redesign</span>
@@ -597,11 +599,11 @@
                   <span class="hl"><svg class="hi"><use href="#i-palette"/></svg>Clean, on-brand execution</span>
                 </div>
               </figure>
-              <figure class="car-item"><img src="assets/tdc-slider-1.png" alt="TDC Marketing website">
+              <figure class="car-item"><a class="car-link" href="https://www.tdcmarketing.com/" target="_blank" rel="noopener"><img src="assets/tdc-slider-1.png" alt="TDC Marketing website"></a>
                 <div class="name">TDC Marketing</div>
                 <div class="hl-row">
-                  <span class="hl"><svg class="hi"><use href="#i-sparkle"/></svg>Custom rebrand elements</span>
-                  <span class="hl"><svg class="hi"><use href="#i-code"/></svg>Our 2nd-ever TDC site</span>
+                  <span class="hl"><svg class="hi"><use href="#i-code"/></svg>Custom JavaScript elements</span>
+                  <span class="hl"><svg class="hi"><use href="#i-sparkle"/></svg>Our 2nd-ever TDC site</span>
                   <span class="hl"><svg class="hi"><use href="#i-star"/></svg>Part of TDC's story</span>
                 </div>
               </figure>
@@ -751,9 +753,9 @@
         <div>
           <p class="lead" style="font-size:1.15rem">I'd love to grow <strong>five years forward</strong> on the Web Strategist payscale, to <strong>$61,096</strong>. That's where I'd like to be, and I'd appreciate the opportunity to grow into it over time.</p>
           <ul class="clean" style="margin-top:16px">
-            <li>I'm the only person at TDC who can take a high-level web project from concept to launch entirely on my own.</li>
-            <li>I've built the systems the whole company runs on: the Code Compendium, our first custom plugin, and a redesigned web build lifecycle.</li>
-            <li>These compound. My focus is training the team and building systems that 10x our web output and revenue over the next five years.</li>
+            <li>As TDC's web strategist, I drive complex web projects from concept to launch, and I'm actively sharing my technical expertise to help scale our team's overall web capabilities.</li>
+            <li>To increase TDC's overall capabilities, I created the Code Compendium, our first custom plugin, and a streamlined web build lifecycle. These systems have directly improved how we operate day-to-day and train new team members, ultimately driving more revenue for the company.</li>
+            <li>My goal as a Web Strategist is to continue training the Publication team and building systems that help 10x our web output and revenue over the next five years.</li>
           </ul>
         </div>
       </div>
@@ -778,7 +780,7 @@
       <div class="future-grid">
         <div class="ask-card">
           <h3><span class="bullet"></span>A seat in bigger conversations</h3>
-          <p>I want to be a major player here. I'd love to sit in on marketing strategy stand-ups, learn the ins and outs of how the company runs, and soak up strategy from the people around me: design from Kat and Kristen, marketing strategy from Nick, Miguel, Mike, Tyler, and Christine.</p>
+          <p>I want to be a major player here. I'd love to sit in on marketing strategy stand-ups, learn the ins and outs of how the company runs, and soak up strategy from the people around me: design from Kat and Kristin, marketing strategy from Nick, Miguel, Mike, Tyler, and Christine.</p>
         </div>
         <div class="ask-card">
           <h3><span class="bullet"></span>Transition off publication work</h3>
@@ -800,7 +802,7 @@
       <p class="lead" style="margin-left:auto;margin-right:auto">I appreciate you taking the time, and the chance to keep growing here.<br>Here is a recap of what I'm asking for:</p>
       <div class="recap">
         <div class="chip"><div class="big">$61,096</div><div class="sub">Five years along my payscale, to grow into over time</div></div>
-        <div class="chip"><div class="big">Shared office</div><div class="sub">Move into Miguel &amp; Kayla's office.</div></div>
+        <div class="chip"><div class="big">Shared office</div><div class="sub">Move into Miguel &amp; Kayla's office, or share one with Kat &amp; Kristin.</div></div>
         <div class="chip"><div class="big">Expand TDC's Web Strategy</div><div class="sub">Off publication, growing web into a bigger part of what we do.</div></div>
       </div>
       <p class="lead" style="margin-left:auto;margin-right:auto">Now I'd love to open it up: questions, reflections, and where we go from here.</p>
